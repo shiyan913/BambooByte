@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BambooByte | Learn Chinese</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<!-- =========================
+     INTRO ANIMATION
+========================= -->
+
+<div id="introScreen" class="intro-screen">
+
+    <div class="intro-bamboo">
+
+        <div class="intro-stem">
+
+            <div class="intro-node node-1"></div>
+            <div class="intro-node node-2"></div>
+            <div class="intro-node node-3"></div>
+
+            <div class="intro-leaf intro-leaf-1"></div>
+            <div class="intro-leaf intro-leaf-2"></div>
+            <div class="intro-leaf intro-leaf-3"></div>
+
+        </div>
+
+    </div>
+
+    <h1>BambooByte</h1>
+
+    <p>Grow your Chinese, one character at a time.</p>
+
+</div>
+
+
+<!-- =========================
+     LOGIN / SIGN UP
+========================= -->
+
+<div id="authOverlay" class="auth-overlay hidden">
+    <div class="auth-card">
+        <div class="auth-brand">
+            <div class="auth-logo-wrap"><span class="auth-bamboo">竹</span><span class="auth-panda">🐼</span></div>
+            <div><h2>Bamboo<span>Byte</span></h2><p>Grow your Chinese, one byte at a time.</p></div>
+        </div>
+
+        <div class="auth-tabs">
+            <button id="loginTab" class="auth-tab active">Log in</button>
+            <button id="signupTab" class="auth-tab">Create account</button>
+        </div>
+
+        <form id="authForm">
+            <div id="nameField" class="form-group hidden">
+                <label for="nameInput">Your name</label>
+                <input id="nameInput" type="text" placeholder="e.g. Shiyan" autocomplete="name">
+            </div>
+            <div class="form-group">
+                <label for="emailInput">Email</label>
+                <input id="emailInput" type="email" placeholder="you@example.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label for="passwordInput">Password</label>
+                <input id="passwordInput" type="password" placeholder="At least 4 characters" minlength="4" required autocomplete="current-password">
+            </div>
+            <p id="authMessage" class="auth-message"></p>
+            <button class="primary-button auth-submit" type="submit" id="authSubmit">Log in →</button>
+        </form>
+
+        <p class="demo-note">Demo login for this assignment — account data is stored only in this browser.</p>
+    </div>
+</div>
+
+
+<!-- =========================
+     FALLING BAMBOO LEAVES
+========================= -->
+
+<div class="leaf-container">
+    <span class="falling-leaf leaf1">❧</span>
+    <span class="falling-leaf leaf2">❧</span>
+    <span class="falling-leaf leaf3">❧</span>
+    <span class="falling-leaf leaf4">❧</span>
+    <span class="falling-leaf leaf5">❧</span>
+</div>
+
+
+<!-- =========================
+     ONBOARDING
+========================= -->
+
+<div id="onboarding" class="onboarding-overlay hidden">
+
+    <div class="onboarding-card">
+
+        <div class="onboarding-header">
+
+            <span class="mini-logo">竹</span>
+
+            <div>
+                <h2>Welcome to BambooByte</h2>
+                <p>Let us personalise your Chinese learning journey.</p>
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION 1 -->
+
+        <div class="question active-question" data-question="1">
+
+            <p class="question-number">01 / 03</p>
+
+            <h3>Why are you learning Chinese?</h3>
+
+            <div class="answer-grid">
+
+                <button class="answer-option">
+                    <span>🎓</span>
+                    <strong>Education</strong>
+                    <small>Study and academics</small>
+                </button>
+
+                <button class="answer-option">
+                    <span>💬</span>
+                    <strong>Daily Communication</strong>
+                    <small>Speak confidently every day</small>
+                </button>
+
+                <button class="answer-option">
+                    <span>💼</span>
+                    <strong>Work</strong>
+                    <small>Professional Chinese</small>
+                </button>
+
+                <button class="answer-option">
+                    <span>🌿</span>
+                    <strong>Hobby</strong>
+                    <small>Learn for fun and culture</small>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION 2 -->
+
+        <div class="question" data-question="2">
+
+            <p class="question-number">02 / 03</p>
+
+            <h3>How would you describe your level?</h3>
+
+            <div class="level-options">
+
+                <button class="answer-option">
+                    <strong>Beginner</strong>
+                    <small>I know almost no Chinese</small>
+                </button>
+
+                <button class="answer-option">
+                    <strong>Elementary</strong>
+                    <small>I know basic words and sentences</small>
+                </button>
+
+                <button class="answer-option">
+                    <strong>Intermediate</strong>
+                    <small>I can hold simple conversations</small>
+                </button>
+
+                <button class="answer-option">
+                    <strong>Advanced</strong>
+                    <small>I can read and communicate comfortably</small>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION 3 -->
+
+        <div class="question" data-question="3">
+
+            <p class="question-number">03 / 03</p>
+
+            <h3>How much time do you want to study each day?</h3>
+
+            <div class="time-options">
+
+                <button class="answer-option">
+                    <strong>10 min</strong>
+                    <small>Light</small>
+                </button>
+
+                <button class="answer-option">
+                    <strong>20 min</strong>
+                    <small>Regular</small>
+                </button>
+
+                <button class="answer-option">
+                    <strong>30 min</strong>
+                    <small>Focused</small>
+                </button>
+
+                <button class="answer-option">
+                    <strong>60 min</strong>
+                    <small>Intensive</small>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="onboarding-bottom">
+
+            <div class="onboarding-progress">
+                <div id="onboardingProgress"></div>
+            </div>
+
+            <button id="continueButton" class="primary-button">
+                Continue →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN WEBSITE
+========================= -->
+
+<div class="app-layout">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-mark">
+                <div class="logo-icon">竹</div>
+                <span class="logo-panda">🐼</span>
+            </div>
+
+            <div class="logo-text">
+                <h2>Bamboo<span>Byte</span></h2>
+                <small>中文学习</small>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <button class="nav-item active" data-page="home">
+                <span>⌂</span>
+                Home
+            </button>
+
+            <button class="nav-item" data-page="learning">
+                <span>学</span>
+                Learn
+            </button>
+
+            <button class="nav-item" data-page="mocktest">
+                <span>✓</span>
+                Mock Test
+            </button>
+
+            <button class="nav-item" data-page="advanced">
+                <span>文</span>
+                Advanced
+            </button>
+
+            <button class="nav-item" data-page="profile">
+                <span>人</span>
+                Profile
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="daily-goal">
+
+                <p>Today's goal</p>
+
+                <div class="goal-number">
+                    <strong>18</strong> / 20 min
+                </div>
+
+                <div class="small-progress">
+                    <div style="width:90%"></div>
+                </div>
+
+            </div>
+
+            <button class="settings-button" id="settingsBtn">
+                ⚙ Settings
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="date-label">
+                    THURSDAY • SEPTEMBER 3
+                </p>
+
+                <h1 id="pageTitle">
+                    你好, Alex.
+                </h1>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <!-- SCRIPT TOGGLE -->
+
+                <div class="character-toggle">
+
+                    <button id="simplifiedBtn" class="toggle-active">
+                        简
+                    </button>
+
+                    <button id="traditionalBtn">
+                        繁
+                    </button>
+
+                </div>
+
+
+                <div class="streak">
+                    🔥 <strong>12</strong>
+                </div>
+
+                <button class="avatar" id="avatarButton" aria-label="Open profile">A</button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==========================================
+             HOME PAGE
+        ========================================== -->
+
+        <section id="home" class="page active-page">
+
+
+            <!-- HERO -->
+
+            <div class="hero-card">
+
+                <div class="hero-text">
+
+                    <p class="eyebrow">
+                        TODAY'S LESSON
+                    </p>
+
+                    <h2>
+                        Everyday Conversations
+                    </h2>
+
+                    <div class="hero-chinese">
+
+                        <span
+                            class="chinese-text"
+                            data-simplified="今天过得怎么样？"
+                            data-traditional="今天過得怎麼樣？">
+                            今天过得怎么样？
+                        </span>
+
+                        <small>
+                            jīn tiān guò de zěn me yàng?
+                        </small>
+
+                    </div>
+
+                    <p class="translation">
+                        How was your day today?
+                    </p>
+
+
+                    <button class="primary-button" id="continueLessonBtn">
+                        Continue Lesson →
+                    </button>
+
+                </div>
+
+
+                <div class="hero-decoration">
+
+                    <div class="sun-circle"></div>
+
+                    <div class="hero-bamboo bamboo-one"></div>
+                    <div class="hero-bamboo bamboo-two"></div>
+                    <div class="hero-bamboo bamboo-three"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STAT CARDS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <p>Study Streak</p>
+
+                    <div>
+                        <strong>12</strong>
+                        <span>days</span>
+                    </div>
+
+                    <small>🔥 Personal best: 18 days</small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <p>Characters Learned</p>
+
+                    <div>
+                        <strong>428</strong>
+                        <span>字</span>
+                    </div>
+
+                    <small>+16 this week</small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <p>Weekly XP</p>
+
+                    <div>
+                        <strong>840</strong>
+                        <span>XP</span>
+                    </div>
+
+                    <small>Top 18% this week</small>
+
+                </div>
+
+            </div>
+
+
+            <!-- MAIN DASHBOARD -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- LEFT -->
+
+                <div class="dashboard-left">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <p class="eyebrow">
+                                LEARNING PATH
+                            </p>
+
+                            <h2>
+                                Continue learning
+                            </h2>
+                        </div>
+
+                        <button class="text-button" id="viewAllBtn">
+                            View all →
+                        </button>
+
+                    </div>
+
+
+                    <div class="lesson-list">
+
+
+                        <div class="lesson-card">
+
+                            <div class="lesson-number">
+                                01
+                            </div>
+
+                            <div class="lesson-main">
+
+                                <p class="lesson-category">
+                                    DAILY LIFE
+                                </p>
+
+                                <h3>
+                                    Greetings & Introductions
+                                </h3>
+
+                                <div class="lesson-characters">
+
+                                    <span
+                                        class="chinese-text"
+                                        data-simplified="你好"
+                                        data-traditional="你好">
+                                        你好
+                                    </span>
+
+                                    <small>
+                                        nǐ hǎo
+                                    </small>
+
+                                </div>
+
+                                <div class="lesson-progress">
+                                    <div style="width:100%"></div>
+                                </div>
+
+                            </div>
+
+                            <div class="completed-circle">
+                                ✓
+                            </div>
+
+                        </div>
+
+
+                        <div class="lesson-card active-lesson">
+
+                            <div class="lesson-number">
+                                02
+                            </div>
+
+                            <div class="lesson-main">
+
+                                <p class="lesson-category">
+                                    CONVERSATION
+                                </p>
+
+                                <h3>
+                                    Everyday Conversations
+                                </h3>
+
+                                <div class="lesson-characters">
+
+                                    <span
+                                        class="chinese-text"
+                                        data-simplified="最近怎么样？"
+                                        data-traditional="最近怎麼樣？">
+                                        最近怎么样？
+                                    </span>
+
+                                    <small>
+                                        zuì jìn zěn me yàng?
+                                    </small>
+
+                                </div>
+
+                                <div class="lesson-progress">
+                                    <div style="width:65%"></div>
+                                </div>
+
+                            </div>
+
+                            <button class="lesson-play" data-lesson="Everyday Conversations">
+                                →
+                            </button>
+
+                        </div>
+
+
+                        <div class="lesson-card">
+
+                            <div class="lesson-number">
+                                03
+                            </div>
+
+                            <div class="lesson-main">
+
+                                <p class="lesson-category">
+                                    FOOD
+                                </p>
+
+                                <h3>
+                                    Ordering Food
+                                </h3>
+
+                                <div class="lesson-characters">
+
+                                    <span
+                                        class="chinese-text"
+                                        data-simplified="我要这个"
+                                        data-traditional="我要這個">
+                                        我要这个
+                                    </span>
+
+                                    <small>
+                                        wǒ yào zhè ge
+                                    </small>
+
+                                </div>
+
+                                <div class="lesson-progress">
+                                    <div style="width:20%"></div>
+                                </div>
+
+                            </div>
+
+                            <button class="lesson-play" data-lesson="Ordering Food">
+                                →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HSK BAMBOO -->
+
+                <div class="hsk-panel">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <p class="eyebrow">
+                                PROFICIENCY
+                            </p>
+
+                            <h2>
+                                Your Bamboo
+                            </h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="bamboo-level-wrapper">
+
+
+                        <div class="hsk-labels" id="hskLabels">
+
+                            <span class="locked-level" data-level="6">
+                                HSK 6
+                            </span>
+
+                            <span class="locked-level" data-level="5">
+                                HSK 5
+                            </span>
+
+                            <span class="current-level" data-level="4">
+                                HSK 4
+                            </span>
+
+                            <span data-level="3">
+                                HSK 3
+                            </span>
+
+                            <span data-level="2">
+                                HSK 2
+                            </span>
+
+                            <span data-level="1">
+                                HSK 1
+                            </span>
+
+                        </div>
+
+
+                        <div class="bamboo-progress">
+
+                            <div class="panda-climber" id="pandaClimber">🐼</div>
+
+                            <div class="bamboo-stem">
+
+                                <div class="bamboo-node n1"></div>
+                                <div class="bamboo-node n2"></div>
+                                <div class="bamboo-node n3"></div>
+                                <div class="bamboo-node n4"></div>
+                                <div class="bamboo-node n5"></div>
+
+                                <div class="bamboo-fill" id="bambooFill"></div>
+
+                                <div class="progress-leaf leaf-left-1"></div>
+                                <div class="progress-leaf leaf-right-1"></div>
+                                <div class="progress-leaf leaf-left-2"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hsk-description">
+
+                        <p>Your estimated level</p>
+
+                        <strong id="currentHSKText">HSK 4</strong>
+
+                        <span id="nextHSKText">
+                            68% to HSK 5
+                        </span>
+
+                        <div class="level-demo-buttons">
+                            <button data-level="1">1</button><button data-level="2">2</button><button data-level="3">3</button>
+                            <button data-level="4" class="active-level-btn">4</button><button data-level="5">5</button><button data-level="6">6</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ==========================================
+             LEARNING PAGE
+        ========================================== -->
+
+        <section id="learning" class="page">
+
+
+            <div class="section-heading large-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        CURRICULUM
+                    </p>
+
+                    <h2>
+                        Learn Chinese
+                    </h2>
+
+                    <p>
+                        Build practical Chinese skills through vocabulary,
+                        pronunciation and real-life conversations.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="course-grid">
+
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        你好
+                    </div>
+
+                    <p class="eyebrow">
+                        UNIT 01
+                    </p>
+
+                    <h3>
+                        Essential Chinese
+                    </h3>
+
+                    <p>
+                        Greetings, names, countries and basic introductions.
+                    </p>
+
+                    <div class="course-word">
+
+                        <strong
+                            class="chinese-text"
+                            data-simplified="认识你很高兴"
+                            data-traditional="認識你很高興">
+
+                            认识你很高兴
+
+                        </strong>
+
+                        <small>
+                            rèn shi nǐ hěn gāo xìng
+                        </small>
+
+                    </div>
+
+                    <div class="course-bottom">
+
+                        <span>8 lessons</span>
+
+                        <button data-course="Essential Chinese">
+                            Start →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        食
+                    </div>
+
+                    <p class="eyebrow">
+                        UNIT 02
+                    </p>
+
+                    <h3>
+                        Food & Dining
+                    </h3>
+
+                    <p>
+                        Order meals, discuss flavours and navigate restaurants.
+                    </p>
+
+                    <div class="course-word">
+
+                        <strong
+                            class="chinese-text"
+                            data-simplified="这个好吃吗？"
+                            data-traditional="這個好吃嗎？">
+
+                            这个好吃吗？
+
+                        </strong>
+
+                        <small>
+                            zhè ge hǎo chī ma?
+                        </small>
+
+                    </div>
+
+                    <div class="course-bottom">
+
+                        <span>10 lessons</span>
+
+                        <button data-course="Food & Dining">
+                            Start →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        行
+                    </div>
+
+                    <p class="eyebrow">
+                        UNIT 03
+                    </p>
+
+                    <h3>
+                        Travel & Directions
+                    </h3>
+
+                    <p>
+                        Transport, destinations, directions and navigation.
+                    </p>
+
+                    <div class="course-word">
+
+                        <strong
+                            class="chinese-text"
+                            data-simplified="地铁站在哪里？"
+                            data-traditional="地鐵站在哪裡？">
+
+                            地铁站在哪里？
+
+                        </strong>
+
+                        <small>
+                            dì tiě zhàn zài nǎ lǐ?
+                        </small>
+
+                    </div>
+
+                    <div class="course-bottom">
+
+                        <span>9 lessons</span>
+
+                        <button data-course="Travel & Directions">
+                            Start →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        工
+                    </div>
+
+                    <p class="eyebrow">
+                        UNIT 04
+                    </p>
+
+                    <h3>
+                        Chinese for Work
+                    </h3>
+
+                    <p>
+                        Meetings, emails and professional communication.
+                    </p>
+
+                    <div class="course-word">
+
+                        <strong
+                            class="chinese-text"
+                            data-simplified="我们开会吧"
+                            data-traditional="我們開會吧">
+
+                            我们开会吧
+
+                        </strong>
+
+                        <small>
+                            wǒ men kāi huì ba
+                        </small>
+
+                    </div>
+
+                    <div class="course-bottom">
+
+                        <span>12 lessons</span>
+
+                        <button data-course="Chinese for Work">
+                            Start →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             MOCK TEST
+        ========================================== -->
+
+        <section id="mocktest" class="page">
+
+            <div class="test-layout">
+
+                <div class="mock-test-card">
+
+                    <p class="eyebrow">
+                        HSK MOCK TEST
+                    </p>
+
+                    <h2>
+                        Question 4 of 20
+                    </h2>
+
+                    <div class="test-progress">
+                        <div style="width:20%"></div>
+                    </div>
+
+                    <p class="test-instruction">
+                        Choose the sentence that best matches the English meaning.
+                    </p>
+
+
+                    <div class="test-question">
+
+                        <p class="english-question">
+                            “I have studied Chinese for three years.”
+                        </p>
+
+
+                        <button class="test-answer" data-correct="true">
+
+                            <span>A</span>
+
+                            <div>
+
+                                <strong
+                                    class="chinese-text"
+                                    data-simplified="我学习中文三年了。"
+                                    data-traditional="我學習中文三年了。">
+
+                                    我学习中文三年了。
+
+                                </strong>
+
+                                <small>
+                                    wǒ xué xí zhōng wén sān nián le
+                                </small>
+
+                            </div>
+
+                        </button>
+
+
+                        <button class="test-answer" data-correct="false">
+
+                            <span>B</span>
+
+                            <div>
+
+                                <strong
+                                    class="chinese-text"
+                                    data-simplified="我三年学习了中文。"
+                                    data-traditional="我三年學習了中文。">
+
+                                    我三年学习了中文。
+
+                                </strong>
+
+                                <small>
+                                    wǒ sān nián xué xí le zhōng wén
+                                </small>
+
+                            </div>
+
+                        </button>
+
+
+                        <button class="test-answer" data-correct="false">
+
+                            <span>C</span>
+
+                            <div>
+
+                                <strong
+                                    class="chinese-text"
+                                    data-simplified="我学习了三年的中文吗？"
+                                    data-traditional="我學習了三年的中文嗎？">
+
+                                    我学习了三年的中文吗？
+
+                                </strong>
+
+                                <small>
+                                    wǒ xué xí le sān nián de zhōng wén ma?
+                                </small>
+
+                            </div>
+
+                        </button>
+
+                    </div>
+
+
+                    <button class="primary-button test-next" id="checkAnswerBtn">
+                        Check Answer
+                    </button>
+
+                </div>
+
+
+                <div class="test-sidebar">
+
+                    <p class="eyebrow">
+                        TEST INFORMATION
+                    </p>
+
+                    <h3>
+                        HSK 4 Practice
+                    </h3>
+
+                    <div class="test-info">
+
+                        <div>
+                            <span>Questions</span>
+                            <strong>20</strong>
+                        </div>
+
+                        <div>
+                            <span>Time</span>
+                            <strong>30 min</strong>
+                        </div>
+
+                        <div>
+                            <span>Passing Score</span>
+                            <strong>60%</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             ADVANCED
+        ========================================== -->
+
+        <section id="advanced" class="page">
+
+            <div class="section-heading large-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        HSK 5–6
+                    </p>
+
+                    <h2>
+                        Advanced Chinese
+                    </h2>
+
+                    <p>
+                        Develop natural reading, grammar and cultural understanding.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="advanced-grid">
+
+
+                <article class="reading-card">
+
+                    <span class="article-tag">
+                        READING
+                    </span>
+
+                    <h3>
+                        城市生活与传统文化
+                    </h3>
+
+                    <small>
+                        chéng shì shēng huó yǔ chuán tǒng wén huà
+                    </small>
+
+                    <p>
+
+                        随着城市的发展，越来越多的年轻人开始重新关注传统文化。
+                        茶文化、书法和传统服装逐渐成为现代生活的一部分。
+
+                    </p>
+
+                    <button id="readArticleBtn">
+                        Read Article →
+                    </button>
+
+                </article>
+
+
+                <article class="advanced-small-card clickable-card" data-popup="grammar">
+
+                    <span class="article-tag">
+                        GRAMMAR
+                    </span>
+
+                    <h3>
+                        不但……而且……
+                    </h3>
+
+                    <small>
+                        bù dàn... ér qiě...
+                    </small>
+
+                    <p>
+                        Learn how to express “not only... but also...”
+                    </p>
+
+                </article>
+
+
+                <article class="advanced-small-card clickable-card" data-popup="idiom">
+
+                    <span class="article-tag">
+                        IDIOM
+                    </span>
+
+                    <h3>
+                        画蛇添足
+                    </h3>
+
+                    <small>
+                        huà shé tiān zú
+                    </small>
+
+                    <p>
+                        To ruin something by adding unnecessary details.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             PROFILE
+        ========================================== -->
+
+        <section id="profile" class="page">
+
+            <div class="profile-card">
+
+                <div class="profile-avatar">
+                    A
+                </div>
+
+                <div>
+
+                    <p class="eyebrow">
+                        LEARNER PROFILE
+                    </p>
+
+                    <h2 id="profileName">
+                        Alex Chen
+                    </h2>
+
+                    <p>
+                        <span id="profileSummary">Learning Chinese for education • 20 minutes/day</span>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-stats">
+
+                <div>
+                    <span>Current Level</span>
+                    <strong id="profileLevel">HSK 4</strong>
+                </div>
+
+                <div>
+                    <span>Learning Streak</span>
+                    <strong>12 days</strong>
+                </div>
+
+                <div>
+                    <span>Total XP</span>
+                    <strong>5,420</strong>
+                </div>
+
+                <div>
+                    <span>Characters</span>
+                    <strong>428</strong>
+                </div>
+
+            </div>
+
+
+            <div class="profile-section">
+
+                <p class="eyebrow">
+                    LEARNING PREFERENCES
+                </p>
+
+                <h2>Your learning plan</h2>
+
+
+                <div class="preference-row">
+
+                    <span>Learning Goal</span>
+
+                    <strong id="profileGoal">Education</strong>
+
+                </div>
+
+
+                <div class="preference-row">
+
+                    <span>Daily Target</span>
+
+                    <strong id="profileTarget">20 minutes</strong>
+
+                </div>
+
+
+                <div class="preference-row">
+
+                    <span>Chinese Script</span>
+
+                    <strong id="profileScript">
+                        Simplified
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <button class="logout-button" id="logoutBtn">Log out</button>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================
+     REUSABLE APP MODAL
+========================= -->
+<div id="appModal" class="app-modal hidden">
+    <div class="modal-card">
+        <button id="modalClose" class="modal-close" aria-label="Close">×</button>
+        <p id="modalEyebrow" class="eyebrow">BAMBOOBYTE</p>
+        <h2 id="modalTitle">Lesson</h2>
+        <div id="modalBody" class="modal-body"></div>
+        <button id="modalAction" class="primary-button">Continue →</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
