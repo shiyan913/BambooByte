@@ -1,2 +1,2 @@
 # BambooByte
-a Fun Chinese learning website
+a Chinese learning website
