@@ -40,7 +40,7 @@
 
     </div>
 
-    <h1>BambooByte</h1>
+    <h1>Bamboo Byte</h1>
 
     <p>Grow your Chinese, one character at a time.</p>
 
@@ -296,6 +296,7 @@
                 <span>人</span>
                 Profile
             </button>
+            
 
         </nav>
 
@@ -381,60 +382,257 @@
 
         <section id="home" class="page active-page">
 
+<!-- OUR TEAM -->
+<div class="team-section" style="margin-bottom: 30px;">
+    <div class="section-header" style="margin-bottom: 15px;">
+        <p class="eyebrow" style="text-transform: uppercase; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; color: var(--primary-color, #2e7d32);">
+            MEET THE CREATORS
+        </p>
+        <h3 style="font-size: 1.5rem; margin-top: 4px;">
+            Our Team
+        </h3>
+    </div>
 
-            <!-- HERO -->
+    <!-- Team Grid (5 Members) -->
+    <div class="team-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px;">
+        
+        <!-- Member 1: Febriana Gunawan -->
+        <div class="team-card" onclick="openMemberModal('febriana')" style="background: var(--card-bg, #ffffff); padding: 16px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
+            <div class="member-avatar" style="width: 64px; height: 64px; margin: 0 auto 12px; background: #e8f5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #2e7d32; font-size: 1.1rem; overflow: hidden;">
+                FG
+            </div>
+            <h4 style="margin: 0 0 4px 0; font-size: 1rem;">Febriana Gunawan</h4>
+            <p style="margin: 0 0 8px 0; font-size: 0.8rem; color: #666;">1820252136</p>
+            <span class="chinese-badge" style="display: inline-block; font-size: 0.75rem; background: #f1f8f5; padding: 2px 8px; border-radius: 6px; color: #2e7d32;" data-simplified="首席执行官" data-traditional="首席執行官">CEO</span>
+        </div>
 
-            <div class="hero-card">
+        <!-- Member 2: Michaela Kwan -->
+        <div class="team-card" onclick="openMemberModal('michaela')" style="background: var(--card-bg, #ffffff); padding: 16px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
+            <div class="member-avatar" style="width: 64px; height: 64px; margin: 0 auto 12px; background: #e8f5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #2e7d32; font-size: 1.1rem; overflow: hidden;">
+                MK
+            </div>
+            <h4 style="margin: 0 0 4px 0; font-size: 1rem;">Michaela Kwan</h4>
+            <p style="margin: 0 0 8px 0; font-size: 0.8rem; color: #666;">1820252116</p>
+            <span class="chinese-badge" style="display: inline-block; font-size: 0.75rem; background: #f1f8f5; padding: 2px 8px; border-radius: 6px; color: #2e7d32;" data-simplified="首席信息官" data-traditional="首席信息官">CIO</span>
+        </div>
 
-                <div class="hero-text">
+        <!-- Member 3: Shiyan -->
+        <div class="team-card" onclick="openMemberModal('shiyan')" style="background: var(--card-bg, #ffffff); padding: 16px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
+            <div class="member-avatar" style="width: 64px; height: 64px; margin: 0 auto 12px; background: #e8f5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #2e7d32; font-size: 1.1rem; overflow: hidden;">
+                诗
+            </div>
+            <h4 style="margin: 0 0 4px 0; font-size: 1rem;">Shiyan</h4>
+            <p style="margin: 0 0 8px 0; font-size: 0.8rem; color: #666;">1820252187</p>
+            <span class="chinese-badge" style="display: inline-block; font-size: 0.75rem; background: #f1f8f5; padding: 2px 8px; border-radius: 6px; color: #2e7d32;" data-simplified="体验设计" data-traditional="體驗設計">UI/UX Designer</span>
+        </div>
 
-                    <p class="eyebrow">
-                        TODAY'S LESSON
-                    </p>
+        <!-- Member 4: Jonathan Glowdius -->
+        <div class="team-card" onclick="openMemberModal('jonathan')" style="background: var(--card-bg, #ffffff); padding: 16px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
+            <div class="member-avatar" style="width: 64px; height: 64px; margin: 0 auto 12px; background: #e8f5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #2e7d32; font-size: 1.1rem; overflow: hidden;">
+                JG
+            </div>
+            <h4 style="margin: 0 0 4px 0; font-size: 1rem;">Jonathan G.</h4>
+            <p style="margin: 0 0 8px 0; font-size: 0.8rem; color: #666;">1820252124</p>
+            <span class="chinese-badge" style="display: inline-block; font-size: 0.75rem; background: #f1f8f5; padding: 2px 8px; border-radius: 6px; color: #2e7d32;" data-simplified="文案与测试" data-traditional="文案與測試">Writer & Tester</span>
+        </div>
 
-                    <h2>
-                        Everyday Conversations
-                    </h2>
+        <!-- Member 5: Michael Noah -->
+        <div class="team-card" onclick="openMemberModal('michael')" style="background: var(--card-bg, #ffffff); padding: 16px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
+            <div class="member-avatar" style="width: 64px; height: 64px; margin: 0 auto 12px; background: #e8f5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #2e7d32; font-size: 1.1rem; overflow: hidden;">
+                MN
+            </div>
+            <h4 style="margin: 0 0 4px 0; font-size: 1rem;">Michael Noah</h4>
+            <p style="margin: 0 0 8px 0; font-size: 0.8rem; color: #666;">1820252142</p>
+            <span class="chinese-badge" style="display: inline-block; font-size: 0.75rem; background: #f1f8f5; padding: 2px 8px; border-radius: 6px; color: #2e7d32;" data-simplified="首席技术官" data-traditional="首席技術官">CTO/Tech Lead</span>
+        </div>
 
-                    <div class="hero-chinese">
+    </div>
+</div>
 
-                        <span
-                            class="chinese-text"
-                            data-simplified="今天过得怎么样？"
-                            data-traditional="今天過得怎麼樣？">
-                            今天过得怎么样？
-                        </span>
+<!-- Personal Page Modal Overlay -->
+<div id="memberModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 16px;">
+    <div style="background: #ffffff; width: 100%; max-width: 400px; border-radius: 16px; padding: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; text-align: center;">
+        <button onclick="closeMemberModal()" style="position: absolute; top: 14px; right: 14px; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #666;">✕</button>
+        
+        <div id="modalAvatar" style="width: 80px; height: 80px; margin: 0 auto 16px; background: #e8f5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #2e7d32; font-size: 1.5rem; overflow: hidden;"></div>
+        
+        <h3 id="modalName" style="margin: 0 0 4px 0; font-size: 1.25rem;"></h3>
+        <p id="modalRole" style="margin: 0 0 4px 0; font-size: 0.9rem; font-weight: 600; color: var(--primary-color, #2e7d32);"></p>
+        <p id="modalId" style="margin: 0 0 16px 0; font-size: 0.8rem; color: #888;"></p>
+        
+        <div style="background: #f9fbf9; padding: 12px; border-radius: 8px; border-left: 4px solid var(--primary-color, #2e7d32); text-align: left;">
+            <p id="modalDesc" style="margin: 0; font-size: 0.9rem; color: #444; line-height: 1.5;"></p>
+        </div>
+    </div>
+</div>
 
-                        <small>
-                            jīn tiān guò de zěn me yàng?
-                        </small>
+<style>
+.team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
+}
+</style>
 
-                    </div>
+<script>
+const teamData = {
+    febriana: {
+        name: "Febriana Gunawan",
+        role: "CEO",
+        id: "Student ID: 1820252136",
+        desc: "Directs the overall vision and strategic growth of the platform, making sure our language tools remain engaging, accessible, and mission-driven.",
+        initials: "FG"
+    },
+    michaela: {
+        name: "Michaela Kwan",
+        role: "CIO",
+        id: "Student ID: 1820252116",
+        desc: "Oversees information architecture and data infrastructure, keeping user journeys smooth and data flows robust across all interactive modules.",
+        initials: "MK"
+    },
+    shiyan: {
+        name: "Shiyan",
+        role: "UI & UX Designer",
+        id: "Student ID: 1820252187",
+        desc: "Crafts intuitive layouts and delightful visual interfaces tailored specifically to make learning Chinese smooth, immersive, and culturally engaging.",
+        initials: "诗"
+    },
+    jonathan: {
+        name: "Jonathan Glowdius",
+        role: "Writer and Tester",
+        id: "Student ID: 1820252124",
+        desc: "Writes precise course content and rigorously stress-tests every interactive feature to guarantee bugs are squashed before students start learning.",
+        initials: "JG"
+    },
+    michael: {
+        name: "Michael Noah",
+        role: "CTO",
+        id: "Student ID: 1820252142",
+        desc: "Architects the underlying technical stack and code framework, bringing seamless audio playback and dynamic web features to life.",
+        initials: "MN"
+    }
+};
 
-                    <p class="translation">
-                        How was your day today?
-                    </p>
+function openMemberModal(memberKey) {
+    const member = teamData[memberKey];
+    if (!member) return;
+
+    document.getElementById('modalAvatar').innerText = member.initials;
+    document.getElementById('modalName').innerText = member.name;
+    document.getElementById('modalRole').innerText = member.role;
+    document.getElementById('modalId').innerText = member.id;
+    document.getElementById('modalDesc').innerText = member.desc;
+
+    document.getElementById('memberModal').style.display = 'flex';
+}
+
+function closeMemberModal() {
+    document.getElementById('memberModal').style.display = 'none';
+}
+
+// Close modal when clicking outside of the content card
+window.onclick = function(event) {
+    const modal = document.getElementById('memberModal');
+    if (event.target === modal) {
+        closeMemberModal();
+    }
+}
+</script>
 
 
-                    <button class="primary-button" id="continueLessonBtn">
-                        Continue Lesson →
-                    </button>
+  
+           <!-- HERO -->
 
+    <div class="hero-card">
+
+        <div class="hero-text">
+
+            <p class="eyebrow">
+                TODAY'S LESSON
+            </p>
+
+            <h2>
+                Everyday Conversations
+            </h2>
+
+            <div class="hero-chinese" style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+
+                <div style="display: inline-flex; flex-direction: column;">
+                    <span
+                        class="chinese-text"
+                        data-simplified="今天过得怎么样？"
+                        data-traditional="今天過得怎麼樣？">
+                        今天过得怎么样？
+                        
+                    </span>
+<!-- Audio Play/Stop Button -->
+<button class="audio-play-btn" id="playAudioBtn" onclick="toggleAudio()" title="Play Audio" style="background: var(--primary-color, #2e7d32); border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: transform 0.2s;">
+    <svg id="audioIcon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M8 5v14l11-7z"/>
+    </svg>
+</button>
+
+<!-- Hidden Audio Element -->
+<audio id="lessonAudio" src="audio1.mp3" preload="none"></audio>
+
+<script>
+function toggleAudio() {
+    const audio = document.getElementById('lessonAudio');
+    const icon = document.getElementById('audioIcon');
+    const btn = document.getElementById('playAudioBtn');
+
+    if (audio.paused) {
+        audio.play();
+        // Switch to pause/stop icon (two vertical bars)
+        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+        btn.title = "Pause Audio";
+    } else {
+        audio.pause();
+        // Switch back to play icon (triangle)
+        icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+        btn.title = "Play Audio";
+    }
+}
+
+// Automatically reset the button icon when the audio finishes playing
+document.getElementById('lessonAudio').addEventListener('ended', function() {
+    const icon = document.getElementById('audioIcon');
+    const btn = document.getElementById('playAudioBtn');
+    icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+    btn.title = "Play Audio";
+});
+</script>
+                    <small>
+                        jīn tiān guò de zěn me yàng?
+                    </small>
                 </div>
 
-
-                <div class="hero-decoration">
-
-                    <div class="sun-circle"></div>
-
-                    <div class="hero-bamboo bamboo-one"></div>
-                    <div class="hero-bamboo bamboo-two"></div>
-                    <div class="hero-bamboo bamboo-three"></div>
-
-                </div>
+               
 
             </div>
 
+            <p class="translation">
+                How was your day today?
+            </p>
+
+
+            <button class="primary-button" id="continueLessonBtn">
+                Continue Lesson →
+            </button>
+
+        </div>
+
+
+        <div class="hero-decoration">
+
+            <div class="sun-circle"></div>
+
+            <div class="hero-bamboo bamboo-one"></div>
+            <div class="hero-bamboo bamboo-two"></div>
+            <div class="hero-bamboo bamboo-three"></div>
+
+        </div>
+
+    </div>
 
             <!-- STAT CARDS -->
 
