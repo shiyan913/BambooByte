@@ -2142,3 +2142,37 @@ button {
     .auth-card, .modal-card { padding: 23px; }
     .level-demo-buttons { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* Google Auth Container Styling */
+.google-auth-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.google-auth-container > div {
+    width: 100% !important;
+}
+
+/* Auth Divider Line */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 18px 0;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border);
+}
+
+.auth-divider span {
+    padding: 0 12px;
+}
