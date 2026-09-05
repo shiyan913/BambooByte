@@ -46,6 +46,57 @@ function setSession(value) {
 }
 
 /* =====================================
+   DYNAMIC DATE FUNCTION
+===================================== */
+function updateCurrentDate() {
+    const dateLabel = $("#currentDateLabel");
+    if (!dateLabel) return;
+
+    const now = new Date();
+    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+    const formattedDate = now.toLocaleDateString('en-US', options).toUpperCase();
+    
+    // Formats into: "THURSDAY • SEPTEMBER 3"
+    dateLabel.textContent = formattedDate.replace(',', ' •');
+}
+
+/* =====================================
+   GOOGLE SIGN-IN INTEGRATION
+===================================== */
+window.handleGoogleLogin = function(response) {
+    try {
+        // Decode JWT Payload
+        const base64Url = response.credential.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        const payload = JSON.parse(jsonPayload);
+        const stored = getUser() || { ...defaultUser };
+
+        const googleUser = {
+            ...stored,
+            name: payload.name || stored.name || "Learner",
+            email: payload.email || stored.email,
+            avatar: payload.picture || stored.avatar,
+            onboarded: stored.onboarded !== undefined ? stored.onboarded : true
+        };
+
+        saveUser(googleUser);
+        setSession(true);
+        authOverlay.classList.add("hidden");
+        applyUser(googleUser);
+
+        if (!googleUser.onboarded) {
+            showOnboarding();
+        }
+    } catch (error) {
+        console.error("Google Sign-In failed:", error);
+    }
+};
+
+/* =====================================
    EDIT PROFILE MODAL LOGIC
 ===================================== */
 const editProfileBtn = $("#editProfileBtn");
@@ -57,12 +108,10 @@ const editNameInput = $("#editNameInput");
 const editGoalSelect = $("#editGoalSelect");
 const editTargetSelect = $("#editTargetSelect");
 
-// --- TAMBAHAN UNTUK FOTO PROFILE ---
 const editAvatarInput = $("#editAvatarInput");
 const editAvatarPreview = $("#editAvatarPreview");
-let tempAvatarBase64 = null; // Variabel sementara penyimpan gambar
+let tempAvatarBase64 = null;
 
-// Preview gambar saat pengguna memilih file baru
 editAvatarInput?.addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -76,17 +125,14 @@ editAvatarInput?.addEventListener("change", (e) => {
         reader.readAsDataURL(file);
     }
 });
-// ------------------------------------
 
-// Open Modal and populate current values
 editProfileBtn?.addEventListener("click", () => {
     const user = getUser() || defaultUser;
     
-    editNameInput.value = user.name || "";
-    editGoalSelect.value = user.goal || "Education";
-    editTargetSelect.value = user.target || "20 min";
+    if (editNameInput) editNameInput.value = user.name || "";
+    if (editGoalSelect) editGoalSelect.value = user.goal || "Education";
+    if (editTargetSelect) editTargetSelect.value = user.target || "20 min";
 
-    // --- TAMBAHAN UNTUK SETUP PREVIEW AVATAR ---
     tempAvatarBase64 = user.avatar || null;
     if (editAvatarPreview) {
         if (user.avatar) {
@@ -95,43 +141,39 @@ editProfileBtn?.addEventListener("click", () => {
             editAvatarPreview.textContent = (user.name || "A").charAt(0).toUpperCase();
         }
     }
-    // -------------------------------------------
 
-    editProfileModal.classList.remove("hidden");
+    editProfileModal?.classList.remove("hidden");
 });
 
-// Close Modal
 closeProfileModalBtn?.addEventListener("click", () => {
-    editProfileModal.classList.add("hidden");
+    editProfileModal?.classList.add("hidden");
 });
 
-// Save updated profile
 editProfileForm?.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const user = getUser() || { ...defaultUser };
-    user.name = editNameInput.value.trim() || user.name;
-    user.goal = editGoalSelect.value;
-    user.target = editTargetSelect.value;
+    if (editNameInput) user.name = editNameInput.value.trim() || user.name;
+    if (editGoalSelect) user.goal = editGoalSelect.value;
+    if (editTargetSelect) user.target = editTargetSelect.value;
 
-    // --- TAMBAHAN UNTUK SIMPAN AVATAR ---
     if (tempAvatarBase64) {
         user.avatar = tempAvatarBase64;
     }
-    // ------------------------------------
 
     saveUser(user);
-    applyUser(user); // Re-render headers & profile UI across the app
+    applyUser(user);
 
-    editProfileModal.classList.add("hidden");
+    editProfileModal?.classList.add("hidden");
 });
 
 /* =====================================
    INTRO → LOGIN / APP
 ===================================== */
 window.addEventListener("load", () => {
+    updateCurrentDate(); // Render active date
     setTimeout(() => {
-        introScreen.classList.add("hide");
+        introScreen?.classList.add("hide");
         setTimeout(startApp, 450);
     }, 2100);
 });
@@ -140,7 +182,7 @@ function startApp() {
     const user = getUser();
 
     if (!user || !getSession()) {
-        authOverlay.classList.remove("hidden");
+        authOverlay?.classList.remove("hidden");
         return;
     }
 
@@ -163,18 +205,18 @@ const authMessage = $("#authMessage");
 
 function setAuthMode(mode) {
     authMode = mode;
-    loginTab.classList.toggle("active", mode === "login");
-    signupTab.classList.toggle("active", mode === "signup");
-    nameField.classList.toggle("hidden", mode !== "signup");
-    authSubmit.textContent = mode === "login" ? "Log in →" : "Create account →";
-    passwordInput.autocomplete = mode === "login" ? "current-password" : "new-password";
-    authMessage.textContent = "";
+    loginTab?.classList.toggle("active", mode === "login");
+    signupTab?.classList.toggle("active", mode === "signup");
+    nameField?.classList.toggle("hidden", mode !== "signup");
+    if (authSubmit) authSubmit.textContent = mode === "login" ? "Log in →" : "Create account →";
+    if (passwordInput) passwordInput.autocomplete = mode === "login" ? "current-password" : "new-password";
+    if (authMessage) authMessage.textContent = "";
 }
 
-loginTab.addEventListener("click", () => setAuthMode("login"));
-signupTab.addEventListener("click", () => setAuthMode("signup"));
+loginTab?.addEventListener("click", () => setAuthMode("login"));
+signupTab?.addEventListener("click", () => setAuthMode("signup"));
 
-authForm.addEventListener("submit", (event) => {
+authForm?.addEventListener("submit", (event) => {
     event.preventDefault();
     const email = emailInput.value.trim();
     const password = passwordInput.value;
@@ -189,7 +231,7 @@ authForm.addEventListener("submit", (event) => {
         const newUser = { ...defaultUser, name, email, password, onboarded: false };
         saveUser(newUser);
         setSession(true);
-        authOverlay.classList.add("hidden");
+        authOverlay?.classList.add("hidden");
         applyUser(newUser);
         showOnboarding();
         return;
@@ -206,7 +248,7 @@ authForm.addEventListener("submit", (event) => {
     }
 
     setSession(true);
-    authOverlay.classList.add("hidden");
+    authOverlay?.classList.add("hidden");
     applyUser(stored);
     if (!stored.onboarded) showOnboarding();
 });
@@ -221,9 +263,9 @@ const questions = $$(".question");
 function showOnboarding() {
     currentQuestion = 1;
     questions.forEach((q, index) => q.classList.toggle("active-question", index === 0));
-    onboardingProgress.style.width = "33%";
-    continueButton.textContent = "Continue →";
-    onboarding.classList.remove("hidden");
+    if (onboardingProgress) onboardingProgress.style.width = "33%";
+    if (continueButton) continueButton.textContent = "Continue →";
+    onboarding?.classList.remove("hidden");
 }
 
 $$('.answer-option').forEach((option) => {
@@ -234,9 +276,9 @@ $$('.answer-option').forEach((option) => {
     });
 });
 
-continueButton.addEventListener("click", () => {
+continueButton?.addEventListener("click", () => {
     const current = $(`.question[data-question="${currentQuestion}"]`);
-    const selected = current.querySelector(".selected");
+    const selected = current?.querySelector(".selected");
 
     if (!selected) {
         alert("Please select an option first.");
@@ -247,8 +289,8 @@ continueButton.addEventListener("click", () => {
         current.classList.remove("active-question");
         currentQuestion += 1;
         $(`.question[data-question="${currentQuestion}"]`).classList.add("active-question");
-        onboardingProgress.style.width = `${(currentQuestion / 3) * 100}%`;
-        if (currentQuestion === 3) continueButton.textContent = "Start Learning →";
+        if (onboardingProgress) onboardingProgress.style.width = `${(currentQuestion / 3) * 100}%`;
+        if (currentQuestion === 3 && continueButton) continueButton.textContent = "Start Learning →";
         return;
     }
 
@@ -260,7 +302,7 @@ continueButton.addEventListener("click", () => {
     user.target = answers[2] || "20 min";
     user.onboarded = true;
     saveUser(user);
-    onboarding.classList.add("hidden");
+    onboarding?.classList.add("hidden");
     applyUser(user);
     openModal(
         "YOUR PLAN IS READY",
@@ -290,7 +332,7 @@ function showPage(page) {
         advanced: "Advanced 进阶",
         profile: "Your Profile"
     };
-    pageTitle.textContent = titles[page];
+    if (pageTitle) pageTitle.textContent = titles[page] || `你好, ${user.name}.`;
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -309,8 +351,8 @@ function switchScript(script) {
     $$(".chinese-text").forEach((text) => {
         text.textContent = text.getAttribute(script === "Traditional" ? "data-traditional" : "data-simplified");
     });
-    simplifiedButton.classList.toggle("toggle-active", script === "Simplified");
-    traditionalButton.classList.toggle("toggle-active", script === "Traditional");
+    simplifiedButton?.classList.toggle("toggle-active", script === "Simplified");
+    traditionalButton?.classList.toggle("toggle-active", script === "Traditional");
     if (profileScript) profileScript.textContent = script;
 
     const user = getUser();
@@ -320,8 +362,8 @@ function switchScript(script) {
     }
 }
 
-simplifiedButton.addEventListener("click", () => switchScript("Simplified"));
-traditionalButton.addEventListener("click", () => switchScript("Traditional"));
+simplifiedButton?.addEventListener("click", () => switchScript("Simplified"));
+traditionalButton?.addEventListener("click", () => switchScript("Traditional"));
 
 /* =====================================
    HSK PANDA BAMBOO
@@ -437,7 +479,7 @@ testAnswers.forEach((answer) => {
         testAnswers.forEach((option) => option.classList.remove("selected", "correct-answer", "wrong-answer"));
         this.classList.add("selected");
         selectedTestAnswer = this;
-        checkAnswerBtn.textContent = "Check Answer";
+        if (checkAnswerBtn) checkAnswerBtn.textContent = "Check Answer";
     });
 });
 
@@ -507,9 +549,9 @@ $("#logoutBtn")?.addEventListener("click", () => {
     setSession(false);
     closeModal();
     showPage("home");
-    authForm.reset();
+    authForm?.reset();
     setAuthMode("login");
-    authOverlay.classList.remove("hidden");
+    authOverlay?.classList.remove("hidden");
 });
 
 /* =====================================
@@ -518,16 +560,16 @@ $("#logoutBtn")?.addEventListener("click", () => {
 let modalActionCallback = null;
 
 function openModal(eyebrow, title, body, actionLabel = "Close", callback = null) {
-    $("#modalEyebrow").textContent = eyebrow;
-    $("#modalTitle").textContent = title;
-    $("#modalBody").innerHTML = body;
-    $("#modalAction").textContent = actionLabel;
+    if ($("#modalEyebrow")) $("#modalEyebrow").textContent = eyebrow;
+    if ($("#modalTitle")) $("#modalTitle").textContent = title;
+    if ($("#modalBody")) $("#modalBody").innerHTML = body;
+    if ($("#modalAction")) $("#modalAction").textContent = actionLabel;
     modalActionCallback = callback;
-    appModal.classList.remove("hidden");
+    appModal?.classList.remove("hidden");
 }
 
 function closeModal() {
-    appModal.classList.add("hidden");
+    appModal?.classList.add("hidden");
     modalActionCallback = null;
 }
 
@@ -545,34 +587,36 @@ appModal?.addEventListener("click", (event) => { if (event.target === appModal) 
 function applyUser(user) {
     if (!user) return;
 
+    updateCurrentDate(); // Sync current date on UI refresh
+
     const cleanName = user.name || "Learner";
     const initial = cleanName.charAt(0).toUpperCase();
 
-    pageTitle.textContent = `你好, ${cleanName}.`;
-    $("#profileName").textContent = cleanName;
-    $("#profileSummary").textContent = `Learning Chinese for ${String(user.goal || "Education").toLowerCase()} • ${user.target || "20 min"}/day`;
-    $("#profileGoal").textContent = user.goal || "Education";
-    $("#profileTarget").textContent = String(user.target || "20 min").replace(" min", " minutes");
+    // Update Header and Page Titles
+    if (pageTitle) pageTitle.textContent = `你好, ${cleanName}.`;
+    
+    // Profile Fields Updates
+    if ($("#profileName")) $("#profileName").textContent = cleanName;
+    if ($("#profileSummary")) $("#profileSummary").textContent = `Learning Chinese for ${String(user.goal || "Education").toLowerCase()} • ${user.target || "20 min"}/day`;
+    if ($("#profileGoal")) $("#profileGoal").textContent = user.goal || "Education";
+    if ($("#profileTarget")) $("#profileTarget").textContent = String(user.target || "20 min").replace(" min", " minutes");
 
-    // --- PERUBAHAN UNTUK RENDER AVATAR / FOTO ---
+    // Avatar Rendering Logic
     const avatarButton = $("#avatarButton");
     const profileAvatarText = $("#profileAvatarText");
     const profileAvatarImg = $("#profileAvatarImg");
 
     if (user.avatar) {
-        // Tampilkan foto di halaman profil utama
         if (profileAvatarImg) {
             profileAvatarImg.src = user.avatar;
             profileAvatarImg.classList.remove("hidden");
         }
         if (profileAvatarText) profileAvatarText.classList.add("hidden");
 
-        // Tampilkan foto di tombol header
         if (avatarButton) {
             avatarButton.innerHTML = `<img src="${user.avatar}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" alt="Avatar">`;
         }
     } else {
-        // Jika belum upload foto, pakai inisial huruf biasa
         if (profileAvatarText) {
             profileAvatarText.textContent = initial;
             profileAvatarText.classList.remove("hidden");
@@ -583,7 +627,6 @@ function applyUser(user) {
             avatarButton.textContent = initial;
         }
     }
-    // --------------------------------------------
 
     switchScript(user.script || "Simplified");
     updateHSKLevel(user.level || 1, false);
@@ -597,4 +640,3 @@ function escapeHTML(value) {
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
 }
-
