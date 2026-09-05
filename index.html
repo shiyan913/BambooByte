@@ -3,20 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Bamboo Byte | Learn Chinese</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Fonts -->
+    <!-- ADD THIS HERE (Inside <head>): Google Identity Services SDK -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
+
+<!-- AUTH OVERLAY -->
+<div id="authOverlay" class="auth-overlay hidden">
+    <div class="auth-card">
+        <div class="auth-brand">
+            <div class="auth-logo-wrap"><span class="auth-bamboo">竹</span><span class="auth-panda">🐼</span></div>
+            <div><h2>Bamboo<span>Byte</span></h2><p>Grow your Chinese, one byte at a time.</p></div>
+        </div>
+
+        <div class="auth-tabs">
+            <button id="loginTab" class="auth-tab active">Log in</button>
+            <button id="signupTab" class="auth-tab">Create account</button>
+        </div>
+
+        <!-- ADD THIS HERE: Google Sign-In & Divider (Right above <form id="authForm">) -->
+        <div class="google-auth-container">
+            <div id="g_id_onload"
+                 data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+                 data-callback="handleGoogleLogin"
+                 data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-size="large"
+                 data-theme="outline"
+                 data-text="sign_in_with"
+                 data-shape="rectangular"
+                 data-logo_alignment="left">
+            </div>
+        </div>
+
+        <div class="auth-divider">
+            <span>OR</span>
+        </div>
+
+        <!-- Existing Form -->
+        <form id="authForm">
+            <div id="nameField" class="form-group hidden">
+                <label for="nameInput">Your name</label>
+                <input id="nameInput" type="text" placeholder="e.g. Shiyan" autocomplete="name">
+            </div>
+            <div class="form-group">
+                <label for="emailInput">Email</label>
+                <input id="emailInput" type="email" placeholder="you@example.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label for="passwordInput">Password</label>
+                <input id="passwordInput" type="password" placeholder="At least 4 characters" minlength="4" required autocomplete="current-password">
+            </div>
+            <p id="authMessage" class="auth-message"></p>
+            <button class="primary-button auth-submit" type="submit" id="authSubmit">Log in →</button>
+        </form>
+
+        <p class="demo-note">Demo login for this assignment — account data is stored only in this browser.</p>
+    </div>
+</div>
+
+<!-- TOPBAR: Ensure id="currentDateLabel" is added to <p> -->
+<header class="topbar">
+    <div>
+        <!-- UPDATE THIS TAG: Added id="currentDateLabel" -->
+        <p class="date-label" id="currentDateLabel">THURSDAY • SEPTEMBER 3</p>
+        <h1 id="pageTitle">你好, Alex.</h1>
+    </div>
+</header>
 
 <!-- =========================
      INTRO ANIMATION
@@ -331,21 +394,20 @@
     <main class="main-content">
 
 
-        <!-- TOP BAR -->
+     <!-- TOP BAR -->
+<header class="topbar">
+    <div>
+        <!-- Added id="currentDateLabel" -->
+        <p class="date-label" id="currentDateLabel">
+            THURSDAY • SEPTEMBER 3
+        </p>
 
-        <header class="topbar">
-
-            <div>
-
-                <p class="date-label">
-                    THURSDAY • SEPTEMBER 3
-                </p>
-
-                <h1 id="pageTitle">
-                    你好, Alex.
-                </h1>
-
-            </div>
+        <!-- Existing id="pageTitle" -->
+        <h1 id="pageTitle">
+            你好, Alex.
+        </h1>
+    </div>
+</header>
 
 
             <div class="topbar-actions">
@@ -427,7 +489,7 @@
             <div class="member-avatar">
                 <img src="jonathan.jpg" alt="Jonathan Glowdius">
             </div>
-            <h4>Jonathan Glowdius</h4>
+            <h4>Jonathan Glowdius Susanto</h4>
             <p class="student-id">1820252124</p>
             <span class="role-badge badge-red">Writer & Tester</span>
         </div>
@@ -435,9 +497,9 @@
         <!-- Michael -->
         <div class="team-card" onclick="openMemberModal('michael')">
             <div class="member-avatar">
-                <img src="michael.jpg" alt="Michael Noah">
+                <img src="michael.jpg" alt="Michael Noah Raharjo">
             </div>
-            <h4>Michael Noah</h4>
+            <h4>Michael Noah Raharjo</h4>
             <p class="student-id">1820252142</p>
             <span class="role-badge badge-blue">CTO/Tech Lead</span>
         </div>
@@ -801,8 +863,8 @@ const teamData = {
         name: "Michaela Kwan",
         role: "CIO",
         id: "Student ID : 1820252116",
-        desc: "I'm Michaela, serving as the Chief Information Officer for BambooByte. My primary responsibilities revolve around organizing our application's data architecture, structuring user flows, and ensuring that all information pathways run smoothly behind the scenes. I manage how learning data, user progress, and lesson assets are structured so that learners experience zero friction as they navigate through the app. A major part of my job involved working closely with our technical lead and UI/UX designer to map out logical content hierarchies, making sure lessons build naturally upon one another. I enjoy taking complex systems and breaking them down into clean, manageable frameworks that enhance both efficiency and usability. By maintaining a strong emphasis on data clarity, robust infrastructure, and seamless technical integration, I strive to make BambooByte a dependable, enjoyable educational tool.",
-        cardImage: "imichaela.jpg",
+        desc: "I’m Michaela, and my role as CIO in BambooByte is mainly to help keep the team organized and make sure everyone stays updated on our project. I keep track of our progress, remind my team members about upcoming deadlines, and make sure our work is organized and submitted on time. I also help communicate important information within the team and check that everyone is aware of their tasks and responsibilities. Our project is focused on creating a website for learning Mandarin. As a foreigner studying in China, I understand how challenging it can be to learn a new language, especially Mandarin. From learning new vocabulary and pronunciation to understanding grammar and Chinese characters, there are many things that can feel difficult at the beginning. I have experienced these challenges myself, which is one of the reasons why I wanted to be involved in this project. Through BambooByte, I hope we can create a platform that makes learning Mandarin easier, more organized, and more enjoyable. I want users to have access to useful learning materials and be able to learn step by step at their own pace. Since I am also a language learner, I can better understand some of the difficulties that learners may face. I hope this website can help people feel more confident about learning Mandarin and encourage them to continue learning new languages in the future.",
+        cardImage: "michaela.jpg",
         modalImage: "michaela.jpg",
         theme: "theme-orange",
         tagline: "Systems<br>Ideas<br>People ♡",
@@ -820,7 +882,7 @@ const teamData = {
         sideQuote: "Simple<br>Ideas<br>Make a<br>Big Impact"
     },
     jonathan: {
-        name: "Jonathan Glowdius",
+        name: "Jonathan Glowdius Susanto",
         role: "Writer & Tester",
         id: "Student ID : 1820252124",
         desc: "I'm Jonathan, and I worked on this project as a writer and tester. My main job was to write the content that shows up in the lessons  such as vocabulary, sentences, and exercises and make sure it actually makes sense to someone learning Chinese for the first time. I also tested the site regularly, going through each feature to catch mistakes, confusing instructions, or anything that felt off before it reached real users. Since I'm not a native Chinese speaker myself, I tried to write from the perspective of someone learning the language, which helped me notice when an explanation was too advanced or a translation felt unnatural. I also worked closely with the rest of the team to make sure the content matched the design and flow of the app, so the lessons felt smooth instead of disconnected.",
@@ -831,7 +893,7 @@ const teamData = {
         sideQuote: "Better<br>Content<br>Brighter<br>Learners"
     },
     michael: {
-        name: "Michael Noah",
+        name: " Michael Noah Raharjo",
         role: "CTO / Tech Lead",
         id: "Student ID : 1820252142",
         desc: "I'm Michael, serving as the CTO and Tech Lead for BambooByte. I built and architected the underlying code framework, transforming our conceptual design wireframes and lesson content into functional, interactive dynamic features. My role spanned across writing clean modular HTML/CSS, building flexible JavaScript state management, and optimizing website responsiveness so that everything looks and performs flawlessly across mobile and desktop displays. I focused heavily on performance, smooth animations, modal transitions, and fixing edge-case bugs across interactive components. Working in tandem with our design and content teams, I translated user requirements into technical implementations. My ultimate goal throughout development was to construct a fast, robust, and reliable web platform that allows learners to focus completely on mastering Chinese without technical disruptions.",
@@ -1769,106 +1831,81 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
              PROFILE
         ========================================== -->
 
-        <section id="profile" class="page">
+      <!-- ==========================================
+     PROFILE PAGE
+========================================== -->
+<section id="profile" class="page">
+    <div class="profile-card">
+        <!-- Tampilan Avatar Profil (Bisa teks/inisial atau Gambar) -->
+        <div class="profile-avatar" id="profileAvatarDisplay">
+            <span id="profileAvatarText">A</span>
+            <img id="profileAvatarImg" src="" alt="Profile Picture" class="hidden">
+        </div>
+        <div>
+            <p class="eyebrow">LEARNER PROFILE</p>
+            <h2 id="profileName">Alex</h2>
+            <p id="profileSummary">Learning Chinese for Education • 20 min/day</p>
+            <button class="primary-button" id="editProfileBtn" style="margin-top: 15px;">Edit Profile ✎</button>
+        </div>
+    </div>
 
-            <div class="profile-card">
+    <div class="profile-stats">
+        <div><span>Current Level</span><strong id="profileLevel">HSK 4</strong></div>
+        <div><span>Learning Goal</span><strong id="profileGoal">Education</strong></div>
+        <div><span>Daily Target</span><strong id="profileTarget">20 minutes</strong></div>
+        <div><span>Script Preference</span><strong id="profileScript">Simplified</strong></div>
+    </div>
 
-                <div class="profile-avatar">
-                    A
+    <button class="logout-button" id="logoutBtn">Log out</button>
+</section>
+
+<!-- ==========================================
+     EDIT PROFILE MODAL
+========================================== -->
+<div id="editProfileModal" class="app-modal hidden">
+    <div class="modal-card">
+        <button class="modal-close" id="closeProfileModalBtn">×</button>
+        <h2>Edit Profile</h2>
+        
+        <form id="editProfileForm">
+            <!-- Pilihan Avatar / Foto -->
+            <div class="form-group">
+                <label>Profile Picture</label>
+                <div class="avatar-preview-container">
+                    <div class="avatar-preview" id="editAvatarPreview">A</div>
                 </div>
-
-                <div>
-
-                    <p class="eyebrow">
-                        LEARNER PROFILE
-                    </p>
-
-                    <h2 id="profileName">
-                        Alex Chen
-                    </h2>
-
-                    <p>
-                        <span id="profileSummary">Learning Chinese for education • 20 minutes/day</span>
-                    </p>
-
-                </div>
-
+                <input type="file" id="editAvatarInput" accept="image/*" style="margin-top: 8px; font-size: 13px;">
             </div>
 
-
-            <div class="profile-stats">
-
-                <div>
-                    <span>Current Level</span>
-                    <strong id="profileLevel">HSK 4</strong>
-                </div>
-
-                <div>
-                    <span>Learning Streak</span>
-                    <strong>12 days</strong>
-                </div>
-
-                <div>
-                    <span>Total XP</span>
-                    <strong>5,420</strong>
-                </div>
-
-                <div>
-                    <span>Characters</span>
-                    <strong>428</strong>
-                </div>
-
+            <div class="form-group">
+                <label for="editNameInput">Name</label>
+                <input id="editNameInput" type="text" required>
             </div>
 
-
-            <div class="profile-section">
-
-                <p class="eyebrow">
-                    LEARNING PREFERENCES
-                </p>
-
-                <h2>Your learning plan</h2>
-
-
-                <div class="preference-row">
-
-                    <span>Learning Goal</span>
-
-                    <strong id="profileGoal">Education</strong>
-
-                </div>
-
-
-                <div class="preference-row">
-
-                    <span>Daily Target</span>
-
-                    <strong id="profileTarget">20 minutes</strong>
-
-                </div>
-
-
-                <div class="preference-row">
-
-                    <span>Chinese Script</span>
-
-                    <strong id="profileScript">
-                        Simplified
-                    </strong>
-
-                </div>
-
+            <div class="form-group">
+                <label for="editGoalSelect">Learning Goal</label>
+                <select id="editGoalSelect" class="profile-select">
+                    <option value="Education">Education</option>
+                    <option value="Daily Communication">Daily Communication</option>
+                    <option value="Work">Work</option>
+                    <option value="Hobby">Hobby</option>
+                </select>
             </div>
 
-            <button class="logout-button" id="logoutBtn">Log out</button>
+            <div class="form-group">
+                <label for="editTargetSelect">Daily Target</label>
+                <select id="editTargetSelect" class="profile-select">
+                    <option value="10 min">10 min</option>
+                    <option value="20 min">20 min</option>
+                    <option value="30 min">30 min</option>
+                    <option value="60 min">60 min</option>
+                </select>
+            </div>
 
-        </section>
-
-
-    </main>
-
+            <button class="primary-button" type="submit" style="width: 100%; margin-top: 10px;">Save Changes</button>
+        </form>
+    </div>
 </div>
-
 
 
 <!-- =========================

@@ -46,6 +46,87 @@ function setSession(value) {
 }
 
 /* =====================================
+   EDIT PROFILE MODAL LOGIC
+===================================== */
+const editProfileBtn = $("#editProfileBtn");
+const editProfileModal = $("#editProfileModal");
+const closeProfileModalBtn = $("#closeProfileModalBtn");
+const editProfileForm = $("#editProfileForm");
+
+const editNameInput = $("#editNameInput");
+const editGoalSelect = $("#editGoalSelect");
+const editTargetSelect = $("#editTargetSelect");
+
+// --- TAMBAHAN UNTUK FOTO PROFILE ---
+const editAvatarInput = $("#editAvatarInput");
+const editAvatarPreview = $("#editAvatarPreview");
+let tempAvatarBase64 = null; // Variabel sementara penyimpan gambar
+
+// Preview gambar saat pengguna memilih file baru
+editAvatarInput?.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            tempAvatarBase64 = event.target.result;
+            if (editAvatarPreview) {
+                editAvatarPreview.innerHTML = `<img src="${tempAvatarBase64}" alt="Preview" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+});
+// ------------------------------------
+
+// Open Modal and populate current values
+editProfileBtn?.addEventListener("click", () => {
+    const user = getUser() || defaultUser;
+    
+    editNameInput.value = user.name || "";
+    editGoalSelect.value = user.goal || "Education";
+    editTargetSelect.value = user.target || "20 min";
+
+    // --- TAMBAHAN UNTUK SETUP PREVIEW AVATAR ---
+    tempAvatarBase64 = user.avatar || null;
+    if (editAvatarPreview) {
+        if (user.avatar) {
+            editAvatarPreview.innerHTML = `<img src="${user.avatar}" alt="Preview" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+        } else {
+            editAvatarPreview.textContent = (user.name || "A").charAt(0).toUpperCase();
+        }
+    }
+    // -------------------------------------------
+
+    editProfileModal.classList.remove("hidden");
+});
+
+// Close Modal
+closeProfileModalBtn?.addEventListener("click", () => {
+    editProfileModal.classList.add("hidden");
+});
+
+// Save updated profile
+editProfileForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const user = getUser() || { ...defaultUser };
+    user.name = editNameInput.value.trim() || user.name;
+    user.goal = editGoalSelect.value;
+    user.target = editTargetSelect.value;
+
+    // --- TAMBAHAN UNTUK SIMPAN AVATAR ---
+    if (tempAvatarBase64) {
+        user.avatar = tempAvatarBase64;
+    }
+    // ------------------------------------
+
+    saveUser(user);
+    applyUser(user); // Re-render headers & profile UI across the app
+
+    editProfileModal.classList.add("hidden");
+});
+
+/* =====================================
    INTRO → LOGIN / APP
 ===================================== */
 window.addEventListener("load", () => {
@@ -282,7 +363,7 @@ function updateHSKLevel(level, persist = true) {
 
 levelButtons.forEach((button) => button.addEventListener("click", () => updateHSKLevel(button.dataset.level)));
 
-/* =====================================
+/* ====================================
    LESSONS / COURSE BUTTONS
 ===================================== */
 const lessonContent = {
@@ -462,16 +543,47 @@ appModal?.addEventListener("click", (event) => { if (event.target === appModal) 
    APPLY SAVED USER TO UI
 ===================================== */
 function applyUser(user) {
+    if (!user) return;
+
     const cleanName = user.name || "Learner";
     const initial = cleanName.charAt(0).toUpperCase();
 
     pageTitle.textContent = `你好, ${cleanName}.`;
-    $("#avatarButton").textContent = initial;
-    $(".profile-avatar").textContent = initial;
     $("#profileName").textContent = cleanName;
     $("#profileSummary").textContent = `Learning Chinese for ${String(user.goal || "Education").toLowerCase()} • ${user.target || "20 min"}/day`;
     $("#profileGoal").textContent = user.goal || "Education";
     $("#profileTarget").textContent = String(user.target || "20 min").replace(" min", " minutes");
+
+    // --- PERUBAHAN UNTUK RENDER AVATAR / FOTO ---
+    const avatarButton = $("#avatarButton");
+    const profileAvatarText = $("#profileAvatarText");
+    const profileAvatarImg = $("#profileAvatarImg");
+
+    if (user.avatar) {
+        // Tampilkan foto di halaman profil utama
+        if (profileAvatarImg) {
+            profileAvatarImg.src = user.avatar;
+            profileAvatarImg.classList.remove("hidden");
+        }
+        if (profileAvatarText) profileAvatarText.classList.add("hidden");
+
+        // Tampilkan foto di tombol header
+        if (avatarButton) {
+            avatarButton.innerHTML = `<img src="${user.avatar}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" alt="Avatar">`;
+        }
+    } else {
+        // Jika belum upload foto, pakai inisial huruf biasa
+        if (profileAvatarText) {
+            profileAvatarText.textContent = initial;
+            profileAvatarText.classList.remove("hidden");
+        }
+        if (profileAvatarImg) profileAvatarImg.classList.add("hidden");
+
+        if (avatarButton) {
+            avatarButton.textContent = initial;
+        }
+    }
+    // --------------------------------------------
 
     switchScript(user.script || "Simplified");
     updateHSKLevel(user.level || 1, false);
@@ -485,3 +597,4 @@ function escapeHTML(value) {
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
 }
+
