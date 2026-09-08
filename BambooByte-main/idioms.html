@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bamboo Byte | Learn Chinese</title>
+<link href="style.css" rel="stylesheet"/>
+<!-- ADD THIS HERE (Inside <head>): Google Identity Services SDK -->
+<script async="" defer="" src="https://accounts.google.com/gsi/client"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@500;700&amp;display=swap" rel="stylesheet"/>
+</head>
+<body>
+<!-- =========================
+     INTRO ANIMATION
+========================= -->
+<div class="intro-screen" id="introScreen">
+<div class="intro-bamboo">
+<div class="intro-stem">
+<div class="intro-node node-1"></div>
+<div class="intro-node node-2"></div>
+<div class="intro-node node-3"></div>
+<div class="intro-leaf intro-leaf-1"></div>
+<div class="intro-leaf intro-leaf-2"></div>
+<div class="intro-leaf intro-leaf-3"></div>
+</div>
+</div>
+<h1>Bamboo Byte</h1>
+<p>Grow your Chinese, one character at a time.</p>
+</div>
+<!-- =========================
+     LOGIN / SIGN UP
+========================= -->
+<div class="auth-overlay hidden" id="authOverlay">
+<div class="auth-card">
+<div class="auth-brand">
+<div class="auth-logo-wrap"><span class="auth-bamboo">竹</span><span class="auth-panda">🐼</span></div>
+<div><h2>Bamboo<span>Byte</span></h2><p>Grow your Chinese, one byte at a time.</p></div>
+</div>
+<div class="auth-tabs">
+<button class="auth-tab active" id="loginTab">Log in</button>
+<button class="auth-tab" id="signupTab">Create account</button>
+</div>
+<form id="authForm">
+<div class="form-group hidden" id="nameField">
+<label for="nameInput">Your name</label>
+<input autocomplete="name" id="nameInput" placeholder="e.g. Shiyan" type="text"/>
+</div>
+<div class="form-group">
+<label for="emailInput">Email</label>
+<input autocomplete="email" id="emailInput" placeholder="you@example.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="passwordInput">Password</label>
+<input autocomplete="current-password" id="passwordInput" minlength="4" placeholder="At least 4 characters" required="" type="password"/>
+</div>
+<p class="auth-message" id="authMessage"></p>
+<button class="primary-button auth-submit" id="authSubmit" type="submit">Log in →</button>
+</form>
+<p class="demo-note">Demo login for this assignment — account data is stored only in this browser.</p>
+</div>
+</div>
+<!-- =========================
+     FALLING BAMBOO LEAVES
+========================= -->
+<div class="leaf-container">
+<span class="falling-leaf leaf1">❧</span>
+<span class="falling-leaf leaf2">❧</span>
+<span class="falling-leaf leaf3">❧</span>
+<span class="falling-leaf leaf4">❧</span>
+<span class="falling-leaf leaf5">❧</span>
+</div>
+<!-- =========================
+     ONBOARDING
+========================= -->
+<div class="onboarding-overlay hidden" id="onboarding">
+<div class="onboarding-card">
+<div class="onboarding-header">
+<span class="mini-logo">竹</span>
+<div>
+<h2>Welcome to BambooByte</h2>
+<p>Let us personalise your Chinese learning journey.</p>
+</div>
+</div>
+<!-- QUESTION 1 -->
+<div class="question active-question" data-question="1">
+<p class="question-number">01 / 03</p>
+<h3>Why are you learning Chinese?</h3>
+<div class="answer-grid">
+<button class="answer-option">
+<span>🎓</span>
+<strong>Education</strong>
+<small>Study and academics</small>
+</button>
+<button class="answer-option">
+<span>💬</span>
+<strong>Daily Communication</strong>
+<small>Speak confidently every day</small>
+</button>
+<button class="answer-option">
+<span>💼</span>
+<strong>Work</strong>
+<small>Professional Chinese</small>
+</button>
+<button class="answer-option">
+<span>🌿</span>
+<strong>Hobby</strong>
+<small>Learn for fun and culture</small>
+</button>
+</div>
+</div>
+<!-- QUESTION 2 -->
+<div class="question" data-question="2">
+<p class="question-number">02 / 03</p>
+<h3>How would you describe your level?</h3>
+<div class="level-options">
+<button class="answer-option">
+<strong>Beginner</strong>
+<small>I know almost no Chinese</small>
+</button>
+<button class="answer-option">
+<strong>Elementary</strong>
+<small>I know basic words and sentences</small>
+</button>
+<button class="answer-option">
+<strong>Intermediate</strong>
+<small>I can hold simple conversations</small>
+</button>
+<button class="answer-option">
+<strong>Advanced</strong>
+<small>I can read and communicate comfortably</small>
+</button>
+</div>
+</div>
+<!-- QUESTION 3 -->
+<div class="question" data-question="3">
+<p class="question-number">03 / 03</p>
+<h3>How much time do you want to study each day?</h3>
+<div class="time-options">
+<button class="answer-option">
+<strong>10 min</strong>
+<small>Light</small>
+</button>
+<button class="answer-option">
+<strong>20 min</strong>
+<small>Regular</small>
+</button>
+<button class="answer-option">
+<strong>30 min</strong>
+<small>Focused</small>
+</button>
+<button class="answer-option">
+<strong>60 min</strong>
+<small>Intensive</small>
+</button>
+</div>
+</div>
+<div class="onboarding-bottom">
+<div class="onboarding-progress">
+<div id="onboardingProgress"></div>
+</div>
+<button class="primary-button" id="continueButton">
+                Continue →
+            </button>
+</div>
+</div>
+</div>
+<!-- =========================
+     MAIN WEBSITE
+========================= -->
+<div class="app-layout">
+<!-- SIDEBAR -->
+<aside class="sidebar">
+<div class="logo">
+<div class="logo-mark">
+<div class="logo-icon">竹</div>
+<span class="logo-panda">🐼</span>
+</div>
+<div class="logo-text">
+<h2>Bamboo<span>Byte</span></h2>
+<small>中文学习</small>
+</div>
+</div>
+<nav class="sidebar-nav">
+<a class="nav-item" data-page="home" href="index.html"><span>⌂</span>Home</a>
+<a class="nav-item" data-page="learning" href="learning.html"><span>学</span>Learn</a>
+<a class="nav-item" data-page="mocktest" href="mocktest.html"><span>✓</span>Mock Test</a>
+<a class="nav-item active" data-page="advanced" href="advanced.html"><span>文</span>Advanced</a>
+<a class="nav-item" data-page="about" href="about.html"><span>◎</span>About Us</a><a class="nav-item" data-page="profile" href="profile.html"><span>人</span>Profile</a>
+</nav>
+<div class="sidebar-bottom">
+<div class="daily-goal">
+<p>Today's goal</p>
+<div class="goal-number">
+<strong>18</strong> / 20 min
+                </div>
+<div class="small-progress">
+<div style="width:90%"></div>
+</div>
+</div>
+<button class="settings-button" id="settingsBtn">
+                ⚙ Settings
+            </button>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<main class="main-content">
+<!-- TOP BAR -->
+<header class="topbar">
+<div>
+<p class="date-label" id="currentDateLabel">THURSDAY • SEPTEMBER 3</p>
+<h1 id="pageTitle">你好, Alex.</h1>
+</div>
+<div class="topbar-actions">
+<div aria-label="Chinese character style" class="character-toggle">
+<button class="toggle-active" id="simplifiedBtn" type="button">简</button>
+<button id="traditionalBtn" type="button">繁</button>
+</div>
+<div class="streak">🔥 <strong>12</strong></div>
+<button aria-label="Open profile" class="avatar" id="avatarButton" type="button">A</button>
+</div>
+</header>
+<!-- ==========================================
+             HOME PAGE
+        ========================================== -->
+<section class="page" id="home">
+<!-- Fonts Library -->
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=Playfair+Display:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- TEAM SECTION -->
+<div class="team-section">
+<div class="section-header">
+<p class="eyebrow">MEET THE CREATORS</p>
+<h3>Our Team</h3>
+</div>
+<div class="team-grid">
+<!-- Febriana -->
+<div class="team-card" onclick="window.open('profile-febriana.html', '_blank', 'noopener')" title="Open profile in a new tab">
+<div class="member-avatar">
+<img alt="Febriana Gunawan" src="febriana.jpg"/>
+</div>
+<h4>Febriana Gunawan</h4>
+<p class="student-id">1820252136</p>
+<span class="role-badge badge-green">CEO</span>
+</div>
+<!-- Michaela -->
+<div class="team-card" onclick="window.open('profile-michael.html', '_blank', 'noopener')" title="Open profile in a new tab">
+<div class="member-avatar">
+<img alt="Michaela Kwan" src="michaela.jpg"/>
+</div>
+<h4>Michaela Kwan</h4>
+<p class="student-id">1820252116</p>
+<span class="role-badge badge-orange">CIO</span>
+</div>
+<!-- Shiyan -->
+<div class="team-card" onclick="window.open('profile-shiyan.html', '_blank', 'noopener')" title="Open profile in a new tab">
+<div class="member-avatar">
+<img alt="Shiyan" src="shiyan.jpg"/>
+</div>
+<h4>Shiyan</h4>
+<p class="student-id">1820252187</p>
+<span class="role-badge badge-purple">UI/UX Designer</span>
+</div>
+<!-- Jonathan -->
+<div class="team-card" onclick="window.open('profile-jonathan.html', '_blank', 'noopener')" title="Open profile in a new tab">
+<div class="member-avatar">
+<img alt="Jonathan Glowdius" src="jonathan.jpg"/>
+</div>
+<h4>Jonathan Glowdius Susanto</h4>
+<p class="student-id">1820252124</p>
+<span class="role-badge badge-red">Writer &amp; Tester</span>
+</div>
+<!-- Michael -->
+<div class="team-card" onclick="openMemberModal('michael')">
+<div class="member-avatar">
+<img alt="Michael Noah Raharjo" src="michael.jpg"/>
+</div>
+<h4>Michael Noah Raharjo</h4>
+<p class="student-id">1820252142</p>
+<span class="role-badge badge-blue">CTO/Tech Lead</span>
+</div>
+</div>
+<div class="click-hint">↗ Click a team member to open their profile in a new tab</div>
+</div>
+<!-- PROFILE MODAL -->
+<div class="modal-overlay" id="memberModal" onclick="handleOutsideClick(event)">
+<div class="modal-container theme-green" id="modalContainer">
+<button class="modal-close" onclick="closeMemberModal()">✕</button>
+<!-- Left Content -->
+<div class="modal-left">
+<p class="modal-eyebrow">BAMBOOBYTE TEAM</p>
+<h2 class="modal-title" id="memberModalTitle">ABOUT ME</h2>
+<h3 class="modal-name" id="modalName"></h3>
+<div class="modal-meta">
+<span class="role-badge" id="modalRole"></span>
+<span class="modal-id" id="modalId"></span>
+</div>
+<p class="modal-desc" id="modalDesc"></p>
+<div class="handwritten-tagline" id="modalTagline"></div>
+</div>
+<!-- Right Content / Portrait Frame -->
+<div class="modal-right">
+<div class="portrait-wrapper">
+<div class="portrait-img" id="modalAvatar"></div>
+</div>
+<div class="handwritten-quote" id="modalSideQuote"></div>
+</div>
+</div>
+</div>
+<style>
+/* CSS Variables & Global Settings */
+:root {
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-handwriting: 'Caveat', cursive;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: #f7f9f7;
+    margin: 0;
+    padding: 24px;
+}
+
+/* Team Grid Layout */
+.team-section {
+    max-width: 960px;
+    margin: 0 auto 30px;
+    background: #eef3ee;
+    padding: 32px;
+    border-radius: 20px;
+}
+
+.section-header {
+    text-align: justify;
+    width: 100%;
+}
+
+.section-header .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #617d60;
+    margin: 0 0 4px 0;
+    text-align: justify;
+}
+
+.section-header h3 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: #2b3a2b;
+    margin: 0 0 24px 0;
+    font-weight: 600;
+    text-align: justify;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.team-card {
+    background: #ffffff;
+    padding: 20px 16px;
+    border-radius: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.member-avatar {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.member-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-card h4 {
+    margin: 0 0 4px 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.team-card .student-id {
+    margin: 0 0 12px 0;
+    font-size: 0.78rem;
+    color: #888;
+}
+
+/* Badges */
+.role-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.badge-green  { background: #d7eedd; color: #1e5e2e; }
+.badge-orange { background: #fde8d7; color: #a34800; }
+.badge-purple { background: #e7def8; color: #583393; }
+.badge-red    { background: #fcdbdc; color: #a12b32; }
+.badge-blue   { background: #d7ebfc; color: #16528e; }
+
+.click-hint {
+    text-align: center;
+    margin-top: 20px;
+    font-family: var(--font-handwriting);
+    font-size: 1.4rem;
+    color: #555;
+}
+
+.hint-arrow {
+    display: inline-block;
+    transform: rotate(20deg);
+}
+
+/* Modal Window Styles */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-container {
+    width: 100%;
+    max-width: 820px;
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    transition: background 0.3s ease;
+    box-sizing: border-box;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: #ffffff;
+}
+
+/* Modal Typography */
+.modal-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0 0 4px 0;
+}
+
+.modal-title {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    margin: 0 0 12px 0;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.modal-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    color: #111;
+}
+
+.modal-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.modal-id {
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.modal-desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #444;
+    margin: 0 0 20px 0;
+    max-height: 240px;
+    overflow-y: auto;
+    padding-right: 6px;
+    text-align: justify;
+}
+
+/* Handwritten Highlights */
+.handwritten-tagline {
+    font-family: var(--font-handwriting);
+    font-size: 1.6rem;
+    line-height: 1.1;
+    margin-top: 10px;
+}
+
+.handwritten-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.3;
+    text-align: left;
+    margin-top: 16px;
+}
+
+/* Right Side Portrait Frame */
+.modal-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.portrait-wrapper {
+    width: 100%;
+    height: 320px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+.portrait-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Dynamic Themes per Member */
+.theme-green { background: #dcece1; }
+.theme-green .modal-eyebrow { color: #517a5b; }
+.theme-green .modal-title { color: #3b6144; }
+.theme-green .role-badge { background: #3b6144; color: #fff; }
+.theme-green .handwritten-tagline { color: #2e5237; }
+
+.theme-orange { background: #fbebd8; }
+.theme-orange .modal-eyebrow { color: #a86d38; }
+.theme-orange .modal-title { color: #824b17; }
+.theme-orange .role-badge { background: #d97724; color: #fff; }
+.theme-orange .handwritten-tagline { color: #824b17; }
+
+.theme-purple { background: #eae3f7; }
+.theme-purple .modal-eyebrow { color: #7663a0; }
+.theme-purple .modal-title { color: #513e7a; }
+.theme-purple .role-badge { background: #6b51a0; color: #fff; }
+.theme-purple .handwritten-tagline { color: #433069; }
+
+.theme-red { background: #fcdedd; }
+.theme-red .modal-eyebrow { color: #a15458; }
+.theme-red .modal-title { color: #802f34; }
+.theme-red .role-badge { background: #b83d44; color: #fff; }
+.theme-red .handwritten-tagline { color: #802f34; }
+
+.theme-blue { background: #d9eaf7; }
+.theme-blue .modal-eyebrow { color: #4d7c9e; }
+.theme-blue .modal-title { color: #235478; }
+.theme-blue .role-badge { background: #2f6f9f; color: #fff; }
+.theme-blue .handwritten-tagline { color: #184161; }
+
+@media (max-width: 768px) {
+    .modal-container {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 24px;
+    }
+    .portrait-wrapper {
+        height: 240px;
+    }
+}
+</style>
+<script>
+const teamData = {
+    febriana: {
+        name: "Febriana Gunawan",
+        role: "CEO",
+        id: "Student ID : 1820252136",
+        desc: "Hi, I'm Bria ,as the CEO and Project Leader of BambooByte, my main responsibility is overseeing the overall development of our Chinese learning platform and making sure every part of the project moves in the same direction. I act as the bridge between each division, helping the team turn our initial ideas into a clear and achievable project while keeping everyone aligned with BambooByte’s main goals. Throughout the project, I am involved in almost every stage of development. I help organize our workflow, break down the project into smaller tasks, distribute responsibilities based on each member’s role, and monitor the progress of each division. I regularly check how the design, content, and technical development are progressing and coordinate with team members whenever adjustments or additional work are needed. I also take part in discussions and decision-making when we face problems or need to choose between different ideas. Beyond managing the team, I also contribute directly to the development of BambooByte. I provide ideas for the website’s features, learning flow, interface, and overall user experience while reviewing each part to ensure that everything connects well as one platform. I also help test the website, identify areas that can be improved, and work together with the team to refine the final product. Leading BambooByte has taught me that managing a project is not only about assigning tasks, but also about understanding how different roles depend on one another. Through this project, I have learned how to communicate ideas clearly, organize a team, solve problems together, manage responsibilities, and keep the project moving toward a shared goal. Most importantly, it has given me experience in balancing leadership, teamwork, creativity, and technical development throughout the process.",
+        cardImage: "febriana.jpg",
+        modalImage: "febriana.jpg",
+        theme: "theme-green",
+        tagline: "Lead<br>Create<br>Inspire ♡",
+        sideQuote: "Never<br>Stop<br>Learning!"
+    },
+    michaela: {
+        name: "Michaela Kwan",
+        role: "CIO",
+        id: "Student ID : 1820252116",
+        desc: "I’m Michaela, and my role as CIO in BambooByte is mainly to help keep the team organized and make sure everyone stays updated on our project. I keep track of our progress, remind my team members about upcoming deadlines, and make sure our work is organized and submitted on time. I also help communicate important information within the team and check that everyone is aware of their tasks and responsibilities. Our project focuses on creating a website for learning Mandarin. As a foreigner studying in China, I understand how challenging it can be to learn Mandarin, especially when you are new to the language. From learning vocabulary and pronunciation to understanding grammar and Chinese characters, there are many things that can feel difficult at the beginning. Because of my own experience as a foreigner living and studying in China, I wanted to be involved in creating a website that could make learning Mandarin easier and more accessible for others. Through BambooByte, I hope we can create a platform that makes learning Mandarin more organized and enjoyable. I want users to have access to useful learning materials and be able to learn step by step at their own pace. I believe that my experience as a foreigner can help me understand some of the challenges that international students and other beginners may face when learning Mandarin. I hope this website can help people feel more confident and encourage them to continue exploring and learning new languages.",
+        cardImage: "michaela.jpg",
+        modalImage: "michaela.jpg",
+        theme: "theme-orange",
+        tagline: "Systems<br>Ideas<br>People ♡",
+        sideQuote: "Details<br>Build<br>Better<br>Experiences"
+    },
+    shiyan: {
+        name: "Shiyan",
+        role: "UI/UX Designer",
+        id: "Student ID : 1820252187",
+        desc: "I’m Shiyan, and as the Designer of BambooByte, my main responsibility is shaping the visual identity and overall user experience of our Chinese learning platform. I focus on transforming our team’s ideas into a website that feels clean, engaging, and easy to navigate while maintaining a consistent design throughout the platform. For BambooByte, I developed the visual direction around a modern Chinese-inspired concept, using bamboo as one of our key design elements. I worked on the colour palette, page layouts, navigation sidebar, learning cards, onboarding interface, and HSK progress system. I also incorporated panda and bamboo elements to give BambooByte a recognizable personality without making the platform feel overly childish, as our goal is to create a learning experience suitable for older students and adult learners. Beyond visual design, I also contributed to implementing and refining the website using HTML, CSS, and JavaScript. Throughout the process, I tested different layouts and interactions and made adjustments based on our team’s feedback. This project has allowed me to combine creativity with technical skills while learning how thoughtful design can make digital learning more enjoyable and intuitive.",
+        cardImage: "shiyan.jpg",
+        modalImage: "shiyan.jpg",
+        theme: "theme-purple",
+        tagline: "Design<br>For<br>People ♡",
+        sideQuote: "Simple<br>Ideas<br>Make a<br>Big Impact"
+    },
+    jonathan: {
+        name: "Jonathan Glowdius Susanto",
+        role: "Writer & Tester",
+        id: "Student ID : 1820252124",
+        desc: "I'm Jonathan, and I worked on this project as a writer and tester. My main job was to write the content that shows up in the lessons  such as vocabulary, sentences, and exercises and make sure it actually makes sense to someone learning Chinese for the first time. I also tested the site regularly, going through each feature to catch mistakes, confusing instructions, or anything that felt off before it reached real users. Since I'm not a native Chinese speaker myself, I tried to write from the perspective of someone learning the language, which helped me notice when an explanation was too advanced or a translation felt unnatural. I also worked closely with the rest of the team to make sure the content matched the design and flow of the app, so the lessons felt smooth instead of disconnected.",
+        cardImage: "jonathan.jpg",
+        modalImage: "jonathan.jpg",
+        theme: "theme-red",
+        tagline: "Write<br>Test<br>Improve ♡",
+        sideQuote: "Better<br>Content<br>Brighter<br>Learners"
+    },
+    michael: {
+        name: " Michael Noah Raharjo",
+        role: "CTO / Tech Lead",
+        id: "Student ID : 1820252142",
+        desc: "I'm Michael, serving as the CTO and Tech Lead for BambooByte. I built and architected the underlying code framework, transforming our conceptual design wireframes and lesson content into functional, interactive dynamic features. My role spanned across writing clean modular HTML/CSS, building flexible JavaScript state management, and optimizing website responsiveness so that everything looks and performs flawlessly across mobile and desktop displays. I focused heavily on performance, smooth animations, modal transitions, and fixing edge-case bugs across interactive components. Working in tandem with our design and content teams, I translated user requirements into technical implementations. My ultimate goal throughout development was to construct a fast, robust, and reliable web platform that allows learners to focus completely on mastering Chinese without technical disruptions.",
+        cardImage: "michael.jpg",
+        modalImage: "michael.jpg",
+        theme: "theme-blue",
+        tagline: "Code<br>Create<br>Explore ♡",
+        sideQuote: "Technology<br>Today<br>A Brighter<br>Tomorrow"
+    }
+};
+
+function openMemberModal(memberKey) {
+    const member = teamData[memberKey];
+    if (!member) return;
+
+    const container = document.getElementById('modalContainer');
+    container.className = `modal-container ${member.theme}`;
+
+    document.getElementById('modalName').innerText = member.name;
+    document.getElementById('modalRole').innerText = member.role;
+    document.getElementById('modalId').innerText = member.id;
+    document.getElementById('modalDesc').innerText = member.desc;
+    document.getElementById('modalTagline').innerHTML = member.tagline;
+    document.getElementById('modalSideQuote').innerHTML = member.sideQuote;
+    document.getElementById('modalAvatar').innerHTML = `<img src="${member.modalImage}" alt="${member.name}">`;
+
+    document.getElementById('memberModal').style.display = 'flex';
+}
+
+function closeMemberModal() {
+    document.getElementById('memberModal').style.display = 'none';
+}
+
+function handleOutsideClick(event) {
+    if (event.target.id === 'memberModal') {
+        closeMemberModal();
+    }
+}
+</script>
+<!-- HERO -->
+<div class="hero-card">
+<div class="hero-text">
+<p class="eyebrow">
+                TODAY'S LESSON
+            </p>
+<h2>
+                Everyday Conversations
+            </h2>
+<div class="hero-chinese" style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+<div style="display: inline-flex; flex-direction: column;">
+<span class="chinese-text" data-simplified="今天过得怎么样？" data-traditional="今天過得怎麼樣？">
+                        今天过得怎么样？
+                        
+                    </span>
+<!-- Audio Play/Stop Button -->
+<button class="audio-play-btn" id="playAudioBtn" onclick="toggleAudio()" style="background: var(--primary-color, #2e7d32); border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: transform 0.2s;" title="Play Audio">
+<svg fill="currentColor" height="14" id="audioIcon" viewbox="0 0 24 24" width="14">
+<path d="M8 5v14l11-7z"></path>
+</svg>
+</button>
+<!-- Hidden Audio Element -->
+<audio id="lessonAudio" preload="none" src="audio1.mp3"></audio>
+<script>
+function toggleAudio() {
+    const audio = document.getElementById('lessonAudio');
+    const icon = document.getElementById('audioIcon');
+    const btn = document.getElementById('playAudioBtn');
+
+    if (audio.paused) {
+        audio.play();
+        // Switch to pause/stop icon (two vertical bars)
+        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+        btn.title = "Pause Audio";
+    } else {
+        audio.pause();
+        // Switch back to play icon (triangle)
+        icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+        btn.title = "Play Audio";
+    }
+}
+
+// Automatically reset the button icon when the audio finishes playing
+document.getElementById('lessonAudio').addEventListener('ended', function() {
+    const icon = document.getElementById('audioIcon');
+    const btn = document.getElementById('playAudioBtn');
+    icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+    btn.title = "Play Audio";
+});
+</script>
+<small>
+                        jīn tiān guò de zěn me yàng?
+                    </small>
+</div>
+</div>
+<p class="translation">
+                How was your day today?
+            </p>
+<button class="primary-button" id="continueLessonBtn">
+                Continue Lesson →
+            </button>
+</div>
+<div class="hero-decoration">
+<div class="sun-circle"></div>
+<div class="hero-bamboo bamboo-one"></div>
+<div class="hero-bamboo bamboo-two"></div>
+<div class="hero-bamboo bamboo-three"></div>
+</div>
+</div>
+<!-- STAT CARDS -->
+<div class="stats-grid">
+<div class="stat-card">
+<p>Study Streak</p>
+<div>
+<strong>12</strong>
+<span>days</span>
+</div>
+<small>🔥 Personal best: 18 days</small>
+</div>
+<div class="stat-card">
+<p>Characters Learned</p>
+<div>
+<strong>428</strong>
+<span>字</span>
+</div>
+<small>+16 this week</small>
+</div>
+<div class="stat-card">
+<p>Weekly XP</p>
+<div>
+<strong>840</strong>
+<span>XP</span>
+</div>
+<small>Top 18% this week</small>
+</div>
+</div>
+<!-- MAIN DASHBOARD -->
+<div class="dashboard-grid">
+<!-- LEFT -->
+<div class="dashboard-left">
+<div class="section-heading">
+<div>
+<p class="eyebrow">
+                                LEARNING PATH
+                            </p>
+<h2>
+                                Continue learning
+                            </h2>
+</div>
+<button class="text-button" id="viewAllBtn">
+                            View all →
+                        </button>
+</div>
+<div class="lesson-list">
+<div class="lesson-card">
+<div class="lesson-number">
+                                01
+                            </div>
+<div class="lesson-main">
+<p class="lesson-category">
+                                    DAILY LIFE
+                                </p>
+<h3>
+                                    Greetings &amp; Introductions
+                                </h3>
+<div class="lesson-characters">
+<span class="chinese-text" data-simplified="你好" data-traditional="你好">
+                                        你好
+                                    </span>
+<small>
+                                        nǐ hǎo
+                                    </small>
+</div>
+<div class="lesson-progress">
+<div style="width:100%"></div>
+</div>
+</div>
+<div class="completed-circle">
+                                ✓
+                            </div>
+</div>
+<div class="lesson-card active-lesson">
+<div class="lesson-number">
+                                02
+                            </div>
+<div class="lesson-main">
+<p class="lesson-category">
+                                    CONVERSATION
+                                </p>
+<h3>
+                                    Everyday Conversations
+                                </h3>
+<div class="lesson-characters">
+<span class="chinese-text" data-simplified="最近怎么样？" data-traditional="最近怎麼樣？">
+                                        最近怎么样？
+                                    </span>
+<small>
+                                        zuì jìn zěn me yàng?
+                                    </small>
+</div>
+<div class="lesson-progress">
+<div style="width:65%"></div>
+</div>
+</div>
+<button type="button" class="lesson-play" data-lesson="Everyday Conversations">
+                                →
+                            </button>
+</div>
+<div class="lesson-card">
+<div class="lesson-number">
+                                03
+                            </div>
+<div class="lesson-main">
+<p class="lesson-category">
+                                    FOOD
+                                </p>
+<h3>
+                                    Ordering Food
+                                </h3>
+<div class="lesson-characters">
+<span class="chinese-text" data-simplified="我要这个" data-traditional="我要這個">
+                                        我要这个
+                                    </span>
+<small>
+                                        wǒ yào zhè ge
+                                    </small>
+</div>
+<div class="lesson-progress">
+<div style="width:20%"></div>
+</div>
+</div>
+<button type="button" class="lesson-play" data-lesson="Ordering Food">
+                                →
+                            </button>
+</div>
+</div>
+</div>
+<!-- HSK BAMBOO -->
+<div class="hsk-panel">
+<div class="section-heading">
+<div>
+<p class="eyebrow">
+                                PROFICIENCY
+                            </p>
+<h2>
+                                Your Bamboo
+                            </h2>
+</div>
+</div>
+<div class="bamboo-level-wrapper">
+<div class="hsk-labels" id="hskLabels">
+<span class="locked-level" data-level="6">
+                                HSK 6
+                            </span>
+<span class="locked-level" data-level="5">
+                                HSK 5
+                            </span>
+<span class="current-level" data-level="4">
+                                HSK 4
+                            </span>
+<span data-level="3">
+                                HSK 3
+                            </span>
+<span data-level="2">
+                                HSK 2
+                            </span>
+<span data-level="1">
+                                HSK 1
+                            </span>
+</div>
+<div class="bamboo-progress">
+<div class="panda-climber" id="pandaClimber">🐼</div>
+<div class="bamboo-stem">
+<div class="bamboo-node n1"></div>
+<div class="bamboo-node n2"></div>
+<div class="bamboo-node n3"></div>
+<div class="bamboo-node n4"></div>
+<div class="bamboo-node n5"></div>
+<div class="bamboo-fill" id="bambooFill"></div>
+<div class="progress-leaf leaf-left-1"></div>
+<div class="progress-leaf leaf-right-1"></div>
+<div class="progress-leaf leaf-left-2"></div>
+</div>
+</div>
+</div>
+<div class="hsk-description">
+<p>Your estimated level</p>
+<strong id="currentHSKText">HSK 4</strong>
+<span id="nextHSKText">
+                            68% to HSK 5
+                        </span>
+<div class="level-demo-buttons">
+<button data-level="1">1</button><button data-level="2">2</button><button data-level="3">3</button>
+<button class="active-level-btn" data-level="4">4</button><button data-level="5">5</button><button data-level="6">6</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================
+             LEARNING PAGE
+        ========================================== -->
+<section class="page" id="learning">
+<div class="section-heading large-heading">
+<div>
+<p class="eyebrow">
+                        CURRICULUM
+                    </p>
+<h2>
+                        Learn Chinese
+                    </h2>
+<p>
+                        Build practical Chinese skills through vocabulary,
+                        pronunciation and real-life conversations.
+                    </p>
+</div>
+</div>
+<div class="course-grid">
+<div class="course-card">
+<div class="course-icon">
+                        你好
+                    </div>
+<p class="eyebrow">
+                        UNIT 01
+                    </p>
+<h3>
+                        Essential Chinese
+                    </h3>
+<p>
+                        Greetings, names, countries and basic introductions.
+                    </p>
+<div class="course-word">
+<strong class="chinese-text" data-simplified="认识你很高兴" data-traditional="認識你很高興">
+
+                            认识你很高兴
+
+                        </strong>
+<small>
+                            rèn shi nǐ hěn gāo xìng
+                        </small>
+</div>
+<div class="course-bottom">
+<span>8 lessons</span>
+<button type="button" data-course="Essential Chinese">
+                            Start →
+                        </button>
+</div>
+</div>
+<div class="course-card">
+<div class="course-icon">
+                        食
+                    </div>
+<p class="eyebrow">
+                        UNIT 02
+                    </p>
+<h3>
+                        Food &amp; Dining
+                    </h3>
+<p>
+                        Order meals, discuss flavours and navigate restaurants.
+                    </p>
+<div class="course-word">
+<strong class="chinese-text" data-simplified="这个好吃吗？" data-traditional="這個好吃嗎？">
+
+                            这个好吃吗？
+
+                        </strong>
+<small>
+                            zhè ge hǎo chī ma?
+                        </small>
+</div>
+<div class="course-bottom">
+<span>10 lessons</span>
+<button type="button" data-course="Food &amp; Dining">
+                            Start →
+                        </button>
+</div>
+</div>
+<div class="course-card">
+<div class="course-icon">
+                        行
+                    </div>
+<p class="eyebrow">
+                        UNIT 03
+                    </p>
+<h3>
+                        Travel &amp; Directions
+                    </h3>
+<p>
+                        Transport, destinations, directions and navigation.
+                    </p>
+<div class="course-word">
+<strong class="chinese-text" data-simplified="地铁站在哪里？" data-traditional="地鐵站在哪裡？">
+
+                            地铁站在哪里？
+
+                        </strong>
+<small>
+                            dì tiě zhàn zài nǎ lǐ?
+                        </small>
+</div>
+<div class="course-bottom">
+<span>9 lessons</span>
+<button type="button" data-course="Travel &amp; Directions">
+                            Start →
+                        </button>
+</div>
+</div>
+<div class="course-card">
+<div class="course-icon">
+                        工
+                    </div>
+<p class="eyebrow">
+                        UNIT 04
+                    </p>
+<h3>
+                        Chinese for Work
+                    </h3>
+<p>
+                        Meetings, emails and professional communication.
+                    </p>
+<div class="course-word">
+<strong class="chinese-text" data-simplified="我们开会吧" data-traditional="我們開會吧">
+
+                            我们开会吧
+
+                        </strong>
+<small>
+                            wǒ men kāi huì ba
+                        </small>
+</div>
+<div class="course-bottom">
+<span>12 lessons</span>
+<button type="button" data-course="Chinese for Work">
+                            Start →
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================
+             MOCK TEST
+        ========================================== -->
+<section class="page" id="mocktest">
+<div class="test-layout">
+<div class="mock-test-card">
+<p class="eyebrow">
+                        HSK MOCK TEST
+                    </p>
+<h2>
+                        Question 4 of 20
+                    </h2>
+<div class="test-progress">
+<div style="width:20%"></div>
+</div>
+<p class="test-instruction">
+                        Choose the sentence that best matches the English meaning.
+                    </p>
+<div class="test-question">
+<p class="english-question">
+                            “I have studied Chinese for three years.”
+                        </p>
+<button class="test-answer" data-correct="true">
+<span>A</span>
+<div>
+<strong class="chinese-text" data-simplified="我学习中文三年了。" data-traditional="我學習中文三年了。">
+
+                                    我学习中文三年了。
+
+                                </strong>
+<small>
+                                    wǒ xué xí zhōng wén sān nián le
+                                </small>
+</div>
+</button>
+<button class="test-answer" data-correct="false">
+<span>B</span>
+<div>
+<strong class="chinese-text" data-simplified="我三年学习了中文。" data-traditional="我三年學習了中文。">
+
+                                    我三年学习了中文。
+
+                                </strong>
+<small>
+                                    wǒ sān nián xué xí le zhōng wén
+                                </small>
+</div>
+</button>
+<button class="test-answer" data-correct="false">
+<span>C</span>
+<div>
+<strong class="chinese-text" data-simplified="我学习了三年的中文吗？" data-traditional="我學習了三年的中文嗎？">
+
+                                    我学习了三年的中文吗？
+
+                                </strong>
+<small>
+                                    wǒ xué xí le sān nián de zhōng wén ma?
+                                </small>
+</div>
+</button>
+</div>
+<button class="primary-button test-next" id="checkAnswerBtn">
+                        Check Answer
+                    </button>
+</div>
+<div class="test-sidebar">
+<p class="eyebrow">
+                        TEST INFORMATION
+                    </p>
+<h3>
+                        HSK 4 Practice
+                    </h3>
+<div class="test-info">
+<div>
+<span>Questions</span>
+<strong>20</strong>
+</div>
+<div>
+<span>Time</span>
+<strong>30 min</strong>
+</div>
+<div>
+<span>Passing Score</span>
+<strong>60%</strong>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================
+             ADVANCED
+        ========================================== -->
+<section class="page active-page" id="advanced"><div class="section-heading large-heading"><div><p class="eyebrow">IDIOMS · 50 CHENGYU</p><h2>成语库</h2><p>50 useful Chinese idioms with meanings and examples.</p></div></div><div class="dashboard-left"><div class="grammar-library"><details class="grammar-item" open=""><summary><span class="grammar-number">01</span><span><strong>画蛇添足</strong><small>huà shé tiān zú</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to ruin something by adding unnecessary details</p><p class="grammar-example">这份设计已经很好了，再加太多东西反而是画蛇添足。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">02</span><span><strong>一举两得</strong><small>yì jǔ liǎng dé</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to achieve two goals with one action</p><p class="grammar-example">骑自行车既能锻炼又能省钱，真是一举两得。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">03</span><span><strong>井井有条</strong><small>jǐng jǐng yǒu tiáo</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> neat and well organized</p><p class="grammar-example">她把项目安排得井井有条。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">04</span><span><strong>全力以赴</strong><small>quán lì yǐ fù</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to give it your all</p><p class="grammar-example">为了这次比赛，我们会全力以赴。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">05</span><span><strong>坚持不懈</strong><small>jiān chí bú xiè</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to persevere without giving up</p><p class="grammar-example">学习语言需要坚持不懈。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">06</span><span><strong>熟能生巧</strong><small>shú néng shēng qiǎo</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> practice makes perfect</p><p class="grammar-example">多练习汉字，熟能生巧。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">07</span><span><strong>入乡随俗</strong><small>rù xiāng suí sú</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> when in Rome, do as the Romans do</p><p class="grammar-example">来到新的国家生活，要学会入乡随俗。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">08</span><span><strong>百闻不如一见</strong><small>bǎi wén bù rú yí jiàn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> seeing once is better than hearing a hundred times</p><p class="grammar-example">大家都说长城壮观，真是百闻不如一见。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">09</span><span><strong>自相矛盾</strong><small>zì xiāng máo dùn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to contradict oneself</p><p class="grammar-example">他的两个解释自相矛盾。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">10</span><span><strong>亡羊补牢</strong><small>wáng yáng bǔ láo</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> better late than never; fix a problem after a loss</p><p class="grammar-example">现在开始复习还不晚，亡羊补牢也有用。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">11</span><span><strong>守株待兔</strong><small>shǒu zhū dài tù</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to wait passively for luck</p><p class="grammar-example">成功不能靠守株待兔。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">12</span><span><strong>刻舟求剑</strong><small>kè zhōu qiú jiàn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to use an outdated method despite changed circumstances</p><p class="grammar-example">时代已经变了，不能再刻舟求剑。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">13</span><span><strong>掩耳盗铃</strong><small>yǎn ěr dào líng</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to deceive oneself</p><p class="grammar-example">不看成绩并不能解决问题，这只是掩耳盗铃。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">14</span><span><strong>对牛弹琴</strong><small>duì niú tán qín</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to address the wrong audience</p><p class="grammar-example">跟完全不感兴趣的人讲这个话题，简直是对牛弹琴。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">15</span><span><strong>杯弓蛇影</strong><small>bēi gōng shé yǐng</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to be frightened by imaginary fears</p><p class="grammar-example">事情没那么严重，别杯弓蛇影。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">16</span><span><strong>狐假虎威</strong><small>hú jiǎ hǔ wēi</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to bully others by relying on someone powerful</p><p class="grammar-example">他只是狐假虎威，并没有真正的权力。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">17</span><span><strong>滥竽充数</strong><small>làn yú chōng shù</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to pass oneself off as competent</p><p class="grammar-example">团队合作不能滥竽充数，每个人都要负责。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">18</span><span><strong>塞翁失马</strong><small>sài wēng shī mǎ</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> a setback may turn into a blessing</p><p class="grammar-example">虽然没拿到那个机会，但塞翁失马，焉知非福。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">19</span><span><strong>叶公好龙</strong><small>yè gōng hào lóng</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to claim to like something but fear the real thing</p><p class="grammar-example">他说喜欢冒险，真的要去时却退缩了，真是叶公好龙。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">20</span><span><strong>愚公移山</strong><small>yú gōng yí shān</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> determination can overcome great difficulties</p><p class="grammar-example">只要有愚公移山的精神，再难的目标也能慢慢实现。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">21</span><span><strong>胸有成竹</strong><small>xiōng yǒu chéng zhú</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to have a well-thought-out plan</p><p class="grammar-example">她准备得很充分，上台前已经胸有成竹。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">22</span><span><strong>雪中送炭</strong><small>xuě zhōng sòng tàn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to offer help when it is most needed</p><p class="grammar-example">我最困难的时候他来帮忙，真是雪中送炭。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">23</span><span><strong>锦上添花</strong><small>jǐn shàng tiān huā</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to make something good even better</p><p class="grammar-example">这个小动画让网站锦上添花。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">24</span><span><strong>一目了然</strong><small>yí mù liǎo rán</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> clear at a glance</p><p class="grammar-example">这个图表很简单，数据一目了然。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">25</span><span><strong>一心一意</strong><small>yì xīn yí yì</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> wholeheartedly; with full attention</p><p class="grammar-example">学习的时候要一心一意。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">26</span><span><strong>三心二意</strong><small>sān xīn èr yì</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> half-hearted; indecisive</p><p class="grammar-example">做决定时不要三心二意。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">27</span><span><strong>四面八方</strong><small>sì miàn bā fāng</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> from all directions</p><p class="grammar-example">游客从四面八方来到北京。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">28</span><span><strong>五花八门</strong><small>wǔ huā bā mén</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> all kinds of; a great variety</p><p class="grammar-example">网上的学习方法五花八门。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">29</span><span><strong>七上八下</strong><small>qī shàng bā xià</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> very nervous or unsettled</p><p class="grammar-example">等考试结果时，我心里七上八下。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">30</span><span><strong>九牛一毛</strong><small>jiǔ niú yì máo</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> a tiny amount compared with the whole</p><p class="grammar-example">这点费用对大项目来说只是九牛一毛。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">31</span><span><strong>十全十美</strong><small>shí quán shí měi</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> perfect in every way</p><p class="grammar-example">世界上很少有十全十美的计划。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">32</span><span><strong>不可思议</strong><small>bù kě sī yì</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> unbelievable; incredible</p><p class="grammar-example">她三个月就进步这么多，真不可思议。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">33</span><span><strong>理所当然</strong><small>lǐ suǒ dāng rán</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> as a matter of course</p><p class="grammar-example">别把别人的帮助看成理所当然。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">34</span><span><strong>不知不觉</strong><small>bù zhī bù jué</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> without realizing it</p><p class="grammar-example">不知不觉，我已经学了两个小时。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">35</span><span><strong>大吃一惊</strong><small>dà chī yì jīng</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to be greatly surprised</p><p class="grammar-example">听到这个消息，我大吃一惊。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">36</span><span><strong>得心应手</strong><small>dé xīn yìng shǒu</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to handle something with ease</p><p class="grammar-example">练习久了，她使用这个软件越来越得心应手。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">37</span><span><strong>恍然大悟</strong><small>huǎng rán dà wù</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to suddenly understand</p><p class="grammar-example">老师解释以后，我才恍然大悟。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">38</span><span><strong>脚踏实地</strong><small>jiǎo tà shí dì</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> down-to-earth and practical</p><p class="grammar-example">学习要脚踏实地，不能只追求速度。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">39</span><span><strong>聚精会神</strong><small>jù jīng huì shén</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to concentrate fully</p><p class="grammar-example">上课时大家都聚精会神地听讲。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">40</span><span><strong>名副其实</strong><small>míng fù qí shí</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to live up to one's name</p><p class="grammar-example">这家店的面真的很好吃，名副其实。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">41</span><span><strong>迫不及待</strong><small>pò bù jí dài</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> unable to wait; eager</p><p class="grammar-example">我迫不及待地想看看最后的网页。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">42</span><span><strong>轻而易举</strong><small>qīng ér yì jǔ</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> easy to accomplish</p><p class="grammar-example">对他来说，这道题轻而易举。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">43</span><span><strong>取长补短</strong><small>qǔ cháng bǔ duǎn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to learn from others' strengths and offset weaknesses</p><p class="grammar-example">小组成员应该互相学习，取长补短。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">44</span><span><strong>日新月异</strong><small>rì xīn yuè yì</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> changing rapidly with each passing day</p><p class="grammar-example">科技的发展日新月异。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">45</span><span><strong>实事求是</strong><small>shí shì qiú shì</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to seek truth from facts</p><p class="grammar-example">做研究应该实事求是。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">46</span><span><strong>随机应变</strong><small>suí jī yìng biàn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to adapt to changing circumstances</p><p class="grammar-example">旅行中遇到变化要学会随机应变。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">47</span><span><strong>无论如何</strong><small>wú lùn rú hé</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> in any case; no matter what</p><p class="grammar-example">无论如何，我都会按时完成任务。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">48</span><span><strong>心满意足</strong><small>xīn mǎn yì zú</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> fully satisfied</p><p class="grammar-example">看到最终成果，大家都心满意足。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">49</span><span><strong>异口同声</strong><small>yì kǒu tóng shēng</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to say the same thing in unison</p><p class="grammar-example">老师问大家喜不喜欢这个活动，同学们异口同声地说喜欢。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">50</span><span><strong>有条不紊</strong><small>yǒu tiáo bù wěn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> methodical and orderly</p><p class="grammar-example">即使很忙，她还是有条不紊地处理工作。</p></div></details></div></div></section>
+<!-- ==========================================
+             PROFILE
+        ========================================== -->
+<!-- ==========================================
+     PROFILE PAGE
+========================================== -->
+<section class="page" id="profile">
+<div class="profile-card">
+<!-- Tampilan Avatar Profil (Bisa teks/inisial atau Gambar) -->
+<div class="profile-avatar" id="profileAvatarDisplay">
+<span id="profileAvatarText">A</span>
+<img alt="Profile Picture" class="hidden" id="profileAvatarImg" src=""/>
+</div>
+<div>
+<p class="eyebrow">LEARNER PROFILE</p>
+<h2 id="profileName">Alex</h2>
+<p id="profileSummary">Learning Chinese for Education • 20 min/day</p>
+<button class="primary-button" id="editProfileBtn" style="margin-top: 15px;">Edit Profile ✎</button>
+</div>
+</div>
+<div class="profile-stats">
+<div><span>Current Level</span><strong id="profileLevel">HSK 4</strong></div>
+<div><span>Learning Goal</span><strong id="profileGoal">Education</strong></div>
+<div><span>Daily Target</span><strong id="profileTarget">20 minutes</strong></div>
+<div><span>Script Preference</span><strong id="profileScript">Simplified</strong></div>
+</div>
+<button class="logout-button" id="logoutBtn">Log out</button>
+</section>
+</main>
+</div>
+<!-- ==========================================
+     EDIT PROFILE MODAL
+========================================== -->
+<div class="app-modal hidden" id="editProfileModal">
+<div class="modal-card">
+<button class="modal-close" id="closeProfileModalBtn">×</button>
+<h2>Edit Profile</h2>
+<form id="editProfileForm">
+<!-- Pilihan Avatar / Foto -->
+<div class="form-group">
+<label>Profile Picture</label>
+<div class="avatar-preview-container">
+<div class="avatar-preview" id="editAvatarPreview">A</div>
+</div>
+<input accept="image/*" id="editAvatarInput" style="margin-top: 8px; font-size: 13px;" type="file"/>
+</div>
+<div class="form-group">
+<label for="editNameInput">Name</label>
+<input id="editNameInput" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="editGoalSelect">Learning Goal</label>
+<select class="profile-select" id="editGoalSelect">
+<option value="Education">Education</option>
+<option value="Daily Communication">Daily Communication</option>
+<option value="Work">Work</option>
+<option value="Hobby">Hobby</option>
+</select>
+</div>
+<div class="form-group">
+<label for="editTargetSelect">Daily Target</label>
+<select class="profile-select" id="editTargetSelect">
+<option value="10 min">10 min</option>
+<option value="20 min">20 min</option>
+<option value="30 min">30 min</option>
+<option value="60 min">60 min</option>
+</select>
+</div>
+<button class="primary-button" style="width: 100%; margin-top: 10px;" type="submit">Save Changes</button>
+</form>
+</div>
+</div>
+<!-- =========================
+     REUSABLE APP MODAL
+========================= -->
+<div class="app-modal hidden" id="appModal">
+<div class="modal-card">
+<button aria-label="Close" class="modal-close" id="modalClose">×</button>
+<p class="eyebrow" id="modalEyebrow">BAMBOOBYTE</p>
+<h2 id="modalTitle">Lesson</h2>
+<div class="modal-body" id="modalBody"></div>
+<button class="primary-button" id="modalAction">Continue →</button>
+</div>
+</div>
+<div aria-live="polite" class="sr-only" id="routeAnnouncer"></div>
+<script>
+window.BAMBOO_MULTIPAGE = true;
+</script>
+<script src="script.js"></script>
+</body>
+</html>
