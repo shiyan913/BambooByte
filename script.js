@@ -4,8 +4,10 @@ if (window.BAMBOO_MULTIPAGE) {
   const file = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const map = {
     'index.html':'home','learning.html':'learning','lesson.html':'learning',
-    'mocktest.html':'mocktest','mocktest-hsk2.html':'mocktest','mocktest-hsk3.html':'mocktest',
-    'mocktest-hsk4.html':'mocktest','mocktest-hsk5.html':'mocktest',
+    'unit-essential.html':'learning','unit-food.html':'learning','unit-travel.html':'learning','unit-work.html':'learning',
+    'unit-shopping.html':'learning','unit-campus.html':'learning','unit-health.html':'learning','unit-culture.html':'learning',
+    'mocktest.html':'mocktest','mocktest-hsk1.html':'mocktest','mocktest-hsk2.html':'mocktest','mocktest-hsk3.html':'mocktest',
+    'mocktest-hsk4.html':'mocktest','mocktest-hsk5.html':'mocktest','mocktest-hsk6.html':'mocktest',
     'advanced.html':'advanced','grammar.html':'advanced','reading.html':'advanced','idioms.html':'advanced',
     'about.html':'about','profile.html':'profile','settings.html':'profile'
   };
@@ -352,11 +354,16 @@ function renderRoute(page, { scroll = true } = {}) {
         else nav.removeAttribute("aria-current");
     });
 
-    pages.forEach((section) => {
-        const active = section.id === route;
-        section.classList.toggle("active-page", active);
-        section.setAttribute("aria-hidden", active ? "false" : "true");
-    });
+    // Only hide/show sections in the old SPA version.
+    // In multi-page mode each HTML file is already its own page, so hiding
+    // sections here would make standalone unit/test/profile pages disappear.
+    if (!window.BAMBOO_MULTIPAGE) {
+        pages.forEach((section) => {
+            const active = section.id === route;
+            section.classList.toggle("active-page", active);
+            section.setAttribute("aria-hidden", active ? "false" : "true");
+        });
+    }
 
     const user = getUser() || defaultUser;
     const titles = {
