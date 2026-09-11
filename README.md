@@ -29,3 +29,9 @@ The Mock Test Center includes separate HSK 1, HSK 2, HSK 3, HSK 4, HSK 5, and HS
 
 ## Full learning units
 The Learn page now opens eight dedicated unit pages containing all 77 listed lessons. Each lesson expands to show Chinese, pinyin, English meaning and a learning tip, and lesson completion is saved in the browser.
+
+## Audio pronunciation update
+- Every lesson inside all 8 learning units now has a pronunciation audio button.
+- The homepage Today's Lesson Chinese phrase has a Listen button.
+- The About BambooByte introduction has a Listen button.
+- Audio uses the browser's built-in Web Speech API, so no extra MP3 files are required.
