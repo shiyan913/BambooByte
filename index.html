@@ -719,41 +719,7 @@ function handleOutsideClick(event) {
                         今天过得怎么样？
                         
                     </span>
-<!-- Audio Play/Stop Button -->
-<button class="audio-play-btn" id="playAudioBtn" onclick="toggleAudio()" style="background: var(--primary-color, #2e7d32); border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: transform 0.2s;" title="Play Audio">
-<svg fill="currentColor" height="14" id="audioIcon" viewbox="0 0 24 24" width="14">
-<path d="M8 5v14l11-7z"></path>
-</svg>
-</button>
-<!-- Hidden Audio Element -->
-<audio id="lessonAudio" preload="none" src="audio1.mp3"></audio>
-<script>
-function toggleAudio() {
-    const audio = document.getElementById('lessonAudio');
-    const icon = document.getElementById('audioIcon');
-    const btn = document.getElementById('playAudioBtn');
 
-    if (audio.paused) {
-        audio.play();
-        // Switch to pause/stop icon (two vertical bars)
-        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
-        btn.title = "Pause Audio";
-    } else {
-        audio.pause();
-        // Switch back to play icon (triangle)
-        icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
-        btn.title = "Play Audio";
-    }
-}
-
-// Automatically reset the button icon when the audio finishes playing
-document.getElementById('lessonAudio').addEventListener('ended', function() {
-    const icon = document.getElementById('audioIcon');
-    const btn = document.getElementById('playAudioBtn');
-    icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
-    btn.title = "Play Audio";
-});
-</script>
 <small>
                         jīn tiān guò de zěn me yàng?
                     </small>
