@@ -1314,24 +1314,7 @@ function handleOutsideClick(event) {
 <script>
 window.BAMBOO_MULTIPAGE = true;
 </script>
-<!-- Add this right before closing </body> -->
-<div id="floatingTimer" style="position: fixed !important; top: 50% !important; right: 0 !important; transform: translateY(-50%) !important; background: #2c4a3e !important; color: #fff !important; padding: 10px 14px !important; border-top-left-radius: 20px !important; border-bottom-left-radius: 20px !important; font-weight: 600 !important; box-shadow: -3px 4px 12px rgba(0,0,0,0.2) !important; display: flex !important; align-items: center !important; gap: 6px !important; z-index: 2147483647 !important; font-size: 14px !important;">
-    <span>⏱️</span>
-    <span id="timerDisplay">00:00</span>
-</div>
-
-<script>
-let seconds = 0;
-setInterval(() => {
-    seconds++;
-    let mins = Math.floor(seconds / 60);
-    let secs = seconds % 60;
-    const timerElem = document.getElementById('timerDisplay');
-    if (timerElem) {
-        timerElem.textContent = String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
-    }
-}, 1000);
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
