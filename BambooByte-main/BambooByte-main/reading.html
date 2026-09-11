@@ -186,8 +186,8 @@
 <nav class="sidebar-nav">
 <a class="nav-item" data-page="home" href="index.html"><span>⌂</span>Home</a>
 <a class="nav-item" data-page="learning" href="learning.html"><span>学</span>Learn</a>
-<a class="nav-item active" data-page="mocktest" href="mocktest.html"><span>✓</span>Mock Test</a>
-<a class="nav-item" data-page="advanced" href="advanced.html"><span>文</span>Advanced</a>
+<a class="nav-item" data-page="mocktest" href="mocktest.html"><span>✓</span>Mock Test</a>
+<a class="nav-item active" data-page="advanced" href="advanced.html"><span>文</span>Advanced</a>
 <a class="nav-item" data-page="about" href="about.html"><span>◎</span>About Us</a><a class="nav-item" data-page="profile" href="profile.html"><span>人</span>Profile</a>
 </nav>
 <div class="sidebar-bottom">
@@ -863,7 +863,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 <div style="width:65%"></div>
 </div>
 </div>
-<button class="lesson-play" data-lesson="Everyday Conversations" type="button">
+<button type="button" class="lesson-play" data-lesson="Everyday Conversations">
                                 →
                             </button>
 </div>
@@ -890,7 +890,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 <div style="width:20%"></div>
 </div>
 </div>
-<button class="lesson-play" data-lesson="Ordering Food" type="button">
+<button type="button" class="lesson-play" data-lesson="Ordering Food">
                                 →
                             </button>
 </div>
@@ -1002,7 +1002,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 <div class="course-bottom">
 <span>8 lessons</span>
-<button data-course="Essential Chinese" type="button">
+<button type="button" data-course="Essential Chinese">
                             Start →
                         </button>
 </div>
@@ -1032,7 +1032,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 <div class="course-bottom">
 <span>10 lessons</span>
-<button data-course="Food &amp; Dining" type="button">
+<button type="button" data-course="Food &amp; Dining">
                             Start →
                         </button>
 </div>
@@ -1062,7 +1062,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 <div class="course-bottom">
 <span>9 lessons</span>
-<button data-course="Travel &amp; Directions" type="button">
+<button type="button" data-course="Travel &amp; Directions">
                             Start →
                         </button>
 </div>
@@ -1092,7 +1092,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 <div class="course-bottom">
 <span>12 lessons</span>
-<button data-course="Chinese for Work" type="button">
+<button type="button" data-course="Chinese for Work">
                             Start →
                         </button>
 </div>
@@ -1102,73 +1102,97 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 <!-- ==========================================
              MOCK TEST
         ========================================== -->
-<section class="active-page page" id="mocktest"><div class="section-heading large-heading"><div><p class="eyebrow">MOCK TEST CENTER</p><h2>Choose your HSK practice</h2><p>Try different levels and build confidence before a real HSK-style test.</p></div></div><div class="mock-set-grid"><a class="mock-set-card" href="mocktest-hsk1.html"><div class="mock-set-top"><span class="mock-level">HSK 1</span><span>Starter</span></div><h3>Essential words &amp; simple sentences</h3><p>5 practice questions · 10 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk2.html"><div class="mock-set-top"><span class="mock-level">HSK 2</span><span>Beginner</span></div><h3>Vocabulary &amp; basic sentences</h3><p>5 practice questions · 15 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk3.html"><div class="mock-set-top"><span class="mock-level">HSK 3</span><span>Elementary</span></div><h3>Daily communication &amp; grammar</h3><p>5 practice questions · 20 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk4.html"><div class="mock-set-top"><span class="mock-level">HSK 4</span><span>Intermediate</span></div><h3>Reading, grammar &amp; sentence order</h3><p>5 practice questions · 25 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk5.html"><div class="mock-set-top"><span class="mock-level">HSK 5</span><span>Upper intermediate</span></div><h3>Advanced vocabulary &amp; comprehension</h3><p>5 practice questions · 30 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk6.html"><div class="mock-set-top"><span class="mock-level">HSK 6</span><span>Advanced</span></div><h3>Formal grammar, vocabulary &amp; reading</h3><p>5 practice questions · 35 min</p><strong>Start test →</strong></a></div><div class="mock-tip-card"><span>💡</span><div><strong>Study tip</strong><p>Start one level below your target for a quick warm-up, then move up when you can score 80% or higher.</p></div></div></section>
+<section class="page" id="mocktest">
+<div class="test-layout">
+<div class="mock-test-card">
+<p class="eyebrow">
+                        HSK MOCK TEST
+                    </p>
+<h2>
+                        Question 4 of 20
+                    </h2>
+<div class="test-progress">
+<div style="width:20%"></div>
+</div>
+<p class="test-instruction">
+                        Choose the sentence that best matches the English meaning.
+                    </p>
+<div class="test-question">
+<p class="english-question">
+                            “I have studied Chinese for three years.”
+                        </p>
+<button class="test-answer" data-correct="true">
+<span>A</span>
+<div>
+<strong class="chinese-text" data-simplified="我学习中文三年了。" data-traditional="我學習中文三年了。">
+
+                                    我学习中文三年了。
+
+                                </strong>
+<small>
+                                    wǒ xué xí zhōng wén sān nián le
+                                </small>
+</div>
+</button>
+<button class="test-answer" data-correct="false">
+<span>B</span>
+<div>
+<strong class="chinese-text" data-simplified="我三年学习了中文。" data-traditional="我三年學習了中文。">
+
+                                    我三年学习了中文。
+
+                                </strong>
+<small>
+                                    wǒ sān nián xué xí le zhōng wén
+                                </small>
+</div>
+</button>
+<button class="test-answer" data-correct="false">
+<span>C</span>
+<div>
+<strong class="chinese-text" data-simplified="我学习了三年的中文吗？" data-traditional="我學習了三年的中文嗎？">
+
+                                    我学习了三年的中文吗？
+
+                                </strong>
+<small>
+                                    wǒ xué xí le sān nián de zhōng wén ma?
+                                </small>
+</div>
+</button>
+</div>
+<button class="primary-button test-next" id="checkAnswerBtn">
+                        Check Answer
+                    </button>
+</div>
+<div class="test-sidebar">
+<p class="eyebrow">
+                        TEST INFORMATION
+                    </p>
+<h3>
+                        HSK 4 Practice
+                    </h3>
+<div class="test-info">
+<div>
+<span>Questions</span>
+<strong>20</strong>
+</div>
+<div>
+<span>Time</span>
+<strong>30 min</strong>
+</div>
+<div>
+<span>Passing Score</span>
+<strong>60%</strong>
+</div>
+</div>
+</div>
+</div>
+</section>
 <!-- ==========================================
              ADVANCED
         ========================================== -->
-<section class="page" id="advanced">
-<div class="section-heading large-heading">
-<div>
-<p class="eyebrow">
-                        HSK 5–6
-                    </p>
-<h2>
-                        Advanced Chinese
-                    </h2>
-<p>
-                        Develop natural reading, grammar and cultural understanding.
-                    </p>
-</div>
-</div>
-<div class="advanced-grid">
-<article class="reading-card clickable-card" onclick="window.location.href='reading.html'">
-<span class="article-tag">
-                        READING · 12 ARTICLES
-                    </span>
-<h3>
-                        城市生活与传统文化
-                    </h3>
-<small>
-                        chéng shì shēng huó yǔ chuán tǒng wén huà
-                    </small>
-<p>
-
-                        随着城市的发展，越来越多的年轻人开始重新关注传统文化。
-                        茶文化、书法和传统服装逐渐成为现代生活的一部分。
-
-                    </p>
-<button onclick="event.stopPropagation(); window.location.href='reading.html'" type="button">Read Article →</button>
-</article>
-<article class="advanced-small-card clickable-card" onclick="window.location.href='grammar.html'">
-<span class="article-tag">
-                        GRAMMAR · 50 PATTERNS
-                    </span>
-<h3>
-                        高级语法库
-                    </h3>
-<small>
-                        gāo jí yǔ fǎ kù
-                    </small>
-<p>
-                        Explore 50 useful Chinese grammar patterns with pinyin, meanings and examples.
-                    </p>
-</article>
-<article class="advanced-small-card clickable-card" onclick="window.location.href='idioms.html'">
-<span class="article-tag">
-                        IDIOM · 50 CHENGYU
-                    </span>
-<h3>
-                        画蛇添足
-                    </h3>
-<small>
-                        huà shé tiān zú
-                    </small>
-<p>
-                        Explore 50 useful Chinese idioms with pinyin, meanings and example sentences.
-                    </p>
-</article>
-</div>
-</section>
+<section class="page active-page" id="advanced"><div class="section-heading large-heading"><div><p class="eyebrow">READING · 12 ARTICLES</p><h2>高级阅读</h2><p>12 advanced Chinese reading passages.</p></div></div><div class="dashboard-left"><div class="grammar-library"><details class="grammar-item" open=""><summary><span class="grammar-number">01</span><span><strong>城市生活与传统文化</strong><small>chéng shì shēng huó yǔ chuán tǒng wén huà</small></span></summary><div class="grammar-detail"><p class="grammar-example">随着城市的发展，越来越多的年轻人开始重新关注传统文化。茶文化、书法和传统服装逐渐成为现代生活的一部分。</p><p><strong>English:</strong> As cities develop, more young people are rediscovering traditional culture. Tea culture, calligraphy and traditional clothing are gradually becoming part of modern life.</p></div></details><details class="grammar-item"><summary><span class="grammar-number">02</span><span><strong>人工智能改变生活</strong><small>rén gōng zhì néng gǎi biàn shēng huó</small></span></summary><div class="grammar-detail"><p class="grammar-example">近年来，人工智能发展迅速。它不仅改变了人们的工作方式，也影响了学习、交通和医疗等领域。</p><p><strong>English:</strong> In recent years, AI has developed rapidly, changing how people work and affecting education, transport and healthcare.</p></div></details><details class="grammar-item"><summary><span class="grammar-number">03</span><span><strong>年轻人的消费观</strong><small>nián qīng rén de xiāo fèi guān</small></span></summary><div class="grammar-detail"><p class="grammar-example">现在的年轻人在消费时越来越重视体验和品质。他们愿意为喜欢的事物花钱，同时也更关注性价比。</p><p><strong>English:</strong> Young people increasingly value experience and quality when spending, while also paying attention to value for money.</p></div></details><details class="grammar-item"><summary><span class="grammar-number">04</span><span><strong>北京的四季</strong><small>běi jīng de sì jì</small></span></summary><div class="grammar-detail"><p class="grammar-example">北京四季分明。春天风大，夏天炎热，秋天天气凉爽，而冬天常常寒冷干燥。</p><p><strong>English:</strong> Beijing has four distinct seasons: windy springs, hot summers, cool autumns, and cold, dry winters.</p></div></details><details class="grammar-item"><summary><span class="grammar-number">05</span><span><strong>网络学习的新趋势</strong><small>wǎng luò xué xí de xīn qū shì</small></span></summary><div class="grammar-detail"><p class="grammar-example">网络课程让学习变得更加灵活。学生可以根据自己的时间安排课程，也能接触到来自不同地区的老师。</p><p><strong>English:</strong> Online courses make learning more flexible and give students access to teachers from different places.</p></div></details><details class="grammar-item"><summary><span class="grammar-number">06</span><span><strong>健康生活从小事开始</strong><small>jiàn kāng shēng huó cóng xiǎo shì kāi shǐ</small></span></summary><div class="grammar-detail"><p class="grammar-example">保持健康并不一定需要复杂的方法。规律睡眠、适量运动和均衡饮食都是重要的生活习惯。</p><p><strong>English:</strong> Staying healthy does not require complicated methods; regular sleep, exercise and balanced meals all matter.</p></div></details><details class="grammar-item"><summary><span class="grammar-number">07</span><span><strong>旅行让我们看见不同的世界</strong><small>lǚ xíng ràng wǒ men kàn jiàn bù tóng de shì jiè</small></span></summary><div class="grammar-detail"><p class="grammar-example">旅行不仅能让人放松，还能帮助我们了解不同地区的文化、历史和生活方式。</p><p><strong>English:</strong> Travel can be relaxing while helping us understand the culture, history and lifestyles of different places.</p></div></details><details class="grammar-item"><summary><span class="grammar-number">08</span><span><strong>共享单车与城市交通</strong><small>gòng xiǎng dān chē yǔ chéng shì jiāo tōng</small></span></summary><div class="grammar-detail"><p class="grammar-example">共享单车为短距离出行提供了方便，也鼓励更多人选择环保的交通方式。</p><p><strong>English:</strong> Shared bicycles make short trips convenient and encourage environmentally friendly transport.</p></div></details><details class="grammar-item"><summary><span class="grammar-number">09</span><span><strong>中国茶文化</strong><small>zhōng guó chá wén huà</small></span></summary><div class="grammar-detail"><p class="grammar-example">在中国，喝茶不仅是一种生活习惯，也包含着丰富的文化意义。不同地区有不同的茶叶和饮茶方式。</p><p><strong>English:</strong> In China, tea drinking is both a daily habit and a rich cultural tradition, with regional varieties and customs.</p></div></details><details class="grammar-item"><summary><span class="grammar-number">10</span><span><strong>社交媒体与沟通</strong><small>shè jiāo méi tǐ yǔ gōu tōng</small></span></summary><div class="grammar-detail"><p class="grammar-example">社交媒体让人与人之间的联系更加方便，但过度使用也可能影响注意力和面对面的交流。</p><p><strong>English:</strong> Social media makes communication easier, but excessive use can affect attention and face-to-face interaction.</p></div></details><details class="grammar-item"><summary><span class="grammar-number">11</span><span><strong>大学生如何管理时间</strong><small>dà xué shēng rú hé guǎn lǐ shí jiān</small></span></summary><div class="grammar-detail"><p class="grammar-example">大学生活比较自由，因此时间管理非常重要。提前安排任务可以减少压力，也能提高学习效率。</p><p><strong>English:</strong> University life is flexible, so planning tasks in advance can reduce stress and improve study efficiency.</p></div></details><details class="grammar-item"><summary><span class="grammar-number">12</span><span><strong>保护环境从日常做起</strong><small>bǎo hù huán jìng cóng rì cháng zuò qǐ</small></span></summary><div class="grammar-detail"><p class="grammar-example">环保并不是遥远的话题。少用一次性用品、节约用水和乘坐公共交通都能产生积极影响。</p><p><strong>English:</strong> Environmental protection starts with daily choices such as reducing disposable products, saving water and using public transport.</p></div></details></div></div></section>
 <!-- ==========================================
              PROFILE
         ========================================== -->

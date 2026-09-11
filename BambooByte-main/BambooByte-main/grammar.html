@@ -186,8 +186,8 @@
 <nav class="sidebar-nav">
 <a class="nav-item" data-page="home" href="index.html"><span>⌂</span>Home</a>
 <a class="nav-item" data-page="learning" href="learning.html"><span>学</span>Learn</a>
-<a class="nav-item active" data-page="mocktest" href="mocktest.html"><span>✓</span>Mock Test</a>
-<a class="nav-item" data-page="advanced" href="advanced.html"><span>文</span>Advanced</a>
+<a class="nav-item" data-page="mocktest" href="mocktest.html"><span>✓</span>Mock Test</a>
+<a class="nav-item active" data-page="advanced" href="advanced.html"><span>文</span>Advanced</a>
 <a class="nav-item" data-page="about" href="about.html"><span>◎</span>About Us</a><a class="nav-item" data-page="profile" href="profile.html"><span>人</span>Profile</a>
 </nav>
 <div class="sidebar-bottom">
@@ -863,7 +863,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 <div style="width:65%"></div>
 </div>
 </div>
-<button class="lesson-play" data-lesson="Everyday Conversations" type="button">
+<button type="button" class="lesson-play" data-lesson="Everyday Conversations">
                                 →
                             </button>
 </div>
@@ -890,7 +890,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 <div style="width:20%"></div>
 </div>
 </div>
-<button class="lesson-play" data-lesson="Ordering Food" type="button">
+<button type="button" class="lesson-play" data-lesson="Ordering Food">
                                 →
                             </button>
 </div>
@@ -1002,7 +1002,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 <div class="course-bottom">
 <span>8 lessons</span>
-<button data-course="Essential Chinese" type="button">
+<button type="button" data-course="Essential Chinese">
                             Start →
                         </button>
 </div>
@@ -1032,7 +1032,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 <div class="course-bottom">
 <span>10 lessons</span>
-<button data-course="Food &amp; Dining" type="button">
+<button type="button" data-course="Food &amp; Dining">
                             Start →
                         </button>
 </div>
@@ -1062,7 +1062,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 <div class="course-bottom">
 <span>9 lessons</span>
-<button data-course="Travel &amp; Directions" type="button">
+<button type="button" data-course="Travel &amp; Directions">
                             Start →
                         </button>
 </div>
@@ -1092,7 +1092,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 <div class="course-bottom">
 <span>12 lessons</span>
-<button data-course="Chinese for Work" type="button">
+<button type="button" data-course="Chinese for Work">
                             Start →
                         </button>
 </div>
@@ -1102,73 +1102,97 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 <!-- ==========================================
              MOCK TEST
         ========================================== -->
-<section class="active-page page" id="mocktest"><div class="section-heading large-heading"><div><p class="eyebrow">MOCK TEST CENTER</p><h2>Choose your HSK practice</h2><p>Try different levels and build confidence before a real HSK-style test.</p></div></div><div class="mock-set-grid"><a class="mock-set-card" href="mocktest-hsk1.html"><div class="mock-set-top"><span class="mock-level">HSK 1</span><span>Starter</span></div><h3>Essential words &amp; simple sentences</h3><p>5 practice questions · 10 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk2.html"><div class="mock-set-top"><span class="mock-level">HSK 2</span><span>Beginner</span></div><h3>Vocabulary &amp; basic sentences</h3><p>5 practice questions · 15 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk3.html"><div class="mock-set-top"><span class="mock-level">HSK 3</span><span>Elementary</span></div><h3>Daily communication &amp; grammar</h3><p>5 practice questions · 20 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk4.html"><div class="mock-set-top"><span class="mock-level">HSK 4</span><span>Intermediate</span></div><h3>Reading, grammar &amp; sentence order</h3><p>5 practice questions · 25 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk5.html"><div class="mock-set-top"><span class="mock-level">HSK 5</span><span>Upper intermediate</span></div><h3>Advanced vocabulary &amp; comprehension</h3><p>5 practice questions · 30 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk6.html"><div class="mock-set-top"><span class="mock-level">HSK 6</span><span>Advanced</span></div><h3>Formal grammar, vocabulary &amp; reading</h3><p>5 practice questions · 35 min</p><strong>Start test →</strong></a></div><div class="mock-tip-card"><span>💡</span><div><strong>Study tip</strong><p>Start one level below your target for a quick warm-up, then move up when you can score 80% or higher.</p></div></div></section>
+<section class="page" id="mocktest">
+<div class="test-layout">
+<div class="mock-test-card">
+<p class="eyebrow">
+                        HSK MOCK TEST
+                    </p>
+<h2>
+                        Question 4 of 20
+                    </h2>
+<div class="test-progress">
+<div style="width:20%"></div>
+</div>
+<p class="test-instruction">
+                        Choose the sentence that best matches the English meaning.
+                    </p>
+<div class="test-question">
+<p class="english-question">
+                            “I have studied Chinese for three years.”
+                        </p>
+<button class="test-answer" data-correct="true">
+<span>A</span>
+<div>
+<strong class="chinese-text" data-simplified="我学习中文三年了。" data-traditional="我學習中文三年了。">
+
+                                    我学习中文三年了。
+
+                                </strong>
+<small>
+                                    wǒ xué xí zhōng wén sān nián le
+                                </small>
+</div>
+</button>
+<button class="test-answer" data-correct="false">
+<span>B</span>
+<div>
+<strong class="chinese-text" data-simplified="我三年学习了中文。" data-traditional="我三年學習了中文。">
+
+                                    我三年学习了中文。
+
+                                </strong>
+<small>
+                                    wǒ sān nián xué xí le zhōng wén
+                                </small>
+</div>
+</button>
+<button class="test-answer" data-correct="false">
+<span>C</span>
+<div>
+<strong class="chinese-text" data-simplified="我学习了三年的中文吗？" data-traditional="我學習了三年的中文嗎？">
+
+                                    我学习了三年的中文吗？
+
+                                </strong>
+<small>
+                                    wǒ xué xí le sān nián de zhōng wén ma?
+                                </small>
+</div>
+</button>
+</div>
+<button class="primary-button test-next" id="checkAnswerBtn">
+                        Check Answer
+                    </button>
+</div>
+<div class="test-sidebar">
+<p class="eyebrow">
+                        TEST INFORMATION
+                    </p>
+<h3>
+                        HSK 4 Practice
+                    </h3>
+<div class="test-info">
+<div>
+<span>Questions</span>
+<strong>20</strong>
+</div>
+<div>
+<span>Time</span>
+<strong>30 min</strong>
+</div>
+<div>
+<span>Passing Score</span>
+<strong>60%</strong>
+</div>
+</div>
+</div>
+</div>
+</section>
 <!-- ==========================================
              ADVANCED
         ========================================== -->
-<section class="page" id="advanced">
-<div class="section-heading large-heading">
-<div>
-<p class="eyebrow">
-                        HSK 5–6
-                    </p>
-<h2>
-                        Advanced Chinese
-                    </h2>
-<p>
-                        Develop natural reading, grammar and cultural understanding.
-                    </p>
-</div>
-</div>
-<div class="advanced-grid">
-<article class="reading-card clickable-card" onclick="window.location.href='reading.html'">
-<span class="article-tag">
-                        READING · 12 ARTICLES
-                    </span>
-<h3>
-                        城市生活与传统文化
-                    </h3>
-<small>
-                        chéng shì shēng huó yǔ chuán tǒng wén huà
-                    </small>
-<p>
-
-                        随着城市的发展，越来越多的年轻人开始重新关注传统文化。
-                        茶文化、书法和传统服装逐渐成为现代生活的一部分。
-
-                    </p>
-<button onclick="event.stopPropagation(); window.location.href='reading.html'" type="button">Read Article →</button>
-</article>
-<article class="advanced-small-card clickable-card" onclick="window.location.href='grammar.html'">
-<span class="article-tag">
-                        GRAMMAR · 50 PATTERNS
-                    </span>
-<h3>
-                        高级语法库
-                    </h3>
-<small>
-                        gāo jí yǔ fǎ kù
-                    </small>
-<p>
-                        Explore 50 useful Chinese grammar patterns with pinyin, meanings and examples.
-                    </p>
-</article>
-<article class="advanced-small-card clickable-card" onclick="window.location.href='idioms.html'">
-<span class="article-tag">
-                        IDIOM · 50 CHENGYU
-                    </span>
-<h3>
-                        画蛇添足
-                    </h3>
-<small>
-                        huà shé tiān zú
-                    </small>
-<p>
-                        Explore 50 useful Chinese idioms with pinyin, meanings and example sentences.
-                    </p>
-</article>
-</div>
-</section>
+<section class="page active-page" id="advanced"><div class="section-heading large-heading"><div><p class="eyebrow">GRAMMAR · 50 PATTERNS</p><h2>高级语法库</h2><p>50 advanced grammar patterns with pinyin, meanings and examples.</p></div></div><div class="dashboard-left"><div class="grammar-library"><details class="grammar-item" open=""><summary><span class="grammar-number">01</span><span><strong>不但……而且……</strong><small>bù dàn... ér qiě...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> not only... but also...</p><p class="grammar-example">他不但会说中文，而且会写汉字。<br/><small>tā bù dàn huì shuō zhōng wén, ér qiě huì xiě hàn zì.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">02</span><span><strong>虽然……但是……</strong><small>suī rán... dàn shì...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> although... but...</p><p class="grammar-example">虽然很累，但是她还是完成了作业。<br/><small>suī rán hěn lèi, dàn shì tā hái shì wán chéng le zuò yè.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">03</span><span><strong>因为……所以……</strong><small>yīn wèi... suǒ yǐ...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> because... therefore...</p><p class="grammar-example">因为下雨，所以我们没出去。<br/><small>yīn wèi xià yǔ, suǒ yǐ wǒ men méi chū qù.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">04</span><span><strong>如果……就……</strong><small>rú guǒ... jiù...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> if... then...</p><p class="grammar-example">如果你有时间，我们就一起吃饭。<br/><small>rú guǒ nǐ yǒu shí jiān, wǒ men jiù yì qǐ chī fàn.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">05</span><span><strong>只要……就……</strong><small>zhǐ yào... jiù...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> as long as... then...</p><p class="grammar-example">只要坚持练习，就会进步。<br/><small>zhǐ yào jiān chí liàn xí, jiù huì jìn bù.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">06</span><span><strong>只有……才……</strong><small>zhǐ yǒu... cái...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> only if... then...</p><p class="grammar-example">只有认真复习，才容易通过考试。<br/><small>zhǐ yǒu rèn zhēn fù xí, cái róng yì tōng guò kǎo shì.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">07</span><span><strong>即使……也……</strong><small>jí shǐ... yě...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> even if... still...</p><p class="grammar-example">即使很忙，他也每天学习中文。<br/><small>jí shǐ hěn máng, tā yě měi tiān xué xí zhōng wén.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">08</span><span><strong>无论……都……</strong><small>wú lùn... dōu...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> no matter... all/still...</p><p class="grammar-example">无论遇到什么问题，她都很冷静。<br/><small>wú lùn yù dào shén me wèn tí, tā dōu hěn lěng jìng.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">09</span><span><strong>一边……一边……</strong><small>yì biān... yì biān...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> do two actions at the same time</p><p class="grammar-example">他一边听音乐，一边做作业。<br/><small>tā yì biān tīng yīn yuè, yì biān zuò zuò yè.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">10</span><span><strong>一……就……</strong><small>yī... jiù...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> as soon as...</p><p class="grammar-example">我一到家就给你打电话。<br/><small>wǒ yí dào jiā jiù gěi nǐ dǎ diàn huà.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">11</span><span><strong>越……越……</strong><small>yuè... yuè...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> the more... the more...</p><p class="grammar-example">中文越学越有意思。<br/><small>zhōng wén yuè xué yuè yǒu yì si.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">12</span><span><strong>越来越……</strong><small>yuè lái yuè...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> more and more...</p><p class="grammar-example">天气越来越冷了。<br/><small>tiān qì yuè lái yuè lěng le.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">13</span><span><strong>又……又……</strong><small>yòu... yòu...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> both... and...</p><p class="grammar-example">这家餐厅又便宜又好吃。<br/><small>zhè jiā cān tīng yòu pián yi yòu hǎo chī.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">14</span><span><strong>既……又……</strong><small>jì... yòu...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> both... and...</p><p class="grammar-example">这个方法既简单又有效。<br/><small>zhè ge fāng fǎ jì jiǎn dān yòu yǒu xiào.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">15</span><span><strong>不是……而是……</strong><small>bú shì... ér shì...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> not... but rather...</p><p class="grammar-example">问题不是太难，而是时间不够。<br/><small>wèn tí bú shì tài nán, ér shì shí jiān bú gòu.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">16</span><span><strong>与其……不如……</strong><small>yǔ qí... bù rú...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> rather than... it is better to...</p><p class="grammar-example">与其担心，不如马上开始准备。<br/><small>yǔ qí dān xīn, bù rú mǎ shàng kāi shǐ zhǔn bèi.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">17</span><span><strong>宁可……也不……</strong><small>nìng kě... yě bù...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> would rather... than...</p><p class="grammar-example">我宁可走路，也不坐这么挤的车。<br/><small>wǒ nìng kě zǒu lù, yě bù zuò zhè me jǐ de chē.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">18</span><span><strong>除了……以外……</strong><small>chú le... yǐ wài...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> besides/except...</p><p class="grammar-example">除了中文以外，她还会说日语。<br/><small>chú le zhōng wén yǐ wài, tā hái huì shuō rì yǔ.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">19</span><span><strong>除了……就是……</strong><small>chú le... jiù shì...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> nothing but / either... or...</p><p class="grammar-example">周末他除了看书，就是运动。<br/><small>zhōu mò tā chú le kàn shū, jiù shì yùn dòng.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">20</span><span><strong>连……都/也……</strong><small>lián... dōu/yě...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> even...</p><p class="grammar-example">这个字太难了，连老师都想了一会儿。<br/><small>zhè ge zì tài nán le, lián lǎo shī dōu xiǎng le yí huìr.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">21</span><span><strong>不仅……还……</strong><small>bù jǐn... hái...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> not only... also...</p><p class="grammar-example">这个课程不仅实用，还很有趣。<br/><small>zhè ge kè chéng bù jǐn shí yòng, hái hěn yǒu qù.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">22</span><span><strong>先……再……</strong><small>xiān... zài...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> first... then...</p><p class="grammar-example">先把课文读一遍，再回答问题。<br/><small>xiān bǎ kè wén dú yí biàn, zài huí dá wèn tí.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">23</span><span><strong>一方面……另一方面……</strong><small>yì fāng miàn... lìng yì fāng miàn...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> on one hand... on the other hand...</p><p class="grammar-example">一方面我想工作，另一方面我也想继续学习。<br/><small>yì fāng miàn wǒ xiǎng gōng zuò, lìng yì fāng miàn wǒ yě xiǎng jì xù xué xí.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">24</span><span><strong>既然……就……</strong><small>jì rán... jiù...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> since... then...</p><p class="grammar-example">既然来了，就多待几天吧。<br/><small>jì rán lái le, jiù duō dāi jǐ tiān ba.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">25</span><span><strong>由于……因此……</strong><small>yóu yú... yīn cǐ...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> due to... therefore...</p><p class="grammar-example">由于天气不好，因此比赛被取消了。<br/><small>yóu yú tiān qì bù hǎo, yīn cǐ bǐ sài bèi qǔ xiāo le.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">26</span><span><strong>之所以……是因为……</strong><small>zhī suǒ yǐ... shì yīn wèi...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> the reason why... is because...</p><p class="grammar-example">他之所以进步快，是因为每天都练习。<br/><small>tā zhī suǒ yǐ jìn bù kuài, shì yīn wèi měi tiān dōu liàn xí.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">27</span><span><strong>不管……都……</strong><small>bù guǎn... dōu...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> regardless of...</p><p class="grammar-example">不管多忙，我都要吃早饭。<br/><small>bù guǎn duō máng, wǒ dōu yào chī zǎo fàn.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">28</span><span><strong>哪怕……也……</strong><small>nǎ pà... yě...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> even if...</p><p class="grammar-example">哪怕只有十分钟，我也会复习。<br/><small>nǎ pà zhǐ yǒu shí fēn zhōng, wǒ yě huì fù xí.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">29</span><span><strong>尽管……可是……</strong><small>jǐn guǎn... kě shì...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> although... nevertheless...</p><p class="grammar-example">尽管任务很难，可是大家没有放弃。<br/><small>jǐn guǎn rèn wu hěn nán, kě shì dà jiā méi yǒu fàng qì.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">30</span><span><strong>不论……还是……都……</strong><small>bù lùn... hái shì... dōu...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> whether... or...</p><p class="grammar-example">不论晴天还是雨天，他都跑步。<br/><small>bù lùn qíng tiān hái shì yǔ tiān, tā dōu pǎo bù.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">31</span><span><strong>一旦……就……</strong><small>yí dàn... jiù...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> once... then...</p><p class="grammar-example">一旦决定了，就不要轻易改变。<br/><small>yí dàn jué dìng le, jiù bú yào qīng yì gǎi biàn.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">32</span><span><strong>直到……才……</strong><small>zhí dào... cái...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> not until...</p><p class="grammar-example">直到晚上十二点，他才写完报告。<br/><small>zhí dào wǎn shang shí èr diǎn, tā cái xiě wán bào gào.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">33</span><span><strong>自从……以来……</strong><small>zì cóng... yǐ lái...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> since...</p><p class="grammar-example">自从来北京以来，我认识了很多朋友。<br/><small>zì cóng lái běi jīng yǐ lái, wǒ rèn shi le hěn duō péng you.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">34</span><span><strong>随着……</strong><small>suí zhe...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> as/along with...</p><p class="grammar-example">随着科技的发展，生活变得更方便了。<br/><small>suí zhe kē jì de fā zhǎn, shēng huó biàn de gèng fāng biàn le.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">35</span><span><strong>对于……来说……</strong><small>duì yú... lái shuō...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> as far as... is concerned</p><p class="grammar-example">对于初学者来说，发音很重要。<br/><small>duì yú chū xué zhě lái shuō, fā yīn hěn zhòng yào.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">36</span><span><strong>在……看来……</strong><small>zài... kàn lái...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> in someone's view</p><p class="grammar-example">在我看来，这个计划很实际。<br/><small>zài wǒ kàn lái, zhè ge jì huà hěn shí jì.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">37</span><span><strong>根据……</strong><small>gēn jù...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> according to...</p><p class="grammar-example">根据调查，大多数学生喜欢这种方法。<br/><small>gēn jù diào chá, dà duō shù xué sheng xǐ huan zhè zhǒng fāng fǎ.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">38</span><span><strong>通过……</strong><small>tōng guò...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> through/by means of...</p><p class="grammar-example">通过每天练习，她的口语进步很快。<br/><small>tōng guò měi tiān liàn xí, tā de kǒu yǔ jìn bù hěn kuài.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">39</span><span><strong>为了……</strong><small>wèi le...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> in order to...</p><p class="grammar-example">为了提高听力，我每天听中文播客。<br/><small>wèi le tí gāo tīng lì, wǒ měi tiān tīng zhōng wén bō kè.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">40</span><span><strong>以便……</strong><small>yǐ biàn...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> so that / in order to...</p><p class="grammar-example">请写清楚一点，以便大家理解。<br/><small>qǐng xiě qīng chu yì diǎn, yǐ biàn dà jiā lǐ jiě.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">41</span><span><strong>以免……</strong><small>yǐ miǎn...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> so as to avoid...</p><p class="grammar-example">早点出门，以免迟到。<br/><small>zǎo diǎn chū mén, yǐ miǎn chí dào.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">42</span><span><strong>甚至……</strong><small>shèn zhì...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> even / to the extent that...</p><p class="grammar-example">他忙得甚至忘了吃饭。<br/><small>tā máng de shèn zhì wàng le chī fàn.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">43</span><span><strong>反而……</strong><small>fǎn ér...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> instead / contrary to expectation</p><p class="grammar-example">我以为会很难，做起来反而很简单。<br/><small>wǒ yǐ wéi huì hěn nán, zuò qǐ lái fǎn ér hěn jiǎn dān.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">44</span><span><strong>毕竟……</strong><small>bì jìng...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> after all...</p><p class="grammar-example">别对自己要求太高，毕竟你才刚开始。<br/><small>bié duì zì jǐ yāo qiú tài gāo, bì jìng nǐ cái gāng kāi shǐ.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">45</span><span><strong>难怪……</strong><small>nán guài...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> no wonder...</p><p class="grammar-example">难怪他中文这么好，原来他在中国住了十年。<br/><small>nán guài tā zhōng wén zhè me hǎo, yuán lái tā zài zhōng guó zhù le shí nián.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">46</span><span><strong>看来……</strong><small>kàn lái...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> it seems / apparently...</p><p class="grammar-example">看来今天要下雨了。<br/><small>kàn lái jīn tiān yào xià yǔ le.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">47</span><span><strong>可见……</strong><small>kě jiàn...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> it can be seen that...</p><p class="grammar-example">他每天都复习，可见他很重视这次考试。<br/><small>tā měi tiān dōu fù xí, kě jiàn tā hěn zhòng shì zhè cì kǎo shì.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">48</span><span><strong>值得……</strong><small>zhí de...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> be worth...</p><p class="grammar-example">这本书值得再读一遍。<br/><small>zhè běn shū zhí de zài dú yí biàn.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">49</span><span><strong>不得不……</strong><small>bù dé bù...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> have no choice but to...</p><p class="grammar-example">因为航班取消了，我们不得不改计划。<br/><small>yīn wèi háng bān qǔ xiāo le, wǒ men bù dé bù gǎi jì huà.</small></p></div></details><details class="grammar-item"><summary><span class="grammar-number">50</span><span><strong>未必……</strong><small>wèi bì...</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> not necessarily...</p><p class="grammar-example">贵的东西未必适合你。<br/><small>guì de dōng xi wèi bì shì hé nǐ.</small></p></div></details></div></div></section>
 <!-- ==========================================
              PROFILE
         ========================================== -->

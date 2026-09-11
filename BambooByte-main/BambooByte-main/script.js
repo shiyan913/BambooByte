@@ -4,10 +4,8 @@ if (window.BAMBOO_MULTIPAGE) {
   const file = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const map = {
     'index.html':'home','learning.html':'learning','lesson.html':'learning',
-    'unit-essential.html':'learning','unit-food.html':'learning','unit-travel.html':'learning','unit-work.html':'learning',
-    'unit-shopping.html':'learning','unit-campus.html':'learning','unit-health.html':'learning','unit-culture.html':'learning',
-    'mocktest.html':'mocktest','mocktest-hsk1.html':'mocktest','mocktest-hsk2.html':'mocktest','mocktest-hsk3.html':'mocktest',
-    'mocktest-hsk4.html':'mocktest','mocktest-hsk5.html':'mocktest','mocktest-hsk6.html':'mocktest',
+    'mocktest.html':'mocktest','mocktest-hsk2.html':'mocktest','mocktest-hsk3.html':'mocktest',
+    'mocktest-hsk4.html':'mocktest','mocktest-hsk5.html':'mocktest',
     'advanced.html':'advanced','grammar.html':'advanced','reading.html':'advanced','idioms.html':'advanced',
     'about.html':'about','profile.html':'profile','settings.html':'profile'
   };
@@ -354,16 +352,11 @@ function renderRoute(page, { scroll = true } = {}) {
         else nav.removeAttribute("aria-current");
     });
 
-    // Only hide/show sections in the old SPA version.
-    // In multi-page mode each HTML file is already its own page, so hiding
-    // sections here would make standalone unit/test/profile pages disappear.
-    if (!window.BAMBOO_MULTIPAGE) {
-        pages.forEach((section) => {
-            const active = section.id === route;
-            section.classList.toggle("active-page", active);
-            section.setAttribute("aria-hidden", active ? "false" : "true");
-        });
-    }
+    pages.forEach((section) => {
+        const active = section.id === route;
+        section.classList.toggle("active-page", active);
+        section.setAttribute("aria-hidden", active ? "false" : "true");
+    });
 
     const user = getUser() || defaultUser;
     const titles = {
@@ -754,108 +747,3 @@ function escapeHTML(value) {
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
 }
-/* =====================================
-   AUDIO / PRONUNCIATION (Web Speech API)
-   Adds audio buttons to the 8 unit lessons,
-   the homepage Today's Lesson, and About BambooByte.
-===================================== */
-(function initBambooAudio() {
-    function speakText(text, lang, button) {
-        if (!('speechSynthesis' in window)) {
-            alert('Audio is not supported in this browser.');
-            return;
-        }
-
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = lang || 'zh-CN';
-        utterance.rate = lang && lang.startsWith('zh') ? 0.82 : 0.92;
-        utterance.pitch = 1;
-
-        const originalLabel = button?.dataset.originalLabel || button?.textContent || '🔊 Listen';
-        if (button) {
-            button.dataset.originalLabel = originalLabel;
-            button.classList.add('is-speaking');
-            button.textContent = '🔊 Playing…';
-        }
-
-        const reset = () => {
-            if (button) {
-                button.classList.remove('is-speaking');
-                button.textContent = originalLabel;
-            }
-        };
-
-        utterance.onend = reset;
-        utterance.onerror = reset;
-        window.speechSynthesis.speak(utterance);
-    }
-
-    function makeAudioButton(text, lang, label, extraClass) {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = `bamboo-audio-btn${extraClass ? ' ' + extraClass : ''}`;
-        button.textContent = label || '🔊 Listen';
-        button.setAttribute('aria-label', `Play audio: ${text}`);
-        button.addEventListener('click', (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            speakText(text, lang, button);
-        });
-        return button;
-    }
-
-    function addUnitLessonAudio() {
-        document.querySelectorAll('#unit .unit-lesson').forEach((lesson) => {
-            if (lesson.querySelector('.bamboo-audio-btn')) return;
-            const chinese = lesson.querySelector('.unit-chinese');
-            const body = lesson.querySelector('.unit-lesson-body');
-            if (!chinese || !body) return;
-
-            const text = (chinese.dataset.simplified || chinese.textContent || '').trim();
-            if (!text) return;
-
-            const button = makeAudioButton(text, 'zh-CN', '🔊 Hear pronunciation', 'unit-audio-btn');
-            body.insertBefore(button, body.querySelector('.lesson-complete-btn'));
-        });
-    }
-
-    function addHomepageTopicAudio() {
-        const home = document.querySelector('#home.active-page') || document.querySelector('#home');
-        if (!home) return;
-
-        const heroChinese = home.querySelector('.hero-card .hero-chinese');
-        const chinese = heroChinese?.querySelector('.chinese-text');
-        if (!heroChinese || !chinese || heroChinese.querySelector('.bamboo-audio-btn')) return;
-
-        const text = (chinese.dataset.simplified || chinese.textContent || '').trim();
-        if (!text) return;
-
-        heroChinese.appendChild(makeAudioButton(text, 'zh-CN', '🔊 Listen', 'hero-audio-btn'));
-    }
-
-    function addAboutAudio() {
-        const about = document.querySelector('#about.active-page') || document.querySelector('#about');
-        const hero = about?.querySelector('.about-hero');
-        if (!hero || hero.querySelector('.bamboo-audio-btn')) return;
-
-        const heading = hero.querySelector('h1')?.textContent?.trim() || '';
-        const paragraph = hero.querySelector('h1 + p')?.textContent?.trim() || '';
-        const text = [heading, paragraph].filter(Boolean).join('. ');
-        if (!text) return;
-
-        hero.appendChild(makeAudioButton(text, 'en-US', '🔊 Listen to About BambooByte', 'about-audio-btn'));
-    }
-
-    function addAudioFeatures() {
-        addUnitLessonAudio();
-        addHomepageTopicAudio();
-        addAboutAudio();
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', addAudioFeatures);
-    } else {
-        addAudioFeatures();
-    }
-})();

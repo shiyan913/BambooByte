@@ -186,8 +186,8 @@
 <nav class="sidebar-nav">
 <a class="nav-item" data-page="home" href="index.html"><span>⌂</span>Home</a>
 <a class="nav-item" data-page="learning" href="learning.html"><span>学</span>Learn</a>
-<a class="nav-item active" data-page="mocktest" href="mocktest.html"><span>✓</span>Mock Test</a>
-<a class="nav-item" data-page="advanced" href="advanced.html"><span>文</span>Advanced</a>
+<a class="nav-item" data-page="mocktest" href="mocktest.html"><span>✓</span>Mock Test</a>
+<a class="nav-item active" data-page="advanced" href="advanced.html"><span>文</span>Advanced</a>
 <a class="nav-item" data-page="about" href="about.html"><span>◎</span>About Us</a><a class="nav-item" data-page="profile" href="profile.html"><span>人</span>Profile</a>
 </nav>
 <div class="sidebar-bottom">
@@ -863,7 +863,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 <div style="width:65%"></div>
 </div>
 </div>
-<button class="lesson-play" data-lesson="Everyday Conversations" type="button">
+<button type="button" class="lesson-play" data-lesson="Everyday Conversations">
                                 →
                             </button>
 </div>
@@ -890,7 +890,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 <div style="width:20%"></div>
 </div>
 </div>
-<button class="lesson-play" data-lesson="Ordering Food" type="button">
+<button type="button" class="lesson-play" data-lesson="Ordering Food">
                                 →
                             </button>
 </div>
@@ -1002,7 +1002,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 <div class="course-bottom">
 <span>8 lessons</span>
-<button data-course="Essential Chinese" type="button">
+<button type="button" data-course="Essential Chinese">
                             Start →
                         </button>
 </div>
@@ -1032,7 +1032,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 <div class="course-bottom">
 <span>10 lessons</span>
-<button data-course="Food &amp; Dining" type="button">
+<button type="button" data-course="Food &amp; Dining">
                             Start →
                         </button>
 </div>
@@ -1062,7 +1062,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 <div class="course-bottom">
 <span>9 lessons</span>
-<button data-course="Travel &amp; Directions" type="button">
+<button type="button" data-course="Travel &amp; Directions">
                             Start →
                         </button>
 </div>
@@ -1092,7 +1092,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 <div class="course-bottom">
 <span>12 lessons</span>
-<button data-course="Chinese for Work" type="button">
+<button type="button" data-course="Chinese for Work">
                             Start →
                         </button>
 </div>
@@ -1102,73 +1102,97 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 <!-- ==========================================
              MOCK TEST
         ========================================== -->
-<section class="active-page page" id="mocktest"><div class="section-heading large-heading"><div><p class="eyebrow">MOCK TEST CENTER</p><h2>Choose your HSK practice</h2><p>Try different levels and build confidence before a real HSK-style test.</p></div></div><div class="mock-set-grid"><a class="mock-set-card" href="mocktest-hsk1.html"><div class="mock-set-top"><span class="mock-level">HSK 1</span><span>Starter</span></div><h3>Essential words &amp; simple sentences</h3><p>5 practice questions · 10 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk2.html"><div class="mock-set-top"><span class="mock-level">HSK 2</span><span>Beginner</span></div><h3>Vocabulary &amp; basic sentences</h3><p>5 practice questions · 15 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk3.html"><div class="mock-set-top"><span class="mock-level">HSK 3</span><span>Elementary</span></div><h3>Daily communication &amp; grammar</h3><p>5 practice questions · 20 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk4.html"><div class="mock-set-top"><span class="mock-level">HSK 4</span><span>Intermediate</span></div><h3>Reading, grammar &amp; sentence order</h3><p>5 practice questions · 25 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk5.html"><div class="mock-set-top"><span class="mock-level">HSK 5</span><span>Upper intermediate</span></div><h3>Advanced vocabulary &amp; comprehension</h3><p>5 practice questions · 30 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk6.html"><div class="mock-set-top"><span class="mock-level">HSK 6</span><span>Advanced</span></div><h3>Formal grammar, vocabulary &amp; reading</h3><p>5 practice questions · 35 min</p><strong>Start test →</strong></a></div><div class="mock-tip-card"><span>💡</span><div><strong>Study tip</strong><p>Start one level below your target for a quick warm-up, then move up when you can score 80% or higher.</p></div></div></section>
+<section class="page" id="mocktest">
+<div class="test-layout">
+<div class="mock-test-card">
+<p class="eyebrow">
+                        HSK MOCK TEST
+                    </p>
+<h2>
+                        Question 4 of 20
+                    </h2>
+<div class="test-progress">
+<div style="width:20%"></div>
+</div>
+<p class="test-instruction">
+                        Choose the sentence that best matches the English meaning.
+                    </p>
+<div class="test-question">
+<p class="english-question">
+                            “I have studied Chinese for three years.”
+                        </p>
+<button class="test-answer" data-correct="true">
+<span>A</span>
+<div>
+<strong class="chinese-text" data-simplified="我学习中文三年了。" data-traditional="我學習中文三年了。">
+
+                                    我学习中文三年了。
+
+                                </strong>
+<small>
+                                    wǒ xué xí zhōng wén sān nián le
+                                </small>
+</div>
+</button>
+<button class="test-answer" data-correct="false">
+<span>B</span>
+<div>
+<strong class="chinese-text" data-simplified="我三年学习了中文。" data-traditional="我三年學習了中文。">
+
+                                    我三年学习了中文。
+
+                                </strong>
+<small>
+                                    wǒ sān nián xué xí le zhōng wén
+                                </small>
+</div>
+</button>
+<button class="test-answer" data-correct="false">
+<span>C</span>
+<div>
+<strong class="chinese-text" data-simplified="我学习了三年的中文吗？" data-traditional="我學習了三年的中文嗎？">
+
+                                    我学习了三年的中文吗？
+
+                                </strong>
+<small>
+                                    wǒ xué xí le sān nián de zhōng wén ma?
+                                </small>
+</div>
+</button>
+</div>
+<button class="primary-button test-next" id="checkAnswerBtn">
+                        Check Answer
+                    </button>
+</div>
+<div class="test-sidebar">
+<p class="eyebrow">
+                        TEST INFORMATION
+                    </p>
+<h3>
+                        HSK 4 Practice
+                    </h3>
+<div class="test-info">
+<div>
+<span>Questions</span>
+<strong>20</strong>
+</div>
+<div>
+<span>Time</span>
+<strong>30 min</strong>
+</div>
+<div>
+<span>Passing Score</span>
+<strong>60%</strong>
+</div>
+</div>
+</div>
+</div>
+</section>
 <!-- ==========================================
              ADVANCED
         ========================================== -->
-<section class="page" id="advanced">
-<div class="section-heading large-heading">
-<div>
-<p class="eyebrow">
-                        HSK 5–6
-                    </p>
-<h2>
-                        Advanced Chinese
-                    </h2>
-<p>
-                        Develop natural reading, grammar and cultural understanding.
-                    </p>
-</div>
-</div>
-<div class="advanced-grid">
-<article class="reading-card clickable-card" onclick="window.location.href='reading.html'">
-<span class="article-tag">
-                        READING · 12 ARTICLES
-                    </span>
-<h3>
-                        城市生活与传统文化
-                    </h3>
-<small>
-                        chéng shì shēng huó yǔ chuán tǒng wén huà
-                    </small>
-<p>
-
-                        随着城市的发展，越来越多的年轻人开始重新关注传统文化。
-                        茶文化、书法和传统服装逐渐成为现代生活的一部分。
-
-                    </p>
-<button onclick="event.stopPropagation(); window.location.href='reading.html'" type="button">Read Article →</button>
-</article>
-<article class="advanced-small-card clickable-card" onclick="window.location.href='grammar.html'">
-<span class="article-tag">
-                        GRAMMAR · 50 PATTERNS
-                    </span>
-<h3>
-                        高级语法库
-                    </h3>
-<small>
-                        gāo jí yǔ fǎ kù
-                    </small>
-<p>
-                        Explore 50 useful Chinese grammar patterns with pinyin, meanings and examples.
-                    </p>
-</article>
-<article class="advanced-small-card clickable-card" onclick="window.location.href='idioms.html'">
-<span class="article-tag">
-                        IDIOM · 50 CHENGYU
-                    </span>
-<h3>
-                        画蛇添足
-                    </h3>
-<small>
-                        huà shé tiān zú
-                    </small>
-<p>
-                        Explore 50 useful Chinese idioms with pinyin, meanings and example sentences.
-                    </p>
-</article>
-</div>
-</section>
+<section class="page active-page" id="advanced"><div class="section-heading large-heading"><div><p class="eyebrow">IDIOMS · 50 CHENGYU</p><h2>成语库</h2><p>50 useful Chinese idioms with meanings and examples.</p></div></div><div class="dashboard-left"><div class="grammar-library"><details class="grammar-item" open=""><summary><span class="grammar-number">01</span><span><strong>画蛇添足</strong><small>huà shé tiān zú</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to ruin something by adding unnecessary details</p><p class="grammar-example">这份设计已经很好了，再加太多东西反而是画蛇添足。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">02</span><span><strong>一举两得</strong><small>yì jǔ liǎng dé</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to achieve two goals with one action</p><p class="grammar-example">骑自行车既能锻炼又能省钱，真是一举两得。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">03</span><span><strong>井井有条</strong><small>jǐng jǐng yǒu tiáo</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> neat and well organized</p><p class="grammar-example">她把项目安排得井井有条。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">04</span><span><strong>全力以赴</strong><small>quán lì yǐ fù</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to give it your all</p><p class="grammar-example">为了这次比赛，我们会全力以赴。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">05</span><span><strong>坚持不懈</strong><small>jiān chí bú xiè</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to persevere without giving up</p><p class="grammar-example">学习语言需要坚持不懈。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">06</span><span><strong>熟能生巧</strong><small>shú néng shēng qiǎo</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> practice makes perfect</p><p class="grammar-example">多练习汉字，熟能生巧。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">07</span><span><strong>入乡随俗</strong><small>rù xiāng suí sú</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> when in Rome, do as the Romans do</p><p class="grammar-example">来到新的国家生活，要学会入乡随俗。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">08</span><span><strong>百闻不如一见</strong><small>bǎi wén bù rú yí jiàn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> seeing once is better than hearing a hundred times</p><p class="grammar-example">大家都说长城壮观，真是百闻不如一见。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">09</span><span><strong>自相矛盾</strong><small>zì xiāng máo dùn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to contradict oneself</p><p class="grammar-example">他的两个解释自相矛盾。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">10</span><span><strong>亡羊补牢</strong><small>wáng yáng bǔ láo</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> better late than never; fix a problem after a loss</p><p class="grammar-example">现在开始复习还不晚，亡羊补牢也有用。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">11</span><span><strong>守株待兔</strong><small>shǒu zhū dài tù</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to wait passively for luck</p><p class="grammar-example">成功不能靠守株待兔。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">12</span><span><strong>刻舟求剑</strong><small>kè zhōu qiú jiàn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to use an outdated method despite changed circumstances</p><p class="grammar-example">时代已经变了，不能再刻舟求剑。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">13</span><span><strong>掩耳盗铃</strong><small>yǎn ěr dào líng</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to deceive oneself</p><p class="grammar-example">不看成绩并不能解决问题，这只是掩耳盗铃。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">14</span><span><strong>对牛弹琴</strong><small>duì niú tán qín</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to address the wrong audience</p><p class="grammar-example">跟完全不感兴趣的人讲这个话题，简直是对牛弹琴。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">15</span><span><strong>杯弓蛇影</strong><small>bēi gōng shé yǐng</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to be frightened by imaginary fears</p><p class="grammar-example">事情没那么严重，别杯弓蛇影。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">16</span><span><strong>狐假虎威</strong><small>hú jiǎ hǔ wēi</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to bully others by relying on someone powerful</p><p class="grammar-example">他只是狐假虎威，并没有真正的权力。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">17</span><span><strong>滥竽充数</strong><small>làn yú chōng shù</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to pass oneself off as competent</p><p class="grammar-example">团队合作不能滥竽充数，每个人都要负责。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">18</span><span><strong>塞翁失马</strong><small>sài wēng shī mǎ</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> a setback may turn into a blessing</p><p class="grammar-example">虽然没拿到那个机会，但塞翁失马，焉知非福。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">19</span><span><strong>叶公好龙</strong><small>yè gōng hào lóng</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to claim to like something but fear the real thing</p><p class="grammar-example">他说喜欢冒险，真的要去时却退缩了，真是叶公好龙。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">20</span><span><strong>愚公移山</strong><small>yú gōng yí shān</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> determination can overcome great difficulties</p><p class="grammar-example">只要有愚公移山的精神，再难的目标也能慢慢实现。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">21</span><span><strong>胸有成竹</strong><small>xiōng yǒu chéng zhú</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to have a well-thought-out plan</p><p class="grammar-example">她准备得很充分，上台前已经胸有成竹。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">22</span><span><strong>雪中送炭</strong><small>xuě zhōng sòng tàn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to offer help when it is most needed</p><p class="grammar-example">我最困难的时候他来帮忙，真是雪中送炭。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">23</span><span><strong>锦上添花</strong><small>jǐn shàng tiān huā</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to make something good even better</p><p class="grammar-example">这个小动画让网站锦上添花。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">24</span><span><strong>一目了然</strong><small>yí mù liǎo rán</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> clear at a glance</p><p class="grammar-example">这个图表很简单，数据一目了然。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">25</span><span><strong>一心一意</strong><small>yì xīn yí yì</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> wholeheartedly; with full attention</p><p class="grammar-example">学习的时候要一心一意。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">26</span><span><strong>三心二意</strong><small>sān xīn èr yì</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> half-hearted; indecisive</p><p class="grammar-example">做决定时不要三心二意。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">27</span><span><strong>四面八方</strong><small>sì miàn bā fāng</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> from all directions</p><p class="grammar-example">游客从四面八方来到北京。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">28</span><span><strong>五花八门</strong><small>wǔ huā bā mén</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> all kinds of; a great variety</p><p class="grammar-example">网上的学习方法五花八门。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">29</span><span><strong>七上八下</strong><small>qī shàng bā xià</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> very nervous or unsettled</p><p class="grammar-example">等考试结果时，我心里七上八下。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">30</span><span><strong>九牛一毛</strong><small>jiǔ niú yì máo</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> a tiny amount compared with the whole</p><p class="grammar-example">这点费用对大项目来说只是九牛一毛。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">31</span><span><strong>十全十美</strong><small>shí quán shí měi</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> perfect in every way</p><p class="grammar-example">世界上很少有十全十美的计划。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">32</span><span><strong>不可思议</strong><small>bù kě sī yì</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> unbelievable; incredible</p><p class="grammar-example">她三个月就进步这么多，真不可思议。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">33</span><span><strong>理所当然</strong><small>lǐ suǒ dāng rán</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> as a matter of course</p><p class="grammar-example">别把别人的帮助看成理所当然。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">34</span><span><strong>不知不觉</strong><small>bù zhī bù jué</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> without realizing it</p><p class="grammar-example">不知不觉，我已经学了两个小时。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">35</span><span><strong>大吃一惊</strong><small>dà chī yì jīng</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to be greatly surprised</p><p class="grammar-example">听到这个消息，我大吃一惊。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">36</span><span><strong>得心应手</strong><small>dé xīn yìng shǒu</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to handle something with ease</p><p class="grammar-example">练习久了，她使用这个软件越来越得心应手。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">37</span><span><strong>恍然大悟</strong><small>huǎng rán dà wù</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to suddenly understand</p><p class="grammar-example">老师解释以后，我才恍然大悟。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">38</span><span><strong>脚踏实地</strong><small>jiǎo tà shí dì</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> down-to-earth and practical</p><p class="grammar-example">学习要脚踏实地，不能只追求速度。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">39</span><span><strong>聚精会神</strong><small>jù jīng huì shén</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to concentrate fully</p><p class="grammar-example">上课时大家都聚精会神地听讲。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">40</span><span><strong>名副其实</strong><small>míng fù qí shí</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to live up to one's name</p><p class="grammar-example">这家店的面真的很好吃，名副其实。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">41</span><span><strong>迫不及待</strong><small>pò bù jí dài</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> unable to wait; eager</p><p class="grammar-example">我迫不及待地想看看最后的网页。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">42</span><span><strong>轻而易举</strong><small>qīng ér yì jǔ</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> easy to accomplish</p><p class="grammar-example">对他来说，这道题轻而易举。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">43</span><span><strong>取长补短</strong><small>qǔ cháng bǔ duǎn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to learn from others' strengths and offset weaknesses</p><p class="grammar-example">小组成员应该互相学习，取长补短。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">44</span><span><strong>日新月异</strong><small>rì xīn yuè yì</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> changing rapidly with each passing day</p><p class="grammar-example">科技的发展日新月异。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">45</span><span><strong>实事求是</strong><small>shí shì qiú shì</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to seek truth from facts</p><p class="grammar-example">做研究应该实事求是。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">46</span><span><strong>随机应变</strong><small>suí jī yìng biàn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to adapt to changing circumstances</p><p class="grammar-example">旅行中遇到变化要学会随机应变。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">47</span><span><strong>无论如何</strong><small>wú lùn rú hé</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> in any case; no matter what</p><p class="grammar-example">无论如何，我都会按时完成任务。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">48</span><span><strong>心满意足</strong><small>xīn mǎn yì zú</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> fully satisfied</p><p class="grammar-example">看到最终成果，大家都心满意足。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">49</span><span><strong>异口同声</strong><small>yì kǒu tóng shēng</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> to say the same thing in unison</p><p class="grammar-example">老师问大家喜不喜欢这个活动，同学们异口同声地说喜欢。</p></div></details><details class="grammar-item"><summary><span class="grammar-number">50</span><span><strong>有条不紊</strong><small>yǒu tiáo bù wěn</small></span></summary><div class="grammar-detail"><p><strong>Meaning:</strong> methodical and orderly</p><p class="grammar-example">即使很忙，她还是有条不紊地处理工作。</p></div></details></div></div></section>
 <!-- ==========================================
              PROFILE
         ========================================== -->

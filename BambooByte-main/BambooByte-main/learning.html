@@ -185,8 +185,8 @@
 </div>
 <nav class="sidebar-nav">
 <a class="nav-item" data-page="home" href="index.html"><span>⌂</span>Home</a>
-<a class="nav-item" data-page="learning" href="learning.html"><span>学</span>Learn</a>
-<a class="nav-item active" data-page="mocktest" href="mocktest.html"><span>✓</span>Mock Test</a>
+<a class="nav-item active" data-page="learning" href="learning.html"><span>学</span>Learn</a>
+<a class="nav-item" data-page="mocktest" href="mocktest.html"><span>✓</span>Mock Test</a>
 <a class="nav-item" data-page="advanced" href="advanced.html"><span>文</span>Advanced</a>
 <a class="nav-item" data-page="about" href="about.html"><span>◎</span>About Us</a><a class="nav-item" data-page="profile" href="profile.html"><span>人</span>Profile</a>
 </nav>
@@ -863,7 +863,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 <div style="width:65%"></div>
 </div>
 </div>
-<button class="lesson-play" data-lesson="Everyday Conversations" type="button">
+<button type="button" class="lesson-play" data-lesson="Everyday Conversations">
                                 →
                             </button>
 </div>
@@ -890,7 +890,7 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 <div style="width:20%"></div>
 </div>
 </div>
-<button class="lesson-play" data-lesson="Ordering Food" type="button">
+<button type="button" class="lesson-play" data-lesson="Ordering Food">
                                 →
                             </button>
 </div>
@@ -961,148 +961,138 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 <!-- ==========================================
              LEARNING PAGE
         ========================================== -->
-<section class="page" id="learning">
-<div class="section-heading large-heading">
-<div>
-<p class="eyebrow">
-                        CURRICULUM
-                    </p>
-<h2>
-                        Learn Chinese
-                    </h2>
-<p>
-                        Build practical Chinese skills through vocabulary,
-                        pronunciation and real-life conversations.
-                    </p>
+<section class="active-page page" id="learning">
+<div class="section-heading large-heading"><div><p class="eyebrow">CURRICULUM</p><h2>Learn Chinese</h2><p>Build practical Chinese step by step with themed units, pronunciation practice, vocabulary and real-life situations.</p></div></div>
+<div class="learn-overview-grid">
+<div class="learn-overview-card"><span>📚</span><strong>8 learning units</strong><small>From beginner essentials to intermediate real-life Chinese</small></div>
+<div class="learn-overview-card"><span>🀄</span><strong>80+ lesson topics</strong><small>Vocabulary, speaking, listening, reading and sentence patterns</small></div>
+<div class="learn-overview-card"><span>🎯</span><strong>HSK-focused practice</strong><small>Grow your bamboo as your vocabulary and grammar improve</small></div>
 </div>
+<div class="section-heading learn-subheading"><div><p class="eyebrow">COURSE LIBRARY</p><h2>Choose a unit</h2></div></div>
+<div class="course-grid expanded-course-grid"><div class="course-card">
+<div class="course-icon">你好</div><p class="eyebrow">UNIT 01</p><h3>Essential Chinese</h3><p>Greetings, introductions, countries, numbers and everyday essentials.</p>
+<div class="course-word"><strong class="chinese-text" data-simplified="认识你很高兴" data-traditional="認識你很高興">认识你很高兴</strong><small>rèn shi nǐ hěn gāo xìng</small></div>
+<div class="course-bottom"><span>8 lessons · Beginner</span><button type="button" data-course="Essential Chinese">Start →</button></div></div><div class="course-card">
+<div class="course-icon">食</div><p class="eyebrow">UNIT 02</p><h3>Food &amp; Dining</h3><p>Order meals, describe flavours, read simple menus and pay the bill.</p>
+<div class="course-word"><strong class="chinese-text" data-simplified="这个好吃吗？" data-traditional="這個好吃嗎？">这个好吃吗？</strong><small>zhè ge hǎo chī ma?</small></div>
+<div class="course-bottom"><span>10 lessons · Beginner</span><button type="button" data-course="Food &amp; Dining">Start →</button></div></div><div class="course-card">
+<div class="course-icon">行</div><p class="eyebrow">UNIT 03</p><h3>Travel &amp; Directions</h3><p>Ask for directions, use transport and handle common travel situations.</p>
+<div class="course-word"><strong class="chinese-text" data-simplified="地铁站在哪里？" data-traditional="地鐵站在哪裡？">地铁站在哪里？</strong><small>dì tiě zhàn zài nǎ lǐ?</small></div>
+<div class="course-bottom"><span>9 lessons · Elementary</span><button type="button" data-course="Travel &amp; Directions">Start →</button></div></div><div class="course-card">
+<div class="course-icon">工</div><p class="eyebrow">UNIT 04</p><h3>Chinese for Work</h3><p>Meetings, introductions, scheduling and professional communication.</p>
+<div class="course-word"><strong class="chinese-text" data-simplified="我们开会吧" data-traditional="我們開會吧">我们开会吧</strong><small>wǒ men kāi huì ba</small></div>
+<div class="course-bottom"><span>12 lessons · Intermediate</span><button type="button" data-course="Chinese for Work">Start →</button></div></div><div class="course-card">
+<div class="course-icon">买</div><p class="eyebrow">UNIT 05</p><h3>Shopping &amp; Money</h3><p>Ask prices, compare products, bargain politely and talk about sizes.</p>
+<div class="course-word"><strong class="chinese-text" data-simplified="这个多少钱？" data-traditional="這個多少錢？">这个多少钱？</strong><small>zhè ge duō shǎo qián?</small></div>
+<div class="course-bottom"><span>9 lessons · Beginner</span><button type="button" data-course="Shopping &amp; Money">Start →</button></div></div><div class="course-card">
+<div class="course-icon">校</div><p class="eyebrow">UNIT 06</p><h3>Campus Chinese</h3><p>Classrooms, dorm life, assignments, clubs and talking with classmates.</p>
+<div class="course-word"><strong class="chinese-text" data-simplified="今天有课吗？" data-traditional="今天有課嗎？">今天有课吗？</strong><small>jīn tiān yǒu kè ma?</small></div>
+<div class="course-bottom"><span>11 lessons · Elementary</span><button type="button" data-course="Campus Chinese">Start →</button></div></div><div class="course-card">
+<div class="course-icon">医</div><p class="eyebrow">UNIT 07</p><h3>Health &amp; Emergencies</h3><p>Describe basic symptoms, ask for help and understand useful health phrases.</p>
+<div class="course-word"><strong class="chinese-text" data-simplified="我有点不舒服" data-traditional="我有點不舒服">我有点不舒服</strong><small>wǒ yǒu diǎn bù shū fu</small></div>
+<div class="course-bottom"><span>8 lessons · Intermediate</span><button type="button" data-course="Health &amp; Emergencies">Start →</button></div></div><div class="course-card">
+<div class="course-icon">文</div><p class="eyebrow">UNIT 08</p><h3>Culture &amp; Social Life</h3><p>Festivals, hobbies, invitations, social plans and cultural vocabulary.</p>
+<div class="course-word"><strong class="chinese-text" data-simplified="周末一起出去吧" data-traditional="週末一起出去吧">周末一起出去吧</strong><small>zhōu mò yì qǐ chū qù ba</small></div>
+<div class="course-bottom"><span>10 lessons · Intermediate</span><button type="button" data-course="Culture &amp; Social Life">Start →</button></div></div></div>
+<div class="section-heading learn-subheading"><div><p class="eyebrow">SKILL LABS</p><h2>Practice by skill</h2></div></div>
+<div class="skill-lab-grid">
+<a class="skill-lab-card" href="lesson.html"><span>👂</span><h3>Listening Lab</h3><p>Train your ear with short everyday Chinese phrases and dialogues.</p><strong>Practice →</strong></a>
+<a class="skill-lab-card" href="lesson.html"><span>🗣️</span><h3>Speaking Lab</h3><p>Review pinyin, tones and useful speaking patterns for daily life.</p><strong>Practice →</strong></a>
+<a class="skill-lab-card" href="reading.html"><span>📖</span><h3>Reading Lab</h3><p>Build confidence with short passages before moving into advanced reading.</p><strong>Read →</strong></a>
+<a class="skill-lab-card" href="grammar.html"><span>✍️</span><h3>Grammar Lab</h3><p>Explore sentence structures and connect vocabulary into natural Chinese.</p><strong>Explore →</strong></a>
 </div>
-<div class="course-grid">
-<div class="course-card">
-<div class="course-icon">
-                        你好
-                    </div>
-<p class="eyebrow">
-                        UNIT 01
-                    </p>
-<h3>
-                        Essential Chinese
-                    </h3>
-<p>
-                        Greetings, names, countries and basic introductions.
-                    </p>
-<div class="course-word">
-<strong class="chinese-text" data-simplified="认识你很高兴" data-traditional="認識你很高興">
-
-                            认识你很高兴
-
-                        </strong>
-<small>
-                            rèn shi nǐ hěn gāo xìng
-                        </small>
-</div>
-<div class="course-bottom">
-<span>8 lessons</span>
-<button data-course="Essential Chinese" type="button">
-                            Start →
-                        </button>
-</div>
-</div>
-<div class="course-card">
-<div class="course-icon">
-                        食
-                    </div>
-<p class="eyebrow">
-                        UNIT 02
-                    </p>
-<h3>
-                        Food &amp; Dining
-                    </h3>
-<p>
-                        Order meals, discuss flavours and navigate restaurants.
-                    </p>
-<div class="course-word">
-<strong class="chinese-text" data-simplified="这个好吃吗？" data-traditional="這個好吃嗎？">
-
-                            这个好吃吗？
-
-                        </strong>
-<small>
-                            zhè ge hǎo chī ma?
-                        </small>
-</div>
-<div class="course-bottom">
-<span>10 lessons</span>
-<button data-course="Food &amp; Dining" type="button">
-                            Start →
-                        </button>
-</div>
-</div>
-<div class="course-card">
-<div class="course-icon">
-                        行
-                    </div>
-<p class="eyebrow">
-                        UNIT 03
-                    </p>
-<h3>
-                        Travel &amp; Directions
-                    </h3>
-<p>
-                        Transport, destinations, directions and navigation.
-                    </p>
-<div class="course-word">
-<strong class="chinese-text" data-simplified="地铁站在哪里？" data-traditional="地鐵站在哪裡？">
-
-                            地铁站在哪里？
-
-                        </strong>
-<small>
-                            dì tiě zhàn zài nǎ lǐ?
-                        </small>
-</div>
-<div class="course-bottom">
-<span>9 lessons</span>
-<button data-course="Travel &amp; Directions" type="button">
-                            Start →
-                        </button>
-</div>
-</div>
-<div class="course-card">
-<div class="course-icon">
-                        工
-                    </div>
-<p class="eyebrow">
-                        UNIT 04
-                    </p>
-<h3>
-                        Chinese for Work
-                    </h3>
-<p>
-                        Meetings, emails and professional communication.
-                    </p>
-<div class="course-word">
-<strong class="chinese-text" data-simplified="我们开会吧" data-traditional="我們開會吧">
-
-                            我们开会吧
-
-                        </strong>
-<small>
-                            wǒ men kāi huì ba
-                        </small>
-</div>
-<div class="course-bottom">
-<span>12 lessons</span>
-<button data-course="Chinese for Work" type="button">
-                            Start →
-                        </button>
-</div>
-</div>
-</div>
+<div class="daily-challenge-card"><div><p class="eyebrow">DAILY CHALLENGE</p><h2>5-minute Bamboo Boost 🎋</h2><p>Review 10 words, read one sentence aloud, and complete one grammar pattern before you leave.</p></div><a class="primary-button" href="lesson.html">Start challenge →</a></div>
 </section>
 <!-- ==========================================
              MOCK TEST
         ========================================== -->
-<section class="active-page page" id="mocktest"><div class="section-heading large-heading"><div><p class="eyebrow">MOCK TEST CENTER</p><h2>Choose your HSK practice</h2><p>Try different levels and build confidence before a real HSK-style test.</p></div></div><div class="mock-set-grid"><a class="mock-set-card" href="mocktest-hsk1.html"><div class="mock-set-top"><span class="mock-level">HSK 1</span><span>Starter</span></div><h3>Essential words &amp; simple sentences</h3><p>5 practice questions · 10 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk2.html"><div class="mock-set-top"><span class="mock-level">HSK 2</span><span>Beginner</span></div><h3>Vocabulary &amp; basic sentences</h3><p>5 practice questions · 15 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk3.html"><div class="mock-set-top"><span class="mock-level">HSK 3</span><span>Elementary</span></div><h3>Daily communication &amp; grammar</h3><p>5 practice questions · 20 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk4.html"><div class="mock-set-top"><span class="mock-level">HSK 4</span><span>Intermediate</span></div><h3>Reading, grammar &amp; sentence order</h3><p>5 practice questions · 25 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk5.html"><div class="mock-set-top"><span class="mock-level">HSK 5</span><span>Upper intermediate</span></div><h3>Advanced vocabulary &amp; comprehension</h3><p>5 practice questions · 30 min</p><strong>Start test →</strong></a><a class="mock-set-card" href="mocktest-hsk6.html"><div class="mock-set-top"><span class="mock-level">HSK 6</span><span>Advanced</span></div><h3>Formal grammar, vocabulary &amp; reading</h3><p>5 practice questions · 35 min</p><strong>Start test →</strong></a></div><div class="mock-tip-card"><span>💡</span><div><strong>Study tip</strong><p>Start one level below your target for a quick warm-up, then move up when you can score 80% or higher.</p></div></div></section>
+<section class="page" id="mocktest">
+<div class="test-layout">
+<div class="mock-test-card">
+<p class="eyebrow">
+                        HSK MOCK TEST
+                    </p>
+<h2>
+                        Question 4 of 20
+                    </h2>
+<div class="test-progress">
+<div style="width:20%"></div>
+</div>
+<p class="test-instruction">
+                        Choose the sentence that best matches the English meaning.
+                    </p>
+<div class="test-question">
+<p class="english-question">
+                            “I have studied Chinese for three years.”
+                        </p>
+<button class="test-answer" data-correct="true">
+<span>A</span>
+<div>
+<strong class="chinese-text" data-simplified="我学习中文三年了。" data-traditional="我學習中文三年了。">
+
+                                    我学习中文三年了。
+
+                                </strong>
+<small>
+                                    wǒ xué xí zhōng wén sān nián le
+                                </small>
+</div>
+</button>
+<button class="test-answer" data-correct="false">
+<span>B</span>
+<div>
+<strong class="chinese-text" data-simplified="我三年学习了中文。" data-traditional="我三年學習了中文。">
+
+                                    我三年学习了中文。
+
+                                </strong>
+<small>
+                                    wǒ sān nián xué xí le zhōng wén
+                                </small>
+</div>
+</button>
+<button class="test-answer" data-correct="false">
+<span>C</span>
+<div>
+<strong class="chinese-text" data-simplified="我学习了三年的中文吗？" data-traditional="我學習了三年的中文嗎？">
+
+                                    我学习了三年的中文吗？
+
+                                </strong>
+<small>
+                                    wǒ xué xí le sān nián de zhōng wén ma?
+                                </small>
+</div>
+</button>
+</div>
+<button class="primary-button test-next" id="checkAnswerBtn">
+                        Check Answer
+                    </button>
+</div>
+<div class="test-sidebar">
+<p class="eyebrow">
+                        TEST INFORMATION
+                    </p>
+<h3>
+                        HSK 4 Practice
+                    </h3>
+<div class="test-info">
+<div>
+<span>Questions</span>
+<strong>20</strong>
+</div>
+<div>
+<span>Time</span>
+<strong>30 min</strong>
+</div>
+<div>
+<span>Passing Score</span>
+<strong>60%</strong>
+</div>
+</div>
+</div>
+</div>
+</section>
 <!-- ==========================================
              ADVANCED
         ========================================== -->

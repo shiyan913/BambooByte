@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | BambooByte</title>
+<link href="style.css" rel="stylesheet"/>
+<!-- ADD THIS HERE (Inside <head>): Google Identity Services SDK -->
+<script async="" defer="" src="https://accounts.google.com/gsi/client"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@500;700&amp;display=swap" rel="stylesheet"/>
+</head>
+<body>
+<!-- =========================
+     INTRO ANIMATION
+========================= -->
+<div class="intro-screen" id="introScreen">
+<div class="intro-bamboo">
+<div class="intro-stem">
+<div class="intro-node node-1"></div>
+<div class="intro-node node-2"></div>
+<div class="intro-node node-3"></div>
+<div class="intro-leaf intro-leaf-1"></div>
+<div class="intro-leaf intro-leaf-2"></div>
+<div class="intro-leaf intro-leaf-3"></div>
+</div>
+</div>
+<h1>Bamboo Byte</h1>
+<p>Grow your Chinese, one character at a time.</p>
+</div>
+<!-- =========================
+     LOGIN / SIGN UP
+========================= -->
+<div class="auth-overlay hidden" id="authOverlay">
+<div class="auth-card">
+<div class="auth-brand">
+<div class="auth-logo-wrap"><span class="auth-bamboo">竹</span><span class="auth-panda">🐼</span></div>
+<div><h2>Bamboo<span>Byte</span></h2><p>Grow your Chinese, one byte at a time.</p></div>
+</div>
+<div class="auth-tabs">
+<button class="auth-tab active" id="loginTab">Log in</button>
+<button class="auth-tab" id="signupTab">Create account</button>
+</div>
+<form id="authForm">
+<div class="form-group hidden" id="nameField">
+<label for="nameInput">Your name</label>
+<input autocomplete="name" id="nameInput" placeholder="e.g. Shiyan" type="text"/>
+</div>
+<div class="form-group">
+<label for="emailInput">Email</label>
+<input autocomplete="email" id="emailInput" placeholder="you@example.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="passwordInput">Password</label>
+<input autocomplete="current-password" id="passwordInput" minlength="4" placeholder="At least 4 characters" required="" type="password"/>
+</div>
+<p class="auth-message" id="authMessage"></p>
+<button class="primary-button auth-submit" id="authSubmit" type="submit">Log in →</button>
+</form>
+<p class="demo-note">Demo login for this assignment — account data is stored only in this browser.</p>
+</div>
+</div>
+<!-- =========================
+     FALLING BAMBOO LEAVES
+========================= -->
+<div class="leaf-container">
+<span class="falling-leaf leaf1">❧</span>
+<span class="falling-leaf leaf2">❧</span>
+<span class="falling-leaf leaf3">❧</span>
+<span class="falling-leaf leaf4">❧</span>
+<span class="falling-leaf leaf5">❧</span>
+</div>
+<!-- =========================
+     ONBOARDING
+========================= -->
+<div class="onboarding-overlay hidden" id="onboarding">
+<div class="onboarding-card">
+<div class="onboarding-header">
+<span class="mini-logo">竹</span>
+<div>
+<h2>Welcome to BambooByte</h2>
+<p>Let us personalise your Chinese learning journey.</p>
+</div>
+</div>
+<!-- QUESTION 1 -->
+<div class="question active-question" data-question="1">
+<p class="question-number">01 / 03</p>
+<h3>Why are you learning Chinese?</h3>
+<div class="answer-grid">
+<button class="answer-option">
+<span>🎓</span>
+<strong>Education</strong>
+<small>Study and academics</small>
+</button>
+<button class="answer-option">
+<span>💬</span>
+<strong>Daily Communication</strong>
+<small>Speak confidently every day</small>
+</button>
+<button class="answer-option">
+<span>💼</span>
+<strong>Work</strong>
+<small>Professional Chinese</small>
+</button>
+<button class="answer-option">
+<span>🌿</span>
+<strong>Hobby</strong>
+<small>Learn for fun and culture</small>
+</button>
+</div>
+</div>
+<!-- QUESTION 2 -->
+<div class="question" data-question="2">
+<p class="question-number">02 / 03</p>
+<h3>How would you describe your level?</h3>
+<div class="level-options">
+<button class="answer-option">
+<strong>Beginner</strong>
+<small>I know almost no Chinese</small>
+</button>
+<button class="answer-option">
+<strong>Elementary</strong>
+<small>I know basic words and sentences</small>
+</button>
+<button class="answer-option">
+<strong>Intermediate</strong>
+<small>I can hold simple conversations</small>
+</button>
+<button class="answer-option">
+<strong>Advanced</strong>
+<small>I can read and communicate comfortably</small>
+</button>
+</div>
+</div>
+<!-- QUESTION 3 -->
+<div class="question" data-question="3">
+<p class="question-number">03 / 03</p>
+<h3>How much time do you want to study each day?</h3>
+<div class="time-options">
+<button class="answer-option">
+<strong>10 min</strong>
+<small>Light</small>
+</button>
+<button class="answer-option">
+<strong>20 min</strong>
+<small>Regular</small>
+</button>
+<button class="answer-option">
+<strong>30 min</strong>
+<small>Focused</small>
+</button>
+<button class="answer-option">
+<strong>60 min</strong>
+<small>Intensive</small>
+</button>
+</div>
+</div>
+<div class="onboarding-bottom">
+<div class="onboarding-progress">
+<div id="onboardingProgress"></div>
+</div>
+<button class="primary-button" id="continueButton">
+                Continue →
+            </button>
+</div>
+</div>
+</div>
+<!-- =========================
+     MAIN WEBSITE
+========================= -->
+<div class="app-layout">
+<!-- SIDEBAR -->
+<aside class="sidebar">
+<div class="logo">
+<div class="logo-mark">
+<div class="logo-icon">竹</div>
+<span class="logo-panda">🐼</span>
+</div>
+<div class="logo-text">
+<h2>Bamboo<span>Byte</span></h2>
+<small>中文学习</small>
+</div>
+</div>
+<nav class="sidebar-nav">
+<a class="nav-item" data-page="home" href="index.html"><span>⌂</span>Home</a>
+<a class="nav-item" data-page="learning" href="learning.html"><span>学</span>Learn</a>
+<a class="nav-item" data-page="mocktest" href="mocktest.html"><span>✓</span>Mock Test</a>
+<a class="nav-item" data-page="advanced" href="advanced.html"><span>文</span>Advanced</a>
+<a class="nav-item active" data-page="about" href="about.html"><span>◎</span>About Us</a><a class="nav-item" data-page="profile" href="profile.html"><span>人</span>Profile</a>
+</nav>
+<div class="sidebar-bottom">
+<div class="daily-goal">
+<p>Today's goal</p>
+<div class="goal-number">
+<strong>18</strong> / 20 min
+                </div>
+<div class="small-progress">
+<div style="width:90%"></div>
+</div>
+</div>
+<button class="settings-button" id="settingsBtn">
+                ⚙ Settings
+            </button>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<main class="main-content">
+<!-- TOP BAR -->
+<header class="topbar">
+<div>
+<p class="date-label" id="currentDateLabel">THURSDAY • SEPTEMBER 3</p>
+<h1 id="pageTitle">你好, Alex.</h1>
+</div>
+<div class="topbar-actions">
+<div aria-label="Chinese character style" class="character-toggle">
+<button class="toggle-active" id="simplifiedBtn" type="button">简</button>
+<button id="traditionalBtn" type="button">繁</button>
+</div>
+<div class="streak">🔥 <strong>12</strong></div>
+<button aria-label="Open profile" class="avatar" id="avatarButton" type="button">A</button>
+</div>
+</header>
+<!-- ==========================================
+             HOME PAGE
+        ========================================== -->
+<section class="active-page page" id="about"><div class="about-hero"><p class="eyebrow">ABOUT BAMBOOBYTE</p><h1>Built by learners, for learners.</h1><p>BambooByte is a Chinese-learning website created by our five-person team. We combined design, content, testing, project management and web development to make Chinese study feel structured, practical and welcoming.</p></div><div class="section-heading large-heading"><div><p class="eyebrow">MEET THE CREATORS</p><h2>Our Team</h2><p>Click any profile below. Each member profile opens in a <strong>new browser tab</strong>.</p></div></div><div class="about-team-grid"><a class="about-team-card" href="profile-febriana.html" rel="noopener" target="_blank">
+<div class="about-team-photo"><img alt="Febriana Gunawan" src="febriana.jpg"/></div><div class="about-team-copy"><span class="eyebrow">CEO</span><h3>Febriana Gunawan</h3><p class="student-id">Student ID · 1820252136</p><p>Lead · Create · Inspire</p><strong>View profile ↗</strong></div></a><a class="about-team-card" href="profile-michaela.html" rel="noopener" target="_blank">
+<div class="about-team-photo"><img alt="Michaela Kwan" src="michaela.jpg"/></div><div class="about-team-copy"><span class="eyebrow">CIO</span><h3>Michaela Kwan</h3><p class="student-id">Student ID · 1820252116</p><p>Systems · Ideas · People</p><strong>View profile ↗</strong></div></a><a class="about-team-card" href="profile-shiyan.html" rel="noopener" target="_blank">
+<div class="about-team-photo"><img alt="Shiyan" src="shiyan.jpg"/></div><div class="about-team-copy"><span class="eyebrow">UI/UX Designer</span><h3>Shiyan</h3><p class="student-id">Student ID · 1820252187</p><p>Design · For · People</p><strong>View profile ↗</strong></div></a><a class="about-team-card" href="profile-jonathan.html" rel="noopener" target="_blank">
+<div class="about-team-photo"><img alt="Jonathan Glowdius Susanto" src="jonathan.jpg"/></div><div class="about-team-copy"><span class="eyebrow">Writer &amp; Tester</span><h3>Jonathan Glowdius Susanto</h3><p class="student-id">Student ID · 1820252124</p><p>Write · Test · Improve</p><strong>View profile ↗</strong></div></a><a class="about-team-card" href="profile-michael.html" rel="noopener" target="_blank">
+<div class="about-team-photo"><img alt="Michael Noah Raharjo" src="michael.jpg"/></div><div class="about-team-copy"><span class="eyebrow">CTO / Tech Lead</span><h3>Michael Noah Raharjo</h3><p class="student-id">Student ID · 1820252142</p><p>Code · Create · Explore</p><strong>View profile ↗</strong></div></a></div><div class="about-project-card"><div><p class="eyebrow">OUR PROJECT</p><h2>Why BambooByte?</h2><p>We wanted to create an adult-friendly Chinese learning experience inspired by the clarity and motivation of modern language apps while giving it a distinct bamboo-and-panda identity. The site includes themed lessons, HSK practice, mock tests, grammar, reading, idioms and personalised progress.</p></div><div class="about-values"><span>🎋 Clear progression</span><span>🐼 Friendly identity</span><span>🀄 Practical Chinese</span><span>💻 Interactive learning</span></div></div></section>
+<!-- ==========================================
+             LEARNING PAGE
+        ========================================== -->
+<section class="page" id="learning">
+<div class="section-heading large-heading">
+<div>
+<p class="eyebrow">
+                        CURRICULUM
+                    </p>
+<h2>
+                        Learn Chinese
+                    </h2>
+<p>
+                        Build practical Chinese skills through vocabulary,
+                        pronunciation and real-life conversations.
+                    </p>
+</div>
+</div>
+<div class="course-grid">
+<div class="course-card">
+<div class="course-icon">
+                        你好
+                    </div>
+<p class="eyebrow">
+                        UNIT 01
+                    </p>
+<h3>
+                        Essential Chinese
+                    </h3>
+<p>
+                        Greetings, names, countries and basic introductions.
+                    </p>
+<div class="course-word">
+<strong class="chinese-text" data-simplified="认识你很高兴" data-traditional="認識你很高興">
+
+                            认识你很高兴
+
+                        </strong>
+<small>
+                            rèn shi nǐ hěn gāo xìng
+                        </small>
+</div>
+<div class="course-bottom">
+<span>8 lessons</span>
+<button type="button" data-course="Essential Chinese">
+                            Start →
+                        </button>
+</div>
+</div>
+<div class="course-card">
+<div class="course-icon">
+                        食
+                    </div>
+<p class="eyebrow">
+                        UNIT 02
+                    </p>
+<h3>
+                        Food &amp; Dining
+                    </h3>
+<p>
+                        Order meals, discuss flavours and navigate restaurants.
+                    </p>
+<div class="course-word">
+<strong class="chinese-text" data-simplified="这个好吃吗？" data-traditional="這個好吃嗎？">
+
+                            这个好吃吗？
+
+                        </strong>
+<small>
+                            zhè ge hǎo chī ma?
+                        </small>
+</div>
+<div class="course-bottom">
+<span>10 lessons</span>
+<button type="button" data-course="Food &amp; Dining">
+                            Start →
+                        </button>
+</div>
+</div>
+<div class="course-card">
+<div class="course-icon">
+                        行
+                    </div>
+<p class="eyebrow">
+                        UNIT 03
+                    </p>
+<h3>
+                        Travel &amp; Directions
+                    </h3>
+<p>
+                        Transport, destinations, directions and navigation.
+                    </p>
+<div class="course-word">
+<strong class="chinese-text" data-simplified="地铁站在哪里？" data-traditional="地鐵站在哪裡？">
+
+                            地铁站在哪里？
+
+                        </strong>
+<small>
+                            dì tiě zhàn zài nǎ lǐ?
+                        </small>
+</div>
+<div class="course-bottom">
+<span>9 lessons</span>
+<button type="button" data-course="Travel &amp; Directions">
+                            Start →
+                        </button>
+</div>
+</div>
+<div class="course-card">
+<div class="course-icon">
+                        工
+                    </div>
+<p class="eyebrow">
+                        UNIT 04
+                    </p>
+<h3>
+                        Chinese for Work
+                    </h3>
+<p>
+                        Meetings, emails and professional communication.
+                    </p>
+<div class="course-word">
+<strong class="chinese-text" data-simplified="我们开会吧" data-traditional="我們開會吧">
+
+                            我们开会吧
+
+                        </strong>
+<small>
+                            wǒ men kāi huì ba
+                        </small>
+</div>
+<div class="course-bottom">
+<span>12 lessons</span>
+<button type="button" data-course="Chinese for Work">
+                            Start →
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================
+             MOCK TEST
+        ========================================== -->
+<section class="page" id="mocktest">
+<div class="test-layout">
+<div class="mock-test-card">
+<p class="eyebrow">
+                        HSK MOCK TEST
+                    </p>
+<h2>
+                        Question 4 of 20
+                    </h2>
+<div class="test-progress">
+<div style="width:20%"></div>
+</div>
+<p class="test-instruction">
+                        Choose the sentence that best matches the English meaning.
+                    </p>
+<div class="test-question">
+<p class="english-question">
+                            “I have studied Chinese for three years.”
+                        </p>
+<button class="test-answer" data-correct="true">
+<span>A</span>
+<div>
+<strong class="chinese-text" data-simplified="我学习中文三年了。" data-traditional="我學習中文三年了。">
+
+                                    我学习中文三年了。
+
+                                </strong>
+<small>
+                                    wǒ xué xí zhōng wén sān nián le
+                                </small>
+</div>
+</button>
+<button class="test-answer" data-correct="false">
+<span>B</span>
+<div>
+<strong class="chinese-text" data-simplified="我三年学习了中文。" data-traditional="我三年學習了中文。">
+
+                                    我三年学习了中文。
+
+                                </strong>
+<small>
+                                    wǒ sān nián xué xí le zhōng wén
+                                </small>
+</div>
+</button>
+<button class="test-answer" data-correct="false">
+<span>C</span>
+<div>
+<strong class="chinese-text" data-simplified="我学习了三年的中文吗？" data-traditional="我學習了三年的中文嗎？">
+
+                                    我学习了三年的中文吗？
+
+                                </strong>
+<small>
+                                    wǒ xué xí le sān nián de zhōng wén ma?
+                                </small>
+</div>
+</button>
+</div>
+<button class="primary-button test-next" id="checkAnswerBtn">
+                        Check Answer
+                    </button>
+</div>
+<div class="test-sidebar">
+<p class="eyebrow">
+                        TEST INFORMATION
+                    </p>
+<h3>
+                        HSK 4 Practice
+                    </h3>
+<div class="test-info">
+<div>
+<span>Questions</span>
+<strong>20</strong>
+</div>
+<div>
+<span>Time</span>
+<strong>30 min</strong>
+</div>
+<div>
+<span>Passing Score</span>
+<strong>60%</strong>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================
+             ADVANCED
+        ========================================== -->
+<section class="page" id="advanced">
+<div class="section-heading large-heading">
+<div>
+<p class="eyebrow">
+                        HSK 5–6
+                    </p>
+<h2>
+                        Advanced Chinese
+                    </h2>
+<p>
+                        Develop natural reading, grammar and cultural understanding.
+                    </p>
+</div>
+</div>
+<div class="advanced-grid">
+<article class="reading-card clickable-card" onclick="window.location.href='reading.html'">
+<span class="article-tag">
+                        READING · 12 ARTICLES
+                    </span>
+<h3>
+                        城市生活与传统文化
+                    </h3>
+<small>
+                        chéng shì shēng huó yǔ chuán tǒng wén huà
+                    </small>
+<p>
+
+                        随着城市的发展，越来越多的年轻人开始重新关注传统文化。
+                        茶文化、书法和传统服装逐渐成为现代生活的一部分。
+
+                    </p>
+<button onclick="event.stopPropagation(); window.location.href='reading.html'" type="button">Read Article →</button>
+</article>
+<article class="advanced-small-card clickable-card" onclick="window.location.href='grammar.html'">
+<span class="article-tag">
+                        GRAMMAR · 50 PATTERNS
+                    </span>
+<h3>
+                        高级语法库
+                    </h3>
+<small>
+                        gāo jí yǔ fǎ kù
+                    </small>
+<p>
+                        Explore 50 useful Chinese grammar patterns with pinyin, meanings and examples.
+                    </p>
+</article>
+<article class="advanced-small-card clickable-card" onclick="window.location.href='idioms.html'">
+<span class="article-tag">
+                        IDIOM · 50 CHENGYU
+                    </span>
+<h3>
+                        画蛇添足
+                    </h3>
+<small>
+                        huà shé tiān zú
+                    </small>
+<p>
+                        Explore 50 useful Chinese idioms with pinyin, meanings and example sentences.
+                    </p>
+</article>
+</div>
+</section>
+<!-- ==========================================
+             PROFILE
+        ========================================== -->
+<!-- ==========================================
+     PROFILE PAGE
+========================================== -->
+<section class="page" id="profile">
+<div class="profile-card">
+<!-- Tampilan Avatar Profil (Bisa teks/inisial atau Gambar) -->
+<div class="profile-avatar" id="profileAvatarDisplay">
+<span id="profileAvatarText">A</span>
+<img alt="Profile Picture" class="hidden" id="profileAvatarImg" src=""/>
+</div>
+<div>
+<p class="eyebrow">LEARNER PROFILE</p>
+<h2 id="profileName">Alex</h2>
+<p id="profileSummary">Learning Chinese for Education • 20 min/day</p>
+<button class="primary-button" id="editProfileBtn" style="margin-top: 15px;">Edit Profile ✎</button>
+</div>
+</div>
+<div class="profile-stats">
+<div><span>Current Level</span><strong id="profileLevel">HSK 4</strong></div>
+<div><span>Learning Goal</span><strong id="profileGoal">Education</strong></div>
+<div><span>Daily Target</span><strong id="profileTarget">20 minutes</strong></div>
+<div><span>Script Preference</span><strong id="profileScript">Simplified</strong></div>
+</div>
+<button class="logout-button" id="logoutBtn">Log out</button>
+</section>
+</main>
+</div>
+<!-- ==========================================
+     EDIT PROFILE MODAL
+========================================== -->
+<div class="app-modal hidden" id="editProfileModal">
+<div class="modal-card">
+<button class="modal-close" id="closeProfileModalBtn">×</button>
+<h2>Edit Profile</h2>
+<form id="editProfileForm">
+<!-- Pilihan Avatar / Foto -->
+<div class="form-group">
+<label>Profile Picture</label>
+<div class="avatar-preview-container">
+<div class="avatar-preview" id="editAvatarPreview">A</div>
+</div>
+<input accept="image/*" id="editAvatarInput" style="margin-top: 8px; font-size: 13px;" type="file"/>
+</div>
+<div class="form-group">
+<label for="editNameInput">Name</label>
+<input id="editNameInput" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="editGoalSelect">Learning Goal</label>
+<select class="profile-select" id="editGoalSelect">
+<option value="Education">Education</option>
+<option value="Daily Communication">Daily Communication</option>
+<option value="Work">Work</option>
+<option value="Hobby">Hobby</option>
+</select>
+</div>
+<div class="form-group">
+<label for="editTargetSelect">Daily Target</label>
+<select class="profile-select" id="editTargetSelect">
+<option value="10 min">10 min</option>
+<option value="20 min">20 min</option>
+<option value="30 min">30 min</option>
+<option value="60 min">60 min</option>
+</select>
+</div>
+<button class="primary-button" style="width: 100%; margin-top: 10px;" type="submit">Save Changes</button>
+</form>
+</div>
+</div>
+<!-- =========================
+     REUSABLE APP MODAL
+========================= -->
+<div class="app-modal hidden" id="appModal">
+<div class="modal-card">
+<button aria-label="Close" class="modal-close" id="modalClose">×</button>
+<p class="eyebrow" id="modalEyebrow">BAMBOOBYTE</p>
+<h2 id="modalTitle">Lesson</h2>
+<div class="modal-body" id="modalBody"></div>
+<button class="primary-button" id="modalAction">Continue →</button>
+</div>
+</div>
+<div aria-live="polite" class="sr-only" id="routeAnnouncer"></div>
+<script>
+window.BAMBOO_MULTIPAGE = true;
+</script>
+<script src="script.js"></script>
+</body>
+</html>
