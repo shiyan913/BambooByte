@@ -893,3 +893,108 @@ function escapeHTML(value) {
         addAudioFeatures();
     }
 })();
+
+
+/* =====================================
+   BAMBOOBYTE SESSION AUDIO + STUDY TIMER
+   Shared across every page.
+===================================== */
+(function () {
+  const TIMER_KEY = 'bambooStudyTimerEnd';
+  const MUSIC_KEY = 'bambooMusicEnabled';
+  let timerInterval = null;
+
+  function formatTime(ms) {
+    const total = Math.max(0, Math.ceil(ms / 1000));
+    const h = Math.floor(total / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = total % 60;
+    return h ? `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}` : `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  }
+
+  function buildStudyTools() {
+    if (document.getElementById('bambooStudyTools')) return;
+    const wrap = document.createElement('div');
+    wrap.id = 'bambooStudyTools';
+    wrap.innerHTML = `
+      <button class="study-tools-pill" id="studyToolsOpen" type="button">⏱ Study Timer <span id="timerMini"></span></button>
+      <button class="music-pill" id="musicToggle" type="button" aria-label="Toggle background music">♫ Music</button>
+      <div class="study-timer-modal hidden" id="studyTimerModal" role="dialog" aria-modal="true" aria-label="Bamboo Study Timer">
+        <div class="study-timer-card">
+          <button class="study-timer-close" id="studyTimerClose" type="button">×</button>
+          <h2>Bamboo Study Timer</h2>
+          <p class="study-timer-sub">Choose a focused study session.</p>
+          <div class="timer-display" id="timerDisplay">00:00</div>
+          <div class="timer-options">
+            ${[15,30,45,60,120].map(x=>`<button type="button" data-minutes="${x}">${x}m</button>`).join('')}
+          </div>
+          <div class="timer-actions">
+            <button class="primary-button" id="timerStart" type="button">Start Timer</button>
+            <button class="timer-secondary" id="timerCancel" type="button">Reset</button>
+          </div>
+          <small>🔔 A gentle alarm will play when your session ends.</small>
+        </div>
+      </div>`;
+    document.body.appendChild(wrap);
+
+    const bg = new Audio('bamboo-background.mp3'); bg.loop = true; bg.volume = .22;
+    const alarm = new Audio('study-alarm.mp3'); alarm.volume = .8;
+    let selectedMinutes = 15;
+    const musicBtn = document.getElementById('musicToggle');
+    function setMusic(on) {
+      localStorage.setItem(MUSIC_KEY, on ? 'true' : 'false');
+      musicBtn.textContent = on ? '♫ Music On' : '♫ Music Off';
+      musicBtn.classList.toggle('music-on', on);
+      if (on) bg.play().catch(()=>{}); else { bg.pause(); bg.currentTime=0; }
+    }
+    musicBtn.addEventListener('click',()=>setMusic(localStorage.getItem(MUSIC_KEY)!=='true'));
+    // Never force autoplay. Remember the preference and let the learner resume with one click.
+    setMusic(false);
+
+    const modal=document.getElementById('studyTimerModal');
+    document.getElementById('studyToolsOpen').onclick=()=>modal.classList.remove('hidden');
+    document.getElementById('studyTimerClose').onclick=()=>modal.classList.add('hidden');
+    document.querySelectorAll('.timer-options button').forEach(b=>b.onclick=()=>{
+      document.querySelectorAll('.timer-options button').forEach(x=>x.classList.remove('selected'));
+      b.classList.add('selected'); selectedMinutes=Number(b.dataset.minutes);
+      document.getElementById('timerDisplay').textContent=`${String(selectedMinutes).padStart(2,'0')}:00`;
+    });
+    document.querySelector('.timer-options button[data-minutes="15"]').classList.add('selected');
+
+    function updateTimer(){
+      const end=Number(localStorage.getItem(TIMER_KEY)||0), now=Date.now();
+      const left=end-now;
+      const display=document.getElementById('timerDisplay'), mini=document.getElementById('timerMini');
+      if(end && left>0){ display.textContent=formatTime(left); mini.textContent='· '+formatTime(left); }
+      else if(end){
+        localStorage.removeItem(TIMER_KEY); clearInterval(timerInterval); timerInterval=null;
+        display.textContent='00:00'; mini.textContent=''; alarm.currentTime=0; alarm.play().catch(()=>{});
+        modal.classList.remove('hidden');
+        setTimeout(()=>alert('🎋 Study session complete! Time for a short break.'),100);
+      }
+    }
+    document.getElementById('timerStart').onclick=()=>{
+      localStorage.setItem(TIMER_KEY,String(Date.now()+selectedMinutes*60000));
+      if(timerInterval) clearInterval(timerInterval); timerInterval=setInterval(updateTimer,1000); updateTimer();
+      modal.classList.add('hidden');
+    };
+    document.getElementById('timerCancel').onclick=()=>{
+      localStorage.removeItem(TIMER_KEY); if(timerInterval) clearInterval(timerInterval); timerInterval=null;
+      document.getElementById('timerDisplay').textContent='00:00'; document.getElementById('timerMini').textContent='';
+    };
+    if(Number(localStorage.getItem(TIMER_KEY)||0)>Date.now()) { timerInterval=setInterval(updateTimer,1000); updateTimer(); }
+  }
+
+  function useUploadedAboutAudio(){
+    const about=document.querySelector('#about.active-page')||document.querySelector('#about')||document.querySelector('.about-hero')?.closest('section');
+    const hero=about?.querySelector('.about-hero')||document.querySelector('.about-hero');
+    if(!hero || hero.querySelector('.about-recorded-audio')) return;
+    hero.querySelector('.about-audio-btn')?.remove();
+    const box=document.createElement('div'); box.className='about-recorded-audio welcome-audio-card';
+    box.innerHTML='<div><strong>🎧 About BambooByte</strong><small>Listen to our introduction</small></div><audio controls preload="metadata"><source src="about-bamboobyte.m4a" type="audio/mp4"></audio>';
+    hero.appendChild(box);
+  }
+
+  function init(){ buildStudyTools(); useUploadedAboutAudio(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
