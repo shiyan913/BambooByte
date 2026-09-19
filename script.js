@@ -556,6 +556,39 @@ $("#continueLessonBtn")?.addEventListener("click", () => openLesson("Everyday Co
 $$('.lesson-play[data-lesson]').forEach((button) => button.addEventListener("click", (event) => { event.preventDefault(); event.stopPropagation(); openLesson(button.dataset.lesson); }));
 $$('.course-bottom button[data-course]').forEach((button) => button.addEventListener("click", (event) => { event.preventDefault(); event.stopPropagation(); openLesson(button.dataset.course); }));
 
+
+/* =====================================
+   OFFLINE SOUND EFFECTS
+   Uses Web Audio API, so no external sound file is needed.
+===================================== */
+function playCorrectSound() {
+    try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const now = ctx.currentTime;
+        [523.25, 659.25, 783.99].forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = "sine";
+            osc.frequency.value = freq;
+            gain.gain.setValueAtTime(0.0001, now + i * 0.09);
+            gain.gain.exponentialRampToValueAtTime(0.18, now + i * 0.09 + 0.015);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.09 + 0.22);
+            osc.connect(gain); gain.connect(ctx.destination);
+            osc.start(now + i * 0.09); osc.stop(now + i * 0.09 + 0.24);
+        });
+        setTimeout(() => ctx.close?.(), 700);
+    } catch (e) { console.warn("Sound effect unavailable", e); }
+}
+window.playCorrectSound = playCorrectSound;
+
+// Multi-question HSK tests: play a small success chime when a correct choice is selected.
+document.addEventListener("click", (event) => {
+    const answer = event.target.closest?.(".multi-test-answer");
+    if (answer?.dataset.correct === "true") playCorrectSound();
+});
+
 /* =====================================
    MOCK TEST
 ===================================== */
@@ -582,6 +615,7 @@ checkAnswerBtn?.addEventListener("click", () => {
     });
 
     const correct = selectedTestAnswer.dataset.correct === "true";
+    if (correct) playCorrectSound();
     if (!correct) selectedTestAnswer.classList.add("wrong-answer");
     checkAnswerBtn.textContent = correct ? "Correct! ✓" : "See correct answer ↑";
 

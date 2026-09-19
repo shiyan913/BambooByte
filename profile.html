@@ -1256,94 +1256,93 @@ document.getElementById('lessonAudio').addEventListener('ended', function() {
 </div>
 </section>
 <!-- ==========================================
-            PROFILE
+             PROFILE
+        ========================================== -->
+<!-- ==========================================
+     PROFILE PAGE
 ========================================== -->
 <section class="page active-page" id="profile">
-    <div class="profile-card">
-        <!-- Tampilan Avatar Profil (Bisa teks/inisial atau Gambar) -->
-        <div class="profile-avatar" id="profileAvatarDisplay">
-            <span id="profileAvatarText">A</span>
-            <img alt="Profile Picture" class="hidden" id="profileAvatarImg" src=""/>
-        </div>
-        <div>
-            <p class="eyebrow">LEARNER PROFILE</p>
-            <h2 id="profileName">Alex</h2>
-            <p id="profileSummary">Learning Chinese for Education • 20 min/day</p>
-            <button class="primary-button" id="editProfileBtn" style="margin-top: 15px;">Edit Profile ✎</button>
-        </div>
-    </div>
-    <div class="profile-stats">
-        <div><span>Current Level</span><strong id="profileLevel">HSK 4</strong></div>
-        <div><span>Learning Goal</span><strong id="profileGoal">Education</strong></div>
-        <div><span>Daily Target</span><strong id="profileTarget">20 minutes</strong></div>
-        <div><span>Script Preference</span><strong id="profileScript">Simplified</strong></div>
-    </div>
-    <button class="logout-button" id="logoutBtn">Log out</button>
+<div class="profile-card">
+<!-- Tampilan Avatar Profil (Bisa teks/inisial atau Gambar) -->
+<div class="profile-avatar" id="profileAvatarDisplay">
+<span id="profileAvatarText">A</span>
+<img alt="Profile Picture" class="hidden" id="profileAvatarImg" src=""/>
+</div>
+<div>
+<p class="eyebrow">LEARNER PROFILE</p>
+<h2 id="profileName">Alex</h2>
+<p id="profileSummary">Learning Chinese for Education • 20 min/day</p>
+<button class="primary-button" id="editProfileBtn" style="margin-top: 15px;">Edit Profile ✎</button>
+</div>
+</div>
+<div class="profile-stats">
+<div><span>Current Level</span><strong id="profileLevel">HSK 4</strong></div>
+<div><span>Learning Goal</span><strong id="profileGoal">Education</strong></div>
+<div><span>Daily Target</span><strong id="profileTarget">20 minutes</strong></div>
+<div><span>Script Preference</span><strong id="profileScript">Simplified</strong></div>
+</div>
+<button class="logout-button" id="logoutBtn">Log out</button>
 </section>
-
+</main>
+</div>
 <!-- ==========================================
-    EDIT PROFILE MODAL
+     EDIT PROFILE MODAL
 ========================================== -->
 <div class="app-modal hidden" id="editProfileModal">
-    <div class="modal-card">
-        <button class="modal-close" id="closeProfileModalBtn">×</button>
-        <h2>Edit Profile</h2>
-        <form id="editProfileForm">
-            <!-- Pilihan Avatar / Foto -->
-            <div class="form-group">
-                <label>Profile Picture</label>
-                <div class="avatar-preview-container">
-                    <div class="avatar-preview" id="editAvatarPreview">A</div>
-                </div>
-                <input accept="image/*" id="editAvatarInput" style="margin-top: 8px; font-size: 13px;" type="file"/>
-            </div>
-            <div class="form-group">
-                <label for="editNameInput">Name</label>
-                <input id="editNameInput" required="" type="text"/>
-            </div>
-            <div class="form-group">
-                <label for="editGoalSelect">Learning Goal</label>
-                <select class="profile-select" id="editGoalSelect">
-                    <option value="Education">Education</option>
-                    <option value="Daily Communication">Daily Communication</option>
-                    <option value="Work">Work</option>
-                    <option value="Hobby">Hobby</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="editTargetSelect">Daily Target</label>
-                <select class="profile-select" id="editTargetSelect">
-                    <option value="10 min">10 min</option>
-                    <option value="20 min">20 min</option>
-                    <option value="30 min">30 min</option>
-                    <option value="60 min">60 min</option>
-                </select>
-            </div>
-            <button class="primary-button" style="width: 100%; margin-top: 10px;" type="submit">Save Changes</button>
-        </form>
-    </div>
+<div class="modal-card">
+<button class="modal-close" id="closeProfileModalBtn">×</button>
+<h2>Edit Profile</h2>
+<form id="editProfileForm">
+<!-- Pilihan Avatar / Foto -->
+<div class="form-group">
+<label>Profile Picture</label>
+<div class="avatar-preview-container">
+<div class="avatar-preview" id="editAvatarPreview">A</div>
 </div>
-
+<input accept="image/*" id="editAvatarInput" style="margin-top: 8px; font-size: 13px;" type="file"/>
+</div>
+<div class="form-group">
+<label for="editNameInput">Name</label>
+<input id="editNameInput" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="editGoalSelect">Learning Goal</label>
+<select class="profile-select" id="editGoalSelect">
+<option value="Education">Education</option>
+<option value="Daily Communication">Daily Communication</option>
+<option value="Work">Work</option>
+<option value="Hobby">Hobby</option>
+</select>
+</div>
+<div class="form-group">
+<label for="editTargetSelect">Daily Target</label>
+<select class="profile-select" id="editTargetSelect">
+<option value="10 min">10 min</option>
+<option value="20 min">20 min</option>
+<option value="30 min">30 min</option>
+<option value="60 min">60 min</option>
+</select>
+</div>
+<button class="primary-button" style="width: 100%; margin-top: 10px;" type="submit">Save Changes</button>
+</form>
+</div>
+</div>
 <!-- =========================
-    REUSABLE APP MODAL
+     REUSABLE APP MODAL
 ========================= -->
 <div class="app-modal hidden" id="appModal">
-    <div class="modal-card">
-        <button aria-label="Close" class="modal-close" id="modalClose">×</button>
-        <p class="eyebrow" id="modalEyebrow">BAMBOOBYTE</p>
-        <h2 id="modalTitle">Lesson</h2>
-        <div class="modal-body" id="modalBody"></div>
-        <button class="primary-button" id="modalAction">Continue →</button>
-    </div>
+<div class="modal-card">
+<button aria-label="Close" class="modal-close" id="modalClose">×</button>
+<p class="eyebrow" id="modalEyebrow">BAMBOOBYTE</p>
+<h2 id="modalTitle">Lesson</h2>
+<div class="modal-body" id="modalBody"></div>
+<button class="primary-button" id="modalAction">Continue →</button>
 </div>
-
+</div>
 <div aria-live="polite" class="sr-only" id="routeAnnouncer"></div>
-
 <script>
 window.BAMBOO_MULTIPAGE = true;
 </script>
 <script src="script.js"></script>
-</body>
-</html>
 </body>
 </html>

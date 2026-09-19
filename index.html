@@ -230,9 +230,27 @@
 <p class="eyebrow">你好 · NǏ HǍO 👋</p>
 <h1>Welcome to BambooByte 🎋</h1>
 <p>Learn Chinese one byte at a time.</p>
+<div class="welcome-audio-card">
+<div><strong>🎧 Welcome introduction</strong><small>Hear a short introduction to BambooByte.</small></div>
+<audio controls preload="metadata"><source src="intro.m4a" type="audio/mp4">Your browser does not support audio playback.</audio>
+</div>
 </div>
 <!-- Fonts Library -->
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&amp;family=Playfair+Display:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- OFFLINE HSK REFERENCE LIBRARY -->
+<section class="reference-section">
+<div class="section-header"><p class="eyebrow">OFFLINE STUDY LIBRARY</p><h3>HSK 1–6 Reference Guides</h3><p class="reference-note">Six BambooByte study guides are saved inside the website, so they can be opened even without internet access.</p></div>
+<div class="reference-grid">
+<a href="hsk-reference-1.html" class="reference-card"><span>HSK 1</span><strong>Beginner foundations</strong><small>Core words · sentence patterns · exam focus →</small></a>
+<a href="hsk-reference-2.html" class="reference-card"><span>HSK 2</span><strong>Everyday Chinese</strong><small>Vocabulary · grammar · communication →</small></a>
+<a href="hsk-reference-3.html" class="reference-card"><span>HSK 3</span><strong>Practical intermediate</strong><small>Reading · writing · useful structures →</small></a>
+<a href="hsk-reference-4.html" class="reference-card"><span>HSK 4</span><strong>Confident communication</strong><small>Complex sentences · reading strategies →</small></a>
+<a href="hsk-reference-5.html" class="reference-card"><span>HSK 5</span><strong>Advanced comprehension</strong><small>Formal vocabulary · longer texts →</small></a>
+<a href="hsk-reference-6.html" class="reference-card"><span>HSK 6</span><strong>High-level Chinese</strong><small>Nuance · idioms · advanced reading →</small></a>
+</div>
+<p class="reference-disclaimer">These are original BambooByte offline revision guides, not copies of commercial HSK textbooks. For the newest official syllabus and sample papers, use the Chinese Test Service Center when online.</p>
+</section>
+
 <!-- TEAM SECTION -->
 <div class="team-section">
 <div class="section-header">
@@ -719,7 +737,41 @@ function handleOutsideClick(event) {
                         今天过得怎么样？
                         
                     </span>
+<!-- Audio Play/Stop Button -->
+<button class="audio-play-btn" id="playAudioBtn" onclick="toggleAudio()" style="background: var(--primary-color, #2e7d32); border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: transform 0.2s;" title="Play Audio">
+<svg fill="currentColor" height="14" id="audioIcon" viewbox="0 0 24 24" width="14">
+<path d="M8 5v14l11-7z"></path>
+</svg>
+</button>
+<!-- Hidden Audio Element -->
+<audio id="lessonAudio" preload="none" src="audio1.mp3"></audio>
+<script>
+function toggleAudio() {
+    const audio = document.getElementById('lessonAudio');
+    const icon = document.getElementById('audioIcon');
+    const btn = document.getElementById('playAudioBtn');
 
+    if (audio.paused) {
+        audio.play();
+        // Switch to pause/stop icon (two vertical bars)
+        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+        btn.title = "Pause Audio";
+    } else {
+        audio.pause();
+        // Switch back to play icon (triangle)
+        icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+        btn.title = "Play Audio";
+    }
+}
+
+// Automatically reset the button icon when the audio finishes playing
+document.getElementById('lessonAudio').addEventListener('ended', function() {
+    const icon = document.getElementById('audioIcon');
+    const btn = document.getElementById('playAudioBtn');
+    icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+    btn.title = "Play Audio";
+});
+</script>
 <small>
                         jīn tiān guò de zěn me yàng?
                     </small>
@@ -779,9 +831,9 @@ function handleOutsideClick(event) {
                                 Continue learning
                             </h2>
 </div>
-<button class="text-button" id="viewAllBtn" onclick="window.location.href='learning.html'">
-    View all →
-</button>
+<button class="text-button" id="viewAllBtn">
+                            View all →
+                        </button>
 </div>
 <div class="lesson-list">
 <div class="lesson-card">
@@ -1315,6 +1367,5 @@ function handleOutsideClick(event) {
 window.BAMBOO_MULTIPAGE = true;
 </script>
 <script src="script.js"></script>
-
 </body>
 </html>
